@@ -1,24 +1,24 @@
 #!/bin/bash
 
-# ESANIN.SH
+# ESTEEM.SH
 
-# This Bash script allows you to easily and safely install Enlightenment 24 along with other
-# EFL-based apps, on Ubuntu Focal Fossa or Groovy Gorilla.
+# This Bash script allows you to easily and safely install Enlightenment 25 along with other
+# EFL-based apps, on Ubuntu Groovy Gorilla or Hirsute Hippo.
 
 # See README.md for instructions on how to use this script.
 
 # Heads up!
 # Enlightenment programs installed from .deb packages or tarballs will inevitably conflict
-# with E24 programs compiled from Git repositories——do not mix source code with
+# with E25 programs compiled from Git repositories——do not mix source code with
 # pre-built binaries!
 
 # Once installed, you can update your shiny new Enlightenment desktop whenever you want to.
 # However, because software gains entropy over time (performance regression, unexpected
 # behavior... this is especially true when dealing directly with source code), we highly
-# recommend doing a complete uninstall and reinstall of E24 every three weeks or so
+# recommend doing a complete uninstall and reinstall of E25 every three weeks or so
 # for an optimal user experience.
 
-# ESANIN.SH is written and maintained by batden@sfr.fr and carlasensa@sfr.fr,
+# ESTEEM.SH is written and maintained by batden@sfr.fr and carlasensa@sfr.fr,
 # feel free to use this script as you see fit.
 
 # Please consider sending us a tip via https://www.paypal.me/PJGuillaumie
@@ -45,16 +45,15 @@ OFF="\e[0m"    # Turn off ANSI colors and formatting.
 PREFIX=/usr/local
 DLDIR=$(xdg-user-dir DOWNLOAD)
 DOCDIR=$(xdg-user-dir DOCUMENTS)
-SCRFLR=$HOME/.esanin
+SCRFLR=$HOME/.esteem
 REBASEF="git config pull.rebase false"
 CONFG="./configure --prefix=$PREFIX"
 GEN="./autogen.sh --prefix=$PREFIX"
 SNIN="sudo ninja -C build install"
 SMIL="sudo make install"
 DISTRO=$(lsb_release -sc)
-ICNV=libiconv-1.16
-LWEB=libwebp-1.1.0
-LAVF=0.8.2
+LWEB=libwebp-1.2.0
+LAVF=0.8.4
 
 # Build dependencies, recommended and script-related packages.
 DEPS="aspell build-essential ccache check cmake cowsay ddcutil doxygen \
@@ -83,10 +82,11 @@ CLONEPH="git clone https://git.enlightenment.org/apps/ephoto.git"
 CLONERG="git clone https://git.enlightenment.org/apps/rage.git"
 CLONEVI="git clone https://git.enlightenment.org/apps/evisum.git"
 CLONEVE="git clone https://git.enlightenment.org/tools/enventor.git"
+CLONEXP="git clone https://git.enlightenment.org/apps/express.git"
 
 # ('MN' stands for Meson, 'AT' refers to Autotools)
 PROG_MN="efl terminology enlightenment ephoto evisum rage"
-PROG_AT="enventor"
+PROG_AT="enventor express"
 
 # ---------
 # FUNCTIONS
@@ -111,10 +111,10 @@ beep_ok() {
 sel_menu() {
   if [ $INPUT -lt 1 ]; then
     echo
-    printf "1. $BDG%s $OFF%s\n\n" "INSTALL Enlightenment 24 now"
-    printf "2. $BDG%s $OFF%s\n\n" "Update and REBUILD Enlightenment 24"
-    printf "3. $BDP%s $OFF%s\n\n" "Update and rebuild E24 in RELEASE mode"
-    printf "4. $BDY%s $OFF%s\n\n" "Update and rebuild E24 with WAYLAND support"
+    printf "1. $BDG%s $OFF%s\n\n" "INSTALL Enlightenment 25 now"
+    printf "2. $BDG%s $OFF%s\n\n" "Update and REBUILD Enlightenment 25"
+    printf "3. $BDP%s $OFF%s\n\n" "Update and rebuild E25 in RELEASE mode"
+    printf "4. $BDY%s $OFF%s\n\n" "Update and rebuild E25 with WAYLAND support"
 
     # Hints.
     # 1/2: Plain build with well tested default values.
@@ -141,7 +141,7 @@ bin_deps() {
 
 ls_dir() {
   COUNT=$(ls -d -- */ | wc -l)
-  if [ $COUNT == 7 ]; then
+  if [ $COUNT == 8 ]; then
     printf "$BDG%s $OFF%s\n\n" "All programs have been downloaded successfully."
     sleep 2
   elif [ $COUNT == 0 ]; then
@@ -150,7 +150,7 @@ ls_dir() {
     beep_exit
     exit 1
   else
-    printf "\n$BDY%s %s\n" "WARNING: ONLY $COUNT OF 7 PROGRAMS HAVE BEEN DOWNLOADED!"
+    printf "\n$BDY%s %s\n" "WARNING: ONLY $COUNT OF 8 PROGRAMS HAVE BEEN DOWNLOADED!"
     printf "\n$BDY%s $OFF%s\n\n" "WAIT 12 SECONDS OR HIT CTRL+C TO QUIT."
     sleep 12
   fi
@@ -203,7 +203,7 @@ e_tokens() {
     echo
     # Questions: Enter either y or n, or press Enter to accept the default values.
     beep_question
-    read -t 12 -p "Do you want to back up your E24 settings now? [y/N] " answer
+    read -t 12 -p "Do you want to back up your E25 settings now? [y/N] " answer
     case $answer in
     [yY])
       e_bkp
@@ -215,26 +215,6 @@ e_tokens() {
       printf "\n$ITA%s $OFF%s\n\n" "(no backup made... OK)"
       ;;
     esac
-  fi
-}
-
-avf_chk() {
-  if [ -d $ESRC/libavif-0.8.0 ]; then
-    printf "\n$BDY%s $OFF%s\n\n" "LIBAVIF NEEDS TO BE UPDATED!"
-    cd $ESRC/libavif-0.8.0/build
-    sudo xargs rm -rf <install_manifest.txt
-    cd ../.. && rm -rf libavif-0.8.0
-
-    cd $DLDIR
-    wget -c https://github.com/AOmediaCodec/libavif/archive/v$LAVF.tar.gz
-    tar xzvf v$LAVF.tar.gz -C $ESRC
-    cd $ESRC/libavif-$LAVF
-    mkdir -p build && cd build
-    cmake .. -DAVIF_CODEC_AOM=ON -DBUILD_SHARED_LIBS=OFF
-    make
-    sudo make install
-    rm -rf $DLDIR/v$LAVF.tar.gz
-    echo
   fi
 }
 
@@ -282,7 +262,6 @@ build_plain() {
 
 rebuild_plain() {
   ESRC=$(cat $HOME/.cache/ebuilds/storepath)
-  avf_chk
   bin_deps
   e_tokens
   elap_start
@@ -350,7 +329,6 @@ rebuild_plain() {
 
 rebuild_optim_mn() {
   ESRC=$(cat $HOME/.cache/ebuilds/storepath)
-  avf_chk
   bin_deps
   e_tokens
   elap_start
@@ -426,7 +404,6 @@ rebuild_optim_at() {
 
 rebuild_wld_mn() {
   ESRC=$(cat $HOME/.cache/ebuilds/storepath)
-  avf_chk
   bin_deps
   e_tokens
   elap_start
@@ -512,13 +489,13 @@ do_tests() {
   printf "\n\n$BLD%s $OFF%s\n" "System check..."
 
   if systemd-detect-virt -q --container; then
-    printf "\n$BDR%s %s\n" "ESANIN.SH IS NOT INTENDED FOR USE INSIDE CONTAINERS."
+    printf "\n$BDR%s %s\n" "ESTEEM.SH IS NOT INTENDED FOR USE INSIDE CONTAINERS."
     printf "$BDR%s $OFF%s\n\n" "SCRIPT ABORTED."
     beep_exit
     exit 1
   fi
 
-  if [ $DISTRO == focal ] || [ $DISTRO == groovy ]; then
+  if [ $DISTRO == groovy ] || [ $DISTRO == hirsute ]; then
     printf "\n$BDG%s $OFF%s\n\n" "Ubuntu ${DISTRO^}... OK"
     sleep 2
   else
@@ -549,7 +526,7 @@ do_bsh_alias() {
     # GLOBAL VARIABLES
     # ----------------
 
-    # Compiler and linker flags added by esanin.
+    # Compiler and linker flags added by esteem.
     export CC="ccache gcc"
     export CXX="ccache g++"
     export USE_CCACHE=1
@@ -573,7 +550,7 @@ set_p_src() {
   beep_attention
   # Do not append a trailing slash (/) to the end of the path prefix.
   read -p "Please enter a path to the Enlightenment source folders \
-  (e.g. /home/jamie or /home/jamie/testing): " mypath
+  (e.g. /home/jamie/Documents or /home/jamie/testing): " mypath
   mkdir -p "$mypath"/sources
   ESRC="$mypath"/sources
   echo $ESRC >$HOME/.cache/ebuilds/storepath
@@ -584,18 +561,7 @@ set_p_src() {
 get_preq() {
   ESRC=$(cat $HOME/.cache/ebuilds/storepath)
   cd $DLDIR
-  printf "\n\n$BLD%s $OFF%s\n\n" "Installing prerequisites/nice-to-have requirements..."
-  wget -c https://ftp.gnu.org/pub/gnu/libiconv/$ICNV.tar.gz
-  tar xzvf $ICNV.tar.gz -C $ESRC
-  cd $ESRC/$ICNV
-  $CONFG
-  make
-  sudo make install
-  sudo ldconfig
-  rm -rf $DLDIR/$ICNV.tar.gz
-  echo
-
-  cd $DLDIR
+  printf "\n\n$BLD%s $OFF%s\n\n" "Installing prerequisites.."
   wget -c https://storage.googleapis.com/downloads.webmproject.org/releases/webp/$LWEB.tar.gz
   tar xzvf $LWEB.tar.gz -C $ESRC
   cd $ESRC/$LWEB
@@ -669,6 +635,8 @@ install_now() {
   echo
   $CLONEVE
   echo
+  $CLONEXP
+  echo
 
   ls_dir
 
@@ -698,15 +666,15 @@ install_now() {
   That's All Folks!" | lolcat -a
   echo
 
-  cp -f $DLDIR/esanin.sh $HOME/.local/bin
+  cp -f $DLDIR/esteem.sh $HOME/.local/bin
 }
 
 update_go() {
   clear
   printf "\n$BDG%s $OFF%s\n\n" "* UPDATING ENLIGHTENMENT DESKTOP: PLAIN BUILD *"
 
-  cp -f $SCRFLR/esanin.sh $HOME/.local/bin
-  chmod +x $HOME/.local/bin/esanin.sh
+  cp -f $SCRFLR/esteem.sh $HOME/.local/bin
+  chmod +x $HOME/.local/bin/esteem.sh
   sleep 1
 
   rebuild_plain
@@ -729,8 +697,8 @@ release_go() {
   clear
   printf "\n$BDP%s $OFF%s\n\n" "* UPDATING ENLIGHTENMENT DESKTOP: RELEASE BUILD *"
 
-  cp -f $SCRFLR/esanin.sh $HOME/.local/bin
-  chmod +x $HOME/.local/bin/esanin.sh
+  cp -f $SCRFLR/esteem.sh $HOME/.local/bin
+  chmod +x $HOME/.local/bin/esteem.sh
   sleep 1
 
   rebuild_optim_mn
@@ -754,8 +722,8 @@ wld_go() {
   clear
   printf "\n$BDY%s $OFF%s\n\n" "* UPDATING ENLIGHTENMENT DESKTOP: WAYLAND BUILD *"
 
-  cp -f $SCRFLR/esanin.sh $HOME/.local/bin
-  chmod +x $HOME/.local/bin/esanin.sh
+  cp -f $SCRFLR/esteem.sh $HOME/.local/bin
+  chmod +x $HOME/.local/bin/esteem.sh
   sleep 1
 
   rebuild_wld_mn
