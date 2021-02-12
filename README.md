@@ -6,7 +6,13 @@ See also [meetse.sh](https://github.com/batden/meetse) (companion script).
 
 ## Get started
 
-First, clone this repository (you need the *git* command installed) from a terminal window:
+Before you start using esteem, you will first need to install Git on your system:
+
+```bash
+sudo apt install git
+```
+
+Next, clone this repository from a terminal window:
 
 ```bash
 git clone https://github.com/batden/esteem.git .esteem
