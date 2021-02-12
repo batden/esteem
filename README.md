@@ -1,4 +1,4 @@
-# esanin
+# esteem
 
 **An easy-to-use Bash script to build and install Enlightenment 25 on Focal Fossa or Groovy Gorilla :kiss:**
 
