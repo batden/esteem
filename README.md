@@ -1,45 +1,45 @@
 # esanin
 
-**An easy-to-use Bash script to build and install Enlightenment 24 on Focal Fossa or Groovy Gorilla :kiss:**
+**An easy-to-use Bash script to build and install Enlightenment 25 on Focal Fossa or Groovy Gorilla :kiss:**
 
-See also [ekatsuki.sh](https://github.com/batden/ekatsuki) (companion script).
+See also [meetse.sh](https://github.com/batden/meetse) (companion script).
 
 ## Get started
 
 First, clone this repository (you need the *git* command installed) from a terminal window:
 
 ```bash
-git clone https://github.com/batden/esanin.git .esanin
+git clone https://github.com/batden/esteem.git .esteem
 ```
 
-This creates a new hidden folder named **.esanin** in your home directory.
+This creates a new hidden folder named **.esteem** in your home directory.
 
-Please copy the file esanin.sh from this new folder to the download folder.
+Please copy the file esteem.sh from this new folder to the download folder.
 
 Now change to the download folder and make the script executable:
 
 ```bash
-chmod +x esanin.sh
+chmod +x esteem.sh
 ```
 
 Then issue the following command:
 
 ```bash
-./esanin.sh
+./esteem.sh
 ```
 
 On subsequent runs, open a terminal and simply type:
 
 ```bash
-esanin.sh
+esteem.sh
 ```
 
-(Use tab completion: Just type *esan* and press Tab)
+(Use tab completion: Just type *est* and press Tab)
 
 ### Update local repository
 
 Be sure to check for updates at least once a week.
-In order to do this, change to ~/.esanin/ and run:
+In order to do this, change to ~/.esteem/ and run:
 
 ```bash
 git pull
