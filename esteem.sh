@@ -85,8 +85,8 @@ CLONEVE="git clone https://git.enlightenment.org/tools/enventor.git"
 CLONEXP="git clone https://git.enlightenment.org/apps/express.git"
 
 # ('MN' stands for Meson, 'AT' refers to Autotools)
-PROG_MN="efl terminology enlightenment ephoto evisum rage"
-PROG_AT="enventor express"
+PROG_MN="efl terminology enlightenment ephoto evisum rage express"
+PROG_AT="enventor"
 
 # ---------
 # FUNCTIONS
