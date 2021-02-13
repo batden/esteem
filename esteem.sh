@@ -3,7 +3,7 @@
 # ESTEEM.SH
 
 # This Bash script allows you to easily and safely install Enlightenment 25 along with other
-# EFL-based apps, on Ubuntu Groovy Gorilla or Hirsute Hippo.
+# EFL-based apps, on Ubuntu.
 
 # See README.md for instructions on how to use this script.
 
