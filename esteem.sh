@@ -77,7 +77,7 @@ wayland-protocols wmctrl xdotool xserver-xephyr xwayland"
 # Latest development code.
 CLONEFL="git clone https://git.enlightenment.org/core/efl.git"
 CLONETY="git clone https://git.enlightenment.org/apps/terminology.git"
-CLONE24="git clone https://git.enlightenment.org/core/enlightenment.git"
+CLONE25="git clone https://git.enlightenment.org/core/enlightenment.git"
 CLONEPH="git clone https://git.enlightenment.org/apps/ephoto.git"
 CLONERG="git clone https://git.enlightenment.org/apps/rage.git"
 CLONEVI="git clone https://git.enlightenment.org/apps/evisum.git"
@@ -225,7 +225,7 @@ build_plain() {
   sudo ldconfig
 
   for I in $PROG_MN; do
-    cd $ESRC/e24/$I
+    cd $ESRC/e25/$I
     printf "\n$BLD%s $OFF%s\n\n" "Building $I..."
 
     case $I in
@@ -249,7 +249,7 @@ build_plain() {
   done
 
   for I in $PROG_AT; do
-    cd $ESRC/e24/$I
+    cd $ESRC/e25/$I
     printf "\n$BLD%s $OFF%s\n\n" "Building $I..."
 
     $GEN
@@ -280,7 +280,7 @@ rebuild_plain() {
   for I in $PROG_MN; do
     elap_start
 
-    cd $ESRC/e24/$I
+    cd $ESRC/e25/$I
     printf "\n$BLD%s $OFF%s\n\n" "Updating $I..."
     git reset --hard &>/dev/null
     $REBASEF && git pull
@@ -311,7 +311,7 @@ rebuild_plain() {
 
   for I in $PROG_AT; do
     elap_start
-    cd $ESRC/e24/$I
+    cd $ESRC/e25/$I
 
     printf "\n$BLD%s $OFF%s\n\n" "Updating $I..."
     sudo make distclean &>/dev/null
@@ -349,7 +349,7 @@ rebuild_optim_mn() {
   for I in $PROG_MN; do
     elap_start
 
-    cd $ESRC/e24/$I
+    cd $ESRC/e25/$I
     printf "\n$BLD%s $OFF%s\n\n" "Updating $I..."
     git reset --hard &>/dev/null
     $REBASEF && git pull
@@ -386,7 +386,7 @@ rebuild_optim_at() {
 
   for I in $PROG_AT; do
     elap_start
-    cd $ESRC/e24/$I
+    cd $ESRC/e25/$I
 
     printf "\n$BLD%s $OFF%s\n\n" "Updating $I..."
     sudo make distclean &>/dev/null
@@ -424,7 +424,7 @@ rebuild_wld_mn() {
   for I in $PROG_MN; do
     elap_start
 
-    cd $ESRC/e24/$I
+    cd $ESRC/e25/$I
     printf "\n$BLD%s $OFF%s\n\n" "Updating $I..."
     git reset --hard &>/dev/null
     $REBASEF && git pull
@@ -463,7 +463,7 @@ rebuild_wld_at() {
 
   for I in $PROG_AT; do
     elap_start
-    cd $ESRC/e24/$I
+    cd $ESRC/e25/$I
 
     printf "\n$BLD%s $OFF%s\n\n" "Updating $I..."
     sudo make distclean &>/dev/null
@@ -617,15 +617,15 @@ install_now() {
   get_preq
 
   cd $HOME
-  mkdir -p $ESRC/e24
-  cd $ESRC/e24
+  mkdir -p $ESRC/e25
+  cd $ESRC/e25
 
   printf "\n\n$BLD%s $OFF%s\n\n" "Fetching source code from the Enlightened git repositories..."
   $CLONEFL
   echo
   $CLONETY
   echo
-  $CLONE24
+  $CLONE25
   echo
   $CLONEPH
   echo
