@@ -1,6 +1,6 @@
 # esteem
 
-**An easy-to-use Bash script to build and install Enlightenment 25 on Groovy Gorilla or Hirsute Hippo :kiss:**
+**An easy-to-use Bash script to build and install Enlightenment 25 on Ubuntu :kiss:**
 
 See also [meetse.sh](https://github.com/batden/meetse) (companion script).
 
