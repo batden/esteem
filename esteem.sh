@@ -495,7 +495,7 @@ do_tests() {
     exit 1
   fi
 
-  if [ $DISTRO == groovy ] || [ $DISTRO == hirsute ]; then
+  if [ $DISTRO == focal ] || [ $DISTRO == groovy ] || [ $DISTRO == hirsute ]; then
     printf "\n$BDG%s $OFF%s\n\n" "Ubuntu ${DISTRO^}... OK"
     sleep 2
   else
