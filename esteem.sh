@@ -203,7 +203,7 @@ e_tokens() {
     echo
     # Questions: Enter either y or n, or press Enter to accept the default values.
     beep_question
-    read -t 12 -p "Do you want to back up your E25 settings now? [y/N] " answer
+    read -t 12 -p "Do you want to back up your Enlightenment settings now? [y/N] " answer
     case $answer in
     [yY])
       e_bkp
