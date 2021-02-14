@@ -2,21 +2,21 @@
 
 # ESTEEM.SH
 
-# This Bash script allows you to easily and safely install Enlightenment 25 along with other
-# EFL-based apps, on Ubuntu.
+# This Bash script allows you to easily and safely install Enlightenment along with
+# other EFL-based applications, on Ubuntu.
 
 # See README.md for instructions on how to use this script.
 
 # Heads up!
 # Enlightenment programs installed from .deb packages or tarballs will inevitably conflict
-# with E25 programs compiled from Git repositories——do not mix source code with
-# pre-built binaries!
+# with programs compiled from the Enlightened Git Repositories——do not mix source code
+# with pre-built binaries!
 
 # Once installed, you can update your shiny new Enlightenment desktop whenever you want to.
 # However, because software gains entropy over time (performance regression, unexpected
 # behavior... this is especially true when dealing directly with source code), we highly
-# recommend doing a complete uninstall and reinstall of E25 every three weeks or so
-# for an optimal user experience.
+# recommend doing a complete uninstall and reinstall of your Enlightenment desktop
+# every three weeks or so for an optimal user experience.
 
 # ESTEEM.SH is written and maintained by batden@sfr.fr and carlasensa@sfr.fr,
 # feel free to use this script as you see fit.
@@ -111,10 +111,10 @@ beep_ok() {
 sel_menu() {
   if [ $INPUT -lt 1 ]; then
     echo
-    printf "1. $BDG%s $OFF%s\n\n" "INSTALL Enlightenment 25 now"
-    printf "2. $BDG%s $OFF%s\n\n" "Update and REBUILD Enlightenment 25"
-    printf "3. $BDP%s $OFF%s\n\n" "Update and rebuild E25 in RELEASE mode"
-    printf "4. $BDY%s $OFF%s\n\n" "Update and rebuild E25 with WAYLAND support"
+    printf "1. $BDG%s $OFF%s\n\n" "INSTALL Enlightenment now"
+    printf "2. $BDG%s $OFF%s\n\n" "Update and REBUILD Enlightenment"
+    printf "3. $BDP%s $OFF%s\n\n" "Update and rebuild Enlightenment in RELEASE mode"
+    printf "4. $BDY%s $OFF%s\n\n" "Update and rebuild Enlightenment with WAYLAND support"
 
     # Hints.
     # 1/2: Plain build with well tested default values.
