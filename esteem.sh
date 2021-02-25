@@ -218,6 +218,12 @@ e_tokens() {
   fi
 }
 
+rstrt_e() {
+  if [ "$XDG_CURRENT_DESKTOP" == "Enlightenment" ]; then
+    enlightenment_remote -restart
+  fi
+}
+
 build_plain() {
   chk_path
 
@@ -688,6 +694,7 @@ update_go() {
 
   sudo updatedb
   beep_ok
+  rstrt_e
   echo
   cowsay -f www "That's All Folks!"
   echo
@@ -713,6 +720,7 @@ release_go() {
 
   sudo updatedb
   beep_ok
+  rstrt_e
   echo
   cowsay -f www "That's All Folks!"
   echo
