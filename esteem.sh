@@ -52,7 +52,6 @@ GEN="./autogen.sh --prefix=$PREFIX"
 SNIN="sudo ninja -C build install"
 SMIL="sudo make install"
 DISTRO=$(lsb_release -sc)
-DISTRIBUTOR=$(lsb_release -i | cut -f2)
 LWEB=libwebp-1.2.0
 LAVF=0.8.4
 
@@ -411,7 +410,7 @@ rebuild_optim_at() {
 
 rebuild_wld_mn() {
   if [ "$XDG_SESSION_TYPE" == "tty" ] && [ "$(pidof enlightenment)" ]; then
-    printf "\n$BDR%s $OFF%s\n\n" "PLEASE LOG IN TO ${DISTRIBUTOR^^} TO EXECUTE THIS SCRIPT."
+    printf "\n$BDR%s $OFF%s\n\n" "PLEASE LOG IN TO THE DEFAULT DESKTOP ENVIRONMENT TO EXECUTE THIS SCRIPT."
     beep_exit
     exit 1
   fi
