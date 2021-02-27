@@ -409,7 +409,7 @@ rebuild_optim_at() {
 }
 
 rebuild_wld_mn() {
-  if [ "$XDG_SESSION_TYPE" == "tty" ] && [ "$(pidof enlightenment)" ]; then
+  if [ "$XDG_SESSION_TYPE" == "tty" ] && [ "$XDG_CURRENT_DESKTOP" == "Enlightenment" ]; then
     printf "\n$BDR%s $OFF%s\n\n" "PLEASE LOG IN TO THE DEFAULT DESKTOP ENVIRONMENT TO EXECUTE THIS SCRIPT."
     beep_exit
     exit 1
