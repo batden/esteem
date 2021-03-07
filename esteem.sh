@@ -201,7 +201,7 @@ e_tokens() {
   TOKEN=$(wc -l <$HOME/.cache/ebuilds/etokens)
   if [ "$TOKEN" -gt 3 ]; then
     echo
-    # Questions: Enter either y or n, or press Enter to accept the default values.
+    # Questions: Enter either y or n, or press Enter to accept the default value (capital letter).
     beep_question
     read -t 12 -p "Do you want to back up your Enlightenment settings now? [y/N] " answer
     case $answer in
