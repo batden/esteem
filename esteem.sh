@@ -9,7 +9,7 @@
 
 # Heads up!
 # Enlightenment programs installed from .deb packages or tarballs will inevitably conflict
-# with programs compiled from the Enlightened Git Repositories——do not mix source code
+# with programs compiled from the Enlightenment git repositories——do not mix source code
 # with pre-built binaries!
 
 # Once installed, you can update your shiny new Enlightenment desktop whenever you want to.
@@ -632,7 +632,7 @@ install_now() {
   mkdir -p $ESRC/e25
   cd $ESRC/e25
 
-  printf "\n\n$BLD%s $OFF%s\n\n" "Fetching source code from the Enlightened git repositories..."
+  printf "\n\n$BLD%s $OFF%s\n\n" "Fetching source code from the Enlightenment git repositories..."
   $CLONEFL
   echo
   $CLONETY
