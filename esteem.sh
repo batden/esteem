@@ -1,7 +1,5 @@
 #!/bin/bash
 
-# ESTEEM.SH
-
 # This Bash script allows you to easily and safely install Enlightenment along with
 # other EFL-based applications, on Ubuntu.
 
@@ -21,13 +19,8 @@
 # ESTEEM.SH is written and maintained by batden@sfr.fr and carlasensa@sfr.fr,
 # feel free to use this script as you see fit.
 
-# Please consider sending us a tip via https://www.paypal.me/PJGuillaumie
-# or starring our repositories to show your support: https://github.com/batden
-# Cheers!
-
 # Cool links.
 # Eyecandy for your enlightened desktop: https://extra.enlightenment.org/themes/
-# ML: https://sourceforge.net/projects/enlightenment/lists/enlightenment-users
 # Screenshots: https://www.enlightenment.org/ss/
 
 # ---------------
