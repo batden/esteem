@@ -6,7 +6,7 @@ See also [meetse.sh](https://github.com/batden/meetse) (companion script).
 
 ## Get started
 
-Before you start using esteem, you will first need to install Git on your system:
+Before you start using esteem, you'll need to install Git on your system:
 
 ```bash
 sudo apt install git
