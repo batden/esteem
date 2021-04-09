@@ -46,7 +46,7 @@ SNIN="sudo ninja -C build install"
 SMIL="sudo make install"
 DISTRO=$(lsb_release -sc)
 LWEB=libwebp-1.2.0
-LAVF=0.9.0
+LAVF=0.8.4
 
 # Build dependencies, recommended and script-related packages.
 DEPS="aspell build-essential ccache check cmake cowsay ddcutil doxygen \
