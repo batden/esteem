@@ -46,7 +46,7 @@ SNIN="sudo ninja -C build install"
 SMIL="sudo make install"
 DISTRO=$(lsb_release -sc)
 LWEB=libwebp-1.2.0
-LAVF=0.8.4
+LAVF=0.9.0
 
 # Build dependencies, recommended and script-related packages.
 DEPS="aspell build-essential ccache check cmake cowsay ddcutil doxygen \
@@ -145,6 +145,7 @@ ls_dir() {
   else
     printf "\n$BDY%s %s\n" "WARNING: ONLY $COUNT OF 8 PROGRAMS HAVE BEEN DOWNLOADED!"
     printf "\n$BDY%s $OFF%s\n\n" "WAIT 12 SECONDS OR HIT CTRL+C TO QUIT."
+    beep_attention
     sleep 12
   fi
 }
@@ -214,6 +215,26 @@ e_tokens() {
 rstrt_e() {
   if [ "$XDG_CURRENT_DESKTOP" == "Enlightenment" ]; then
     enlightenment_remote -restart
+  fi
+}
+
+chk_avf() {
+  if [ -d $ESRC/libavif-0.8.4 ]; then
+    printf "\n$BDY%s $OFF%s\n\n" "Updating libavif. One moment please."
+    cd $ESRC/libavif-0.8.4
+    sudo xargs rm -rf <install_manifest.txt &>/dev/null
+    cd ../.. && rm -rf libavif-0.8.4
+
+    cd $DLDIR
+    wget -c https://github.com/AOmediaCodec/libavif/archive/v$LAVF.tar.gz
+    tar xzvf v$LAVF.tar.gz -C $ESRC
+    cd $ESRC/libavif-$LAVF
+    mkdir -p build && cd build
+    cmake .. -DAVIF_CODEC_AOM=ON -DBUILD_SHARED_LIBS=OFF
+    make
+    sudo make install
+    rm -rf $DLDIR/v$LAVF.tar.gz
+    echo
   fi
 }
 
@@ -328,6 +349,7 @@ rebuild_plain() {
 
 rebuild_optim_mn() {
   ESRC=$(cat $HOME/.cache/ebuilds/storepath)
+  chk_avf
   bin_deps
   e_tokens
   elap_start
@@ -409,6 +431,7 @@ rebuild_wld_mn() {
   fi
 
   ESRC=$(cat $HOME/.cache/ebuilds/storepath)
+  chk_avf
   bin_deps
   e_tokens
   elap_start
