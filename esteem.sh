@@ -221,7 +221,7 @@ rstrt_e() {
 chk_avf() {
   if [ -d $ESRC/libavif-0.8.4 ]; then
     printf "\n$BDY%s $OFF%s\n\n" "Updating libavif. One moment please."
-    cd $ESRC/libavif-0.8.4
+    cd $ESRC/libavif-0.8.4/build
     sudo xargs rm -rf <install_manifest.txt &>/dev/null
     cd ../.. && rm -rf libavif-0.8.4
 
