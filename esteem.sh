@@ -218,27 +218,6 @@ rstrt_e() {
   fi
 }
 
-chk_avf() {
-  if [ -d $ESRC/libavif-0.8.4 ]; then
-    printf "\n$BDY%s $OFF%s\n\n" "Updating libavif. One moment please."
-    sleep 1
-    cd $ESRC/libavif-0.8.4/build
-    sudo xargs rm -rf <install_manifest.txt &>/dev/null
-    cd ../.. && rm -rf libavif-0.8.4
-
-    cd $DLDIR
-    wget -c https://github.com/AOmediaCodec/libavif/archive/v$LAVF.tar.gz
-    tar xzvf v$LAVF.tar.gz -C $ESRC
-    cd $ESRC/libavif-$LAVF
-    mkdir -p build && cd build
-    cmake .. -DAVIF_CODEC_AOM=ON -DBUILD_SHARED_LIBS=OFF
-    make
-    sudo make install
-    rm -rf $DLDIR/v$LAVF.tar.gz
-    echo
-  fi
-}
-
 build_plain() {
   chk_path
 
@@ -350,7 +329,6 @@ rebuild_plain() {
 
 rebuild_optim_mn() {
   ESRC=$(cat $HOME/.cache/ebuilds/storepath)
-  chk_avf
   bin_deps
   e_tokens
   elap_start
@@ -432,7 +410,6 @@ rebuild_wld_mn() {
   fi
 
   ESRC=$(cat $HOME/.cache/ebuilds/storepath)
-  chk_avf
   bin_deps
   e_tokens
   elap_start
