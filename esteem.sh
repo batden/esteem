@@ -45,23 +45,29 @@ LWEB=libwebp-1.2.0
 LAVF=0.8.4
 
 # Build dependencies, recommended and script-related packages.
+# The Papirus Icon Theme fits nicely with the default theme for Enlightenment:
+# https://github.com/PapirusDevelopmentTeam/papirus-icon-theme
+
 DEPS="aspell build-essential ccache check cmake cowsay ddcutil doxygen \
-faenza-icon-theme fonts-noto graphviz gstreamer1.0-libav gstreamer1.0-plugins-bad \
-gstreamer1.0-plugins-good gstreamer1.0-plugins-ugly imagemagick libasound2-dev \
-libavahi-client-dev libblkid-dev libbluetooth-dev libegl1-mesa-dev libexif-dev \
-libfontconfig1-dev libdrm-dev libfreetype6-dev libfribidi-dev libgbm-dev \
-libgeoclue-2-dev libgif-dev libgraphviz-dev libgstreamer1.0-dev \
+fonts-noto graphviz gstreamer1.0-libav gstreamer1.0-plugins-bad \
+gstreamer1.0-plugins-good gstreamer1.0-plugins-ugly imagemagick \
+libasound2-dev libavahi-client-dev libblkid-dev libbluetooth-dev \
+libegl1-mesa-dev libexif-dev libfontconfig1-dev libdrm-dev \
+libfreetype6-dev libfribidi-dev libgbm-dev libgeoclue-2-dev \
+libgif-dev libgraphviz-dev libgstreamer1.0-dev \
 libgstreamer-plugins-base1.0-dev libharfbuzz-dev libheif-dev \
 libi2c-dev libibus-1.0-dev libinput-dev libinput-tools libjpeg-dev \
-libluajit-5.1-dev liblz4-dev libmenu-cache-dev libmount-dev libopenjp2-7-dev \
-libosmesa6-dev libpam0g-dev libpoppler-cpp-dev libpoppler-dev \
-libpoppler-private-dev libpulse-dev libraw-dev librsvg2-dev libscim-dev \
-libsndfile1-dev libspectre-dev libssl-dev libsystemd-dev libtiff5-dev libtool \
-libudev-dev libudisks2-dev libunibreak-dev libunwind-dev libxcb-keysyms1-dev \
-libxcursor-dev libxinerama-dev libxkbcommon-x11-dev libxkbfile-dev lxmenu-data \
-libxrandr-dev libxss-dev libxtst-dev lolcat manpages-dev manpages-posix-dev meson \
-mlocate nasm ninja-build texlive-base unity-greeter-badges valgrind \
-wayland-protocols wmctrl xdotool xserver-xephyr xwayland"
+libluajit-5.1-dev liblz4-dev libmenu-cache-dev libmount-dev \
+libopenjp2-7-dev libosmesa6-dev libpam0g-dev libpoppler-cpp-dev \
+libpoppler-dev libpoppler-private-dev libpulse-dev libraw-dev \
+librsvg2-dev libscim-dev libsndfile1-dev libspectre-dev libssl-dev \
+libsystemd-dev libtiff5-dev libtool libudev-dev libudisks2-dev \
+libunibreak-dev libunwind-dev libxcb-keysyms1-dev libxcursor-dev \
+libxinerama-dev libxkbcommon-x11-dev libxkbfile-dev lxmenu-data \
+libxrandr-dev libxss-dev libxtst-dev lolcat manpages-dev \
+manpages-posix-dev meson mlocate nasm ninja-build texlive-base \
+unity-greeter-badges valgrind wayland-protocols wmctrl xdotool \
+xserver-xephyr xwayland"
 
 # Latest development code.
 CLONEFL="git clone https://git.enlightenment.org/core/efl.git"
@@ -97,6 +103,11 @@ beep_ok() {
   paplay /usr/share/sounds/freedesktop/stereo/complete.oga
 }
 
+# Hints.
+# 1/2: Plain build with well tested default values.
+# 3: A feature-rich, decently optimized build; however, occasionally technical glitches do happen...
+# 4: Same as above, but running Enlightenment as a Wayland compositor is still considered experimental.
+
 sel_menu() {
   if [ $INPUT -lt 1 ]; then
     echo
@@ -104,11 +115,6 @@ sel_menu() {
     printf "2. $BDG%s $OFF%s\n\n" "Update and REBUILD Enlightenment"
     printf "3. $BDP%s $OFF%s\n\n" "Update and rebuild Enlightenment in RELEASE mode"
     printf "4. $BDY%s $OFF%s\n\n" "Update and rebuild Enlightenment with WAYLAND support"
-
-    # Hints.
-    # 1/2: Plain build with well tested default values.
-    # 3: A feature-rich, decently optimized build; however, occasionally technical glitches do happen...
-    # 4: Same as above, but running Enlightenment as a Wayland compositor is still considered experimental.
 
     sleep 1 && printf "$ITA%s $OFF%s\n\n" "Or press Ctrl+C to quit."
     read INPUT
@@ -169,9 +175,10 @@ elap_stop() {
   printf ""%dh:%dm:%ds"\n\n" $(($DELTA / 3600)) $(($DELTA % 3600 / 60)) $(($DELTA % 60))
 }
 
+# Timestamp: See the date man page to convert epoch to human-readable date
+# or visit https://www.epochconverter.com/
+
 e_bkp() {
-  # Timestamp: See the date man page to convert epoch to human-readable date
-  # or visit https://www.epochconverter.com/
   TSTAMP=$(date +%s)
   mkdir -p $DOCDIR/ebackups
 
