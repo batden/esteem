@@ -19,10 +19,6 @@
 # ESTEEM.SH is written and maintained by batden@sfr.fr and carlasensa@sfr.fr,
 # feel free to use this script as you see fit.
 
-# Cool links.
-# Eyecandy for your enlightened desktop: https://extra.enlightenment.org/themes/
-# Screenshots: https://www.enlightenment.org/ss/
-
 # ---------------
 # LOCAL VARIABLES
 # ---------------
