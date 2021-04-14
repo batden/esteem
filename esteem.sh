@@ -171,8 +171,8 @@ elap_start() {
 
 elap_stop() {
   DELTA=$(($(date +%s) - START))
-  printf "\n$ITA%s $OFF%s\n" "Compilation and linking time: " \
-    eval "echo $(date -ud "@$DELTA" +'%H hr %M min %S sec')"
+  printf "\n$ITA%s $OFF%s" "Compilation and linking time: "
+  eval "echo $(date -ud "@$DELTA" +'%H hr %M min %S sec')"
 }
 
 # Timestamp: See the date man page to convert epoch to human-readable date
