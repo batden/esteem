@@ -171,7 +171,7 @@ elap_start() {
 
 elap_stop() {
   DELTA=$(($(date +%s) - START))
-  printf "\n%s" "Compilation and linking time: "
+  printf "$ITA%s $OFF%s\n" "Compilation and linking time: "
   eval "echo $(date -ud "@$DELTA" +'%H hr %M min %S sec')"
 }
 
