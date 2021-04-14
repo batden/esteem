@@ -170,9 +170,9 @@ elap_start() {
 }
 
 elap_stop() {
-  DELTA=$(($(date +%s) - $START))
+  DELTA=$(($(date +%s) - START))
   printf "\n%s" "Compilation and linking time: "
-  printf ""%dh:%dm:%ds"\n\n" $(($DELTA / 3600)) $(($DELTA % 3600 / 60)) $(($DELTA % 60))
+  eval "echo $(date -ud "@$DELTA" +'%H hr %M min %S sec')"
 }
 
 # Timestamp: See the date man page to convert epoch to human-readable date
