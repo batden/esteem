@@ -44,7 +44,7 @@ DISTRO=$(lsb_release -sc)
 LWEB=libwebp-1.2.0
 LAVF=0.8.4
 
-# Build dependencies, recommended and script-related packages.
+# Build dependencies, recommended and script-related packages...
 # The Papirus Icon Theme fits nicely with the default theme for Enlightenment:
 # https://github.com/PapirusDevelopmentTeam/papirus-icon-theme
 
