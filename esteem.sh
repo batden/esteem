@@ -48,8 +48,8 @@ LAVF=0.8.4
 # The Papirus Icon Theme fits nicely with the default theme for Enlightenment:
 # https://github.com/PapirusDevelopmentTeam/papirus-icon-theme
 
-DEPS="aspell build-essential ccache check cmake cowsay ddcutil doxygen \
-fonts-noto graphviz gstreamer1.0-libav gstreamer1.0-plugins-bad \
+DEPS="aspell build-essential ccache check cmake cowsay ddcutil doxygen fonts-noto \
+freeglut3-dev graphviz gstreamer1.0-libav gstreamer1.0-plugins-bad \
 gstreamer1.0-plugins-good gstreamer1.0-plugins-ugly imagemagick \
 libasound2-dev libavahi-client-dev libblkid-dev libbluetooth-dev \
 libegl1-mesa-dev libexif-dev libfontconfig1-dev libdrm-dev \
@@ -60,8 +60,8 @@ libi2c-dev libibus-1.0-dev libinput-dev libinput-tools libjpeg-dev \
 libluajit-5.1-dev liblz4-dev libmenu-cache-dev libmount-dev \
 libopenjp2-7-dev libosmesa6-dev libpam0g-dev libpoppler-cpp-dev \
 libpoppler-dev libpoppler-private-dev libpulse-dev libraw-dev \
-librsvg2-dev libscim-dev libsndfile1-dev libspectre-dev libssl-dev \
-libsystemd-dev libtiff5-dev libtool libudev-dev libudisks2-dev \
+librsvg2-dev libsdl1.2-dev libscim-dev libsndfile1-dev libspectre-dev \
+libssl-dev libsystemd-dev libtiff5-dev libtool libudev-dev libudisks2-dev \
 libunibreak-dev libunwind-dev libxcb-keysyms1-dev libxcursor-dev \
 libxinerama-dev libxkbcommon-x11-dev libxkbfile-dev lxmenu-data \
 libxrandr-dev libxss-dev libxtst-dev lolcat manpages-dev \
