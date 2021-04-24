@@ -574,7 +574,7 @@ get_preq() {
   wget -c https://storage.googleapis.com/downloads.webmproject.org/releases/webp/$LWEB.tar.gz
   tar xzvf $LWEB.tar.gz -C $ESRC
   cd $ESRC/$LWEB
-  $CONFG
+  $CONFG --enable-everything
   make
   sudo make install
   sudo ldconfig
