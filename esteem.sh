@@ -48,8 +48,8 @@ LAVF=0.8.4
 # The Papirus Icon Theme fits nicely with the default theme for Enlightenment:
 # https://github.com/PapirusDevelopmentTeam/papirus-icon-theme
 
-DEPS="aspell build-essential ccache check cmake cowsay ddcutil doxygen fonts-noto \
-freeglut3-dev graphviz gstreamer1.0-libav gstreamer1.0-plugins-bad \
+DEPS="arc-theme aspell build-essential ccache check cmake cowsay ddcutil doxygen \
+fonts-noto freeglut3-dev graphviz gstreamer1.0-libav gstreamer1.0-plugins-bad \
 gstreamer1.0-plugins-good gstreamer1.0-plugins-ugly imagemagick \
 libasound2-dev libavahi-client-dev libblkid-dev libbluetooth-dev \
 libegl1-mesa-dev libexif-dev libfontconfig1-dev libdrm-dev \
