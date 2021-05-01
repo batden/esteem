@@ -585,7 +585,7 @@ get_preq() {
   git clone https://aomedia.googlesource.com/aom
   cd $ESRC/aom
   mkdir -p aom-build && cd aom-build
-  printf "\n$BLD%s $OFF%s\n" "This can take a while. Please be patient."
+  printf "\n$BLD%s $OFF%s\n" "This may take a while. Please be patient."
   sleep 1
   cmake .. -DENABLE_CCACHE=1 -DENABLE_NASM=ON
   make
