@@ -569,7 +569,7 @@ set_p_src() {
 get_preq() {
   ESRC=$(cat $HOME/.cache/ebuilds/storepath)
   cd $DLDIR
-  printf "\n\n$BLD%s $OFF%s\n\n" "Installing prerequisites.."
+  printf "\n\n$BLD%s $OFF%s\n\n" "Installing prerequisites..."
   wget -c https://storage.googleapis.com/downloads.webmproject.org/releases/webp/$LWEB.tar.gz
   tar xzvf $LWEB.tar.gz -C $ESRC
   cd $ESRC/$LWEB
@@ -620,6 +620,7 @@ do_lnk() {
 chk_etice() {
   if [ -d $ESRC/e25 ] && [ ! -d $ESRC/e25/entice ]; then
     cd $ESRC/e25
+    printf "\n$BLD%s $OFF%s\n" "New application Entice..."
     $CLONENT
     echo
     cd $ESRC/e25/entice
