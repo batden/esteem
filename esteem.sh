@@ -1,14 +1,14 @@
 #!/bin/bash
 
-# This Bash script allows you to easily and safely install Enlightenment along with
-# other EFL-based applications, on Ubuntu.
+# This Bash script allows you to easily and safely install Enlightenment along with other
+# EFL-based applications, on Ubuntu.
 
 # See README.md for instructions on how to use this script.
 
 # Heads up!
 # Enlightenment programs installed from .deb packages or tarballs will inevitably conflict
-# with programs compiled from the Enlightenment git repositories——do not mix source code
-# with pre-built binaries!
+# with programs compiled from git repositories——do not mix source code with
+# pre-built binaries!
 
 # Once installed, you can update your shiny new Enlightenment desktop whenever you want to.
 # However, because software gains entropy over time (performance regression, unexpected
@@ -78,9 +78,10 @@ CLONERG="git clone https://git.enlightenment.org/apps/rage.git"
 CLONEVI="git clone https://git.enlightenment.org/apps/evisum.git"
 CLONEVE="git clone https://git.enlightenment.org/tools/enventor.git"
 CLONEXP="git clone https://git.enlightenment.org/apps/express.git"
+CLONENT="git clone https://github.com/vtorri/entice"
 
 # 'MN' stands for Meson, 'AT' refers to Autotools.
-PROG_MN="efl terminology enlightenment ephoto evisum rage express"
+PROG_MN="efl terminology enlightenment ephoto evisum rage express entice"
 PROG_AT="enventor"
 
 # ---------
@@ -136,7 +137,7 @@ bin_deps() {
 
 ls_dir() {
   COUNT=$(ls -d -- */ | wc -l)
-  if [ $COUNT == 8 ]; then
+  if [ $COUNT == 9 ]; then
     printf "$BDG%s $OFF%s\n\n" "All programs have been downloaded successfully."
     sleep 2
   elif [ $COUNT == 0 ]; then
@@ -145,7 +146,7 @@ ls_dir() {
     beep_exit
     exit 1
   else
-    printf "\n$BDY%s %s\n" "WARNING: ONLY $COUNT OF 8 PROGRAMS HAVE BEEN DOWNLOADED!"
+    printf "\n$BDY%s %s\n" "WARNING: ONLY $COUNT OF 9 PROGRAMS HAVE BEEN DOWNLOADED!"
     printf "\n$BDY%s $OFF%s\n\n" "WAIT 12 SECONDS OR HIT CTRL+C TO QUIT."
     beep_attention
     sleep 12
@@ -184,11 +185,6 @@ e_bkp() {
 
   mkdir $DOCDIR/ebackups/E_$TSTAMP
   cp -aR $HOME/.elementary $DOCDIR/ebackups/E_$TSTAMP && cp -aR $HOME/.e $DOCDIR/ebackups/E_$TSTAMP
-
-  if [ -d $HOME/.config/terminology ]; then
-    cp -aR $HOME/.config/terminology $DOCDIR/ebackups/Eterm_$TSTAMP
-  fi
-
   sleep 2
 }
 
@@ -267,6 +263,7 @@ rebuild_plain() {
   ESRC=$(cat $HOME/.cache/ebuilds/storepath)
   bin_deps
   e_tokens
+  chk_etice
   elap_start
 
   cd $ESRC/rlottie
@@ -334,6 +331,7 @@ rebuild_optim_mn() {
   ESRC=$(cat $HOME/.cache/ebuilds/storepath)
   bin_deps
   e_tokens
+  chk_etice
   elap_start
 
   cd $ESRC/rlottie
@@ -415,6 +413,7 @@ rebuild_wld_mn() {
   ESRC=$(cat $HOME/.cache/ebuilds/storepath)
   bin_deps
   e_tokens
+  chk_etice
   elap_start
 
   cd $ESRC/rlottie
@@ -618,6 +617,18 @@ do_lnk() {
   sudo ln -sf /usr/local/etc/xdg/menus/e-applications.menu /etc/xdg/menus/e-applications.menu
 }
 
+chk_etice() {
+  if [ -d $ESRC/e25 ] && [ ! -d $ESRC/e25/entice ]; then
+    cd $ESRC/e25
+    $CLONENT
+    echo
+    cd $ESRC/e25/entice
+    meson build
+    ninja -C build || true
+    sudo ninja -C build || true
+  fi
+}
+
 install_now() {
   clear
   printf "\n$BDG%s $OFF%s\n\n" "* INSTALLING ENLIGHTENMENT DESKTOP: PLAIN BUILD *"
@@ -647,6 +658,9 @@ install_now() {
   $CLONEVE
   echo
   $CLONEXP
+  echo
+  printf "\n$BLD%s $OFF%s\n\n" "Fetching source code from vtorri's github repo..."
+  $CLONENT
   echo
 
   ls_dir
