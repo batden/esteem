@@ -621,6 +621,7 @@ chk_etice() {
   if [ -d $ESRC/e25 ] && [ ! -d $ESRC/e25/entice ]; then
     cd $ESRC/e25
     printf "\n$BLD%s $OFF%s\n" "New application Entice..."
+    sleep 2
     $CLONENT
     echo
     cd $ESRC/e25/entice
