@@ -6,9 +6,9 @@
 # See README.md for instructions on how to use this script.
 
 # Heads up!
-# Enlightenment programs installed from .deb packages or tarballs will inevitably conflict
-# with programs compiled from git repositories——do not mix source code with
-# pre-built binaries!
+# Enlightenment programs installed from .deb packages or tarballs will inevitably
+# conflict with programs compiled from git repositories——do not mix source code
+# with pre-built binaries!
 
 # Once installed, you can update your shiny new Enlightenment desktop whenever you want to.
 # However, because software gains entropy over time (performance regression, unexpected
