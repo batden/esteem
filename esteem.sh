@@ -17,8 +17,8 @@
 # behavior... and this is especially true when dealing directly with source code), we
 # highly recommend doing a complete uninstall and reinstall of your Enlightenment
 # desktop every three weeks or so for an optimal user experience. Follow the
-# same steps if you plan to upgrade your current system to a newer version
-# of Ubuntu.
+# same steps (uninstall before upgrading...) if you plan to upgrade your
+# current system to a newer version of Ubuntu.
 
 # ESTEEM.SH is written and maintained by batden@sfr.fr and carlasensa@sfr.fr,
 # feel free to use this script as you see fit.
