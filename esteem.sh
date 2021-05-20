@@ -82,10 +82,11 @@ CLONERG="git clone https://git.enlightenment.org/apps/rage.git"
 CLONEVI="git clone https://git.enlightenment.org/apps/evisum.git"
 CLONEVE="git clone https://git.enlightenment.org/tools/enventor.git"
 CLONEXP="git clone https://git.enlightenment.org/apps/express.git"
+CLONECR="git clone https://git.enlightenment.org/apps/ecrire.git"
 CLONENT="git clone https://github.com/vtorri/entice"
 
 # 'MN' stands for Meson, 'AT' refers to Autotools.
-PROG_MN="efl terminology enlightenment ephoto evisum rage express entice"
+PROG_MN="efl terminology enlightenment ephoto evisum rage express ecrire entice"
 PROG_AT="enventor"
 
 # ---------
@@ -141,7 +142,7 @@ bin_deps() {
 
 ls_dir() {
   COUNT=$(ls -d -- */ | wc -l)
-  if [ $COUNT == 9 ]; then
+  if [ $COUNT == 10 ]; then
     printf "$BDG%s $OFF%s\n\n" "All programs have been downloaded successfully."
     sleep 2
   elif [ $COUNT == 0 ]; then
@@ -150,7 +151,7 @@ ls_dir() {
     beep_exit
     exit 1
   else
-    printf "\n$BDY%s %s\n" "WARNING: ONLY $COUNT OF 9 PROGRAMS HAVE BEEN DOWNLOADED!"
+    printf "\n$BDY%s %s\n" "WARNING: ONLY $COUNT OF 10 PROGRAMS HAVE BEEN DOWNLOADED!"
     printf "\n$BDY%s $OFF%s\n\n" "WAIT 12 SECONDS OR HIT CTRL+C TO QUIT."
     beep_attention
     sleep 12
@@ -267,6 +268,7 @@ rebuild_plain() {
   ESRC=$(cat $HOME/.cache/ebuilds/storepath)
   bin_deps
   e_tokens
+  chk_ecrir
   chk_etice
   elap_start
 
@@ -335,6 +337,7 @@ rebuild_optim_mn() {
   ESRC=$(cat $HOME/.cache/ebuilds/storepath)
   bin_deps
   e_tokens
+  chk_ecrir
   chk_etice
   elap_start
 
@@ -417,6 +420,7 @@ rebuild_wld_mn() {
   ESRC=$(cat $HOME/.cache/ebuilds/storepath)
   bin_deps
   e_tokens
+  chk_ecrir
   chk_etice
   elap_start
 
@@ -621,6 +625,20 @@ do_lnk() {
   sudo ln -sf /usr/local/etc/xdg/menus/e-applications.menu /etc/xdg/menus/e-applications.menu
 }
 
+chk_ecrir() {
+  if [ -d $ESRC/e25 ] && [ ! -d $ESRC/e25/ecrire ]; then
+    cd $ESRC/e25
+    printf "\n$BLD%s $OFF%s\n" "New application Ecrire..."
+    sleep 2
+    $CLONECR
+    echo
+    cd $ESRC/e25/ecrire
+    meson build
+    ninja -C build || true
+    sudo ninja -C build || true
+  fi
+}
+
 chk_etice() {
   if [ -d $ESRC/e25 ] && [ ! -d $ESRC/e25/entice ]; then
     cd $ESRC/e25
@@ -665,7 +683,8 @@ install_now() {
   echo
   $CLONEXP
   echo
-  printf "\n$BLD%s $OFF%s\n\n" "Fetching source code from vtorri's github repo..."
+  $CLONECR
+  printf "\n\n$BLD%s $OFF%s\n\n" "Fetching source code from vtorri's github repo..."
   $CLONENT
   echo
 
