@@ -188,8 +188,9 @@ e_bkp() {
   TSTAMP=$(date +%s)
   mkdir -p $DOCDIR/ebackups
 
-  mkdir $DOCDIR/ebackups/E_$TSTAMP
-  cp -aR $HOME/.elementary $DOCDIR/ebackups/E_$TSTAMP && cp -aR $HOME/.e $DOCDIR/ebackups/E_$TSTAMP
+  mkdir $DOCDIR/ebackups/E_$TSTAMP &&
+    cp -aR $HOME/.elementary $DOCDIR/ebackups/E_$TSTAMP &&
+    cp -aR $HOME/.e $DOCDIR/ebackups/E_$TSTAMP
   sleep 2
 }
 
