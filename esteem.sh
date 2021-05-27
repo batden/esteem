@@ -49,7 +49,7 @@ LWEB=libwebp-1.2.0
 LAVF=0.8.4
 
 # Build dependencies, recommended and script-related packages...
-# The Papirus Icon Theme fits nicely with the default theme for Enlightenment:
+# On a side note, the Papirus Icon Theme fits nicely with the default theme for Enlightenment:
 # https://github.com/PapirusDevelopmentTeam/papirus-icon-theme
 
 DEPS="arc-theme aspell build-essential ccache check cmake cowsay ddcutil doxygen \
@@ -710,7 +710,7 @@ install_now() {
   printf "\n$BDY%s %s" "'Update checking' —— you can disable this feature because it serves no useful purpose."
   printf "\n$BDY%s $OFF%s\n\n\n" "'Network management support' —— Connman is not needed."
   # Enlightenment adds three shortcut icons (namely home.desktop, root.desktop and tmp.desktop)
-  # to your Ubuntu Desktop, you can safely delete them.
+  # to your Ubuntu Desktop, you can safely delete them if it bothers you.
 
   echo
   cowsay "Now reboot your computer then select Enlightenment on the login screen... \
