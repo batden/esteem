@@ -61,7 +61,7 @@ libfreetype6-dev libfribidi-dev libgbm-dev libgeoclue-2-dev \
 libgif-dev libgraphviz-dev libgstreamer1.0-dev \
 libgstreamer-plugins-base1.0-dev libharfbuzz-dev libheif-dev \
 libi2c-dev libibus-1.0-dev libinput-dev libinput-tools libjpeg-dev \
-libluajit-5.1-dev liblz4-dev libmenu-cache-dev libmount-dev \
+liblua5.2-dev liblz4-dev libmenu-cache-dev libmount-dev \
 libopenjp2-7-dev libosmesa6-dev libpam0g-dev libpoppler-cpp-dev \
 libpoppler-dev libpoppler-private-dev libpulse-dev libraw-dev \
 librsvg2-dev libsdl1.2-dev libscim-dev libsndfile1-dev libspectre-dev \
@@ -235,7 +235,9 @@ build_plain() {
 
     case $I in
     efl)
-      meson build
+      meson -Dbuild-examples=false -Dbuild-tests=false \
+        -Dlua-interpreter=lua -Dbindings= \
+        build
       ninja -C build || mng_err
       ;;
     enlightenment)
@@ -277,7 +279,8 @@ rebuild_plain() {
   printf "\n$BLD%s $OFF%s\n\n" "Updating rlottie..."
   git reset --hard &>/dev/null
   $REBASEF && git pull
-  meson --reconfigure build
+  meson --reconfigure -Dexample=false \
+    build
   ninja -C build || true
   $SNIN || true
   sudo ldconfig
@@ -296,7 +299,9 @@ rebuild_plain() {
 
     case $I in
     efl)
-      meson build
+      meson -Dbuild-examples=false -Dbuild-tests=false \
+        -Dlua-interpreter=lua -Dbindings= \
+        build
       ninja -C build || mng_err
       ;;
     enlightenment)
@@ -348,7 +353,8 @@ rebuild_optim_mn() {
   $REBASEF && git pull
   echo
   sudo chown $USER build/.ninja*
-  meson configure -Dexample=false -Dbuildtype=release build
+  meson configure -Dexample=false -Dbuildtype=release \
+    build
   ninja -C build || true
   $SNIN || true
   sudo ldconfig
@@ -367,18 +373,21 @@ rebuild_optim_mn() {
     efl)
       sudo chown $USER build/.ninja*
       meson configure -Dnative-arch-optimization=true -Dfb=true -Dharfbuzz=true \
-        -Dbindings=cxx -Dbuild-tests=false -Dbuild-examples=false \
-        -Devas-loaders-disabler=json -Dbuildtype=release build
+        -Dlua-interpreter=lua -Delua=true -Dbindings=lua,cxx -Dbuild-tests=false \
+        -Dbuild-examples=false -Devas-loaders-disabler= -Dbuildtype=release \
+        build
       ninja -C build || mng_err
       ;;
     enlightenment)
       sudo chown $USER build/.ninja*
-      meson configure -Dbuildtype=release build
+      meson configure -Dbuildtype=release \
+        build
       ninja -C build || mng_err
       ;;
     *)
       sudo chown $USER build/.ninja*
-      meson configure -Dbuildtype=release build
+      meson configure -Dbuildtype=release \
+        build
       ninja -C build || true
       ;;
     esac
@@ -431,7 +440,8 @@ rebuild_wld_mn() {
   $REBASEF && git pull
   echo
   sudo chown $USER build/.ninja*
-  meson configure -Dexample=false -Dbuildtype=release build
+  meson configure -Dexample=false -Dbuildtype=release \
+    build
   ninja -C build || true
   $SNIN || true
   sudo ldconfig
@@ -450,20 +460,22 @@ rebuild_wld_mn() {
     efl)
       sudo chown $USER build/.ninja*
       meson configure -Dnative-arch-optimization=true -Dfb=true -Dharfbuzz=true \
-        -Dbindings=cxx -Ddrm=true -Dwl=true -Dopengl=es-egl \
-        -Dbuild-tests=false -Dbuild-examples=false \
-        -Devas-loaders-disabler=json \
-        -Dbuildtype=release build
+        -Dlua-interpreter=lua -Delua=true -Dbindings=lua,cxx -Ddrm=true \
+        -Dwl=true -Dopengl=es-egl -Dbuild-tests=false -Dbuild-examples=false \
+        -Devas-loaders-disabler= -Dbuildtype=release \
+        build
       ninja -C build || mng_err
       ;;
     enlightenment)
       sudo chown $USER build/.ninja*
-      meson configure -Dwl=true -Dbuildtype=release build
+      meson configure -Dwl=true -Dbuildtype=release \
+        build
       ninja -C build || mng_err
       ;;
     *)
       sudo chown $USER build/.ninja*
-      meson configure -Dbuildtype=release build
+      meson configure -Dbuildtype=release \
+        build
       ninja -C build || true
       ;;
     esac
@@ -614,7 +626,8 @@ get_preq() {
   cd $ESRC
   git clone https://github.com/Samsung/rlottie.git
   cd $ESRC/rlottie
-  meson build
+  meson -Dexample=false \
+    build
   ninja -C build || true
   $SNIN || true
   sudo ldconfig
