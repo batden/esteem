@@ -8,7 +8,7 @@
 # Heads up!
 # Enlightenment programs installed from .deb packages or tarballs will inevitably
 # conflict with programs compiled from git repositories——do not mix source code
-# with pre-built binaries! Please remove thoroughly any previous binary
+# with pre-built binaries! So please remove thoroughly any previous binary
 # installation of EFL/Enlightenment/E-apps (track down and delete any
 # leftover files) before running esteem.sh.
 
