@@ -49,8 +49,8 @@ LWEB=libwebp-1.2.0
 LAVF=0.8.4
 
 # Build dependencies, recommended and script-related packages...
-# On a side note, the Papirus Icon Theme fits nicely with the default theme for Enlightenment:
-# https://github.com/PapirusDevelopmentTeam/papirus-icon-theme
+# On a side note, the Papirus Icon Theme fits nicely with the default theme for Enlightenment;
+# visit https://github.com/PapirusDevelopmentTeam/papirus-icon-theme
 
 DEPS="arc-theme aspell build-essential ccache check cmake cowsay ddcutil doxygen \
 fonts-noto freeglut3-dev graphviz gstreamer1.0-libav gstreamer1.0-plugins-bad \
@@ -183,6 +183,9 @@ elap_stop() {
 
 # Timestamp: See the date man page to convert epoch to human-readable date
 # or visit https://www.epochconverter.com/
+# To restore a backup, use the same command that was executed but with
+# the source and destination reversed:
+# e.g. cp -aR /home/jamie/Documents/ebackups/E_1622439936/.e* /home/jamie/
 
 e_bkp() {
   TSTAMP=$(date +%s)
