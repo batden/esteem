@@ -275,8 +275,6 @@ rebuild_plain() {
   ESRC=$(cat $HOME/.cache/ebuilds/storepath)
   bin_deps
   e_tokens
-  chk_ecrir
-  chk_etice
   elap_start
 
   cd $ESRC/rlottie
@@ -347,8 +345,6 @@ rebuild_optim_mn() {
   ESRC=$(cat $HOME/.cache/ebuilds/storepath)
   bin_deps
   e_tokens
-  chk_ecrir
-  chk_etice
   elap_start
 
   cd $ESRC/rlottie
@@ -434,8 +430,6 @@ rebuild_wld_mn() {
   ESRC=$(cat $HOME/.cache/ebuilds/storepath)
   bin_deps
   e_tokens
-  chk_ecrir
-  chk_etice
   elap_start
 
   cd $ESRC/rlottie
@@ -642,34 +636,6 @@ do_lnk() {
   sudo ln -sf /usr/local/etc/enlightenment/sysactions.conf /etc/enlightenment/sysactions.conf
   sudo ln -sf /usr/local/etc/enlightenment/system.conf /etc/enlightenment/system.conf
   sudo ln -sf /usr/local/etc/xdg/menus/e-applications.menu /etc/xdg/menus/e-applications.menu
-}
-
-chk_ecrir() {
-  if [ -d $ESRC/e25 ] && [ ! -d $ESRC/e25/ecrire ]; then
-    cd $ESRC/e25
-    printf "\n$BLD%s $OFF%s\n" "New application Ecrire..."
-    sleep 2
-    $CLONECR
-    echo
-    cd $ESRC/e25/ecrire
-    meson build
-    ninja -C build || true
-    sudo ninja -C build || true
-  fi
-}
-
-chk_etice() {
-  if [ -d $ESRC/e25 ] && [ ! -d $ESRC/e25/entice ]; then
-    cd $ESRC/e25
-    printf "\n$BLD%s $OFF%s\n" "New application Entice..."
-    sleep 2
-    $CLONENT
-    echo
-    cd $ESRC/e25/entice
-    meson build
-    ninja -C build || true
-    sudo ninja -C build || true
-  fi
 }
 
 install_now() {
