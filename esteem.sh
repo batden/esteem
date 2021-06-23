@@ -46,7 +46,7 @@ SNIN="sudo ninja -C build install"
 SMIL="sudo make install"
 DISTRO=$(lsb_release -sc)
 LWEB=libwebp-1.2.0
-LAVF=0.8.4
+LAVF=0.9.1
 
 # Build dependencies, recommended and script-related packages...
 # On a side note, the Papirus Icon Theme fits nicely with the default theme for Enlightenment;
@@ -611,7 +611,7 @@ get_preq() {
   echo
 
   cd $DLDIR
-  wget -c https://github.com/AOmediaCodec/libavif/archive/v$LAVF.tar.gz
+  wget -c https://github.com/AOMediaCodec/libavif/archive/refs/tags/v$LAVF.tar.gz
   tar xzvf v$LAVF.tar.gz -C $ESRC
   cd $ESRC/libavif-$LAVF
   mkdir -p build && cd build
@@ -636,6 +636,25 @@ do_lnk() {
   sudo ln -sf /usr/local/etc/enlightenment/sysactions.conf /etc/enlightenment/sysactions.conf
   sudo ln -sf /usr/local/etc/enlightenment/system.conf /etc/enlightenment/system.conf
   sudo ln -sf /usr/local/etc/xdg/menus/e-applications.menu /etc/xdg/menus/e-applications.menu
+}
+
+bump_avf() {
+  if [ -d $ESRC/libavif-0.8.4 ]; then
+    printf "\n$BLD%s $OFF%s\n\n" "Updating libavif..."
+    cd $ESRC/libavif-0.8.4/build
+    xargs sudo rm -rf <install_manifest.txt
+    cd ../..
+    wget -c https://github.com/AOMediaCodec/libavif/archive/refs/tags/v$LAVF.tar.gz
+    tar xzvf v$LAVF.tar.gz
+    cd libavif-$LAVF
+    mkdir -p build && cd build
+    cmake .. -DAVIF_CODEC_AOM=ON -DBUILD_SHARED_LIBS=OFF
+    make
+    sudo make install
+    rm -rf v$LAVF.tar.gz
+    rm -rf libavif-0.8.4
+    echo
+  fi
 }
 
 install_now() {
@@ -674,7 +693,6 @@ install_now() {
   echo
 
   ls_dir
-
   build_plain
 
   printf "\n%s\n\n" "Almost done..."
@@ -712,6 +730,7 @@ update_go() {
   chmod +x $HOME/.local/bin/esteem.sh
   sleep 1
 
+  bump_avf
   rebuild_plain
 
   sudo ln -sf /usr/local/share/xsessions/enlightenment.desktop \
@@ -737,6 +756,7 @@ release_go() {
   chmod +x $HOME/.local/bin/esteem.sh
   sleep 1
 
+  bump_avf
   rebuild_optim_mn
   rebuild_optim_at
 
@@ -763,6 +783,7 @@ wld_go() {
   chmod +x $HOME/.local/bin/esteem.sh
   sleep 1
 
+  bump_avf
   rebuild_wld_mn
   rebuild_wld_at
 
