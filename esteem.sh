@@ -654,8 +654,8 @@ bump_avf() {
     cmake .. -DAVIF_CODEC_AOM=ON -DBUILD_SHARED_LIBS=OFF
     make
     sudo make install
-    rm -rf v$LAVF.tar.gz
-    rm -rf libavif-0.8.4
+    rm -rf $ESRC/v$LAVF.tar.gz
+    rm -rf $ESRC/libavif-0.8.4
     echo
   fi
 }
