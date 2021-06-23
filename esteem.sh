@@ -273,6 +273,7 @@ build_plain() {
 
 rebuild_plain() {
   ESRC=$(cat $HOME/.cache/ebuilds/storepath)
+  bump_avf
   bin_deps
   e_tokens
   elap_start
@@ -343,6 +344,7 @@ rebuild_plain() {
 
 rebuild_optim_mn() {
   ESRC=$(cat $HOME/.cache/ebuilds/storepath)
+  bump_avf
   bin_deps
   e_tokens
   elap_start
@@ -428,6 +430,7 @@ rebuild_wld_mn() {
   fi
 
   ESRC=$(cat $HOME/.cache/ebuilds/storepath)
+  bump_avf
   bin_deps
   e_tokens
   elap_start
@@ -640,7 +643,7 @@ do_lnk() {
 
 bump_avf() {
   if [ -d $ESRC/libavif-0.8.4 ]; then
-    printf "\n$BLD%s $OFF%s\n\n" "Updating libavif..."
+    printf "\n$BDY%s $OFF%s\n\n" "Updating libavif..."
     cd $ESRC/libavif-0.8.4/build
     xargs sudo rm -rf <install_manifest.txt
     cd ../..
@@ -730,7 +733,6 @@ update_go() {
   chmod +x $HOME/.local/bin/esteem.sh
   sleep 1
 
-  bump_avf
   rebuild_plain
 
   sudo ln -sf /usr/local/share/xsessions/enlightenment.desktop \
@@ -756,7 +758,6 @@ release_go() {
   chmod +x $HOME/.local/bin/esteem.sh
   sleep 1
 
-  bump_avf
   rebuild_optim_mn
   rebuild_optim_at
 
@@ -783,7 +784,6 @@ wld_go() {
   chmod +x $HOME/.local/bin/esteem.sh
   sleep 1
 
-  bump_avf
   rebuild_wld_mn
   rebuild_wld_at
 
