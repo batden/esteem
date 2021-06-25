@@ -6,13 +6,15 @@
 
 ## Get started
 
-Before you start using esteem, you'll need to install Git on your system:
+Before you start using esteem, you'll need to install Git on your system.
+
+Open a terminal window and type in the following:
 
 ```bash
 sudo apt install git
 ```
 
-Next, clone this repository from a terminal window:
+Next, clone this repository:
 
 ```bash
 git clone https://github.com/batden/esteem.git .esteem
