@@ -51,7 +51,7 @@ LAVF=0.9.1
 # Build dependencies, recommended and script-related packages...
 # On a side note, the Papirus Icon Theme fits nicely with the default theme for Enlightenment;
 # visit https://github.com/PapirusDevelopmentTeam/papirus-icon-theme
-
+#
 DEPS="arc-theme aspell build-essential ccache check cmake cowsay ddcutil doxygen \
 fonts-noto freeglut3-dev graphviz gstreamer1.0-libav gstreamer1.0-plugins-bad \
 gstreamer1.0-plugins-good gstreamer1.0-plugins-ugly imagemagick \
@@ -113,7 +113,7 @@ beep_ok() {
 # 1/2: Plain build with well tested default values.
 # 3: A feature-rich, decently optimized build; however, occasionally technical glitches do happen...
 # 4: Same as above, but running Enlightenment as a Wayland compositor is still considered experimental.
-
+#
 sel_menu() {
   if [ $INPUT -lt 1 ]; then
     echo
@@ -187,7 +187,7 @@ elap_stop() {
 # the source and destination reversed:
 # e.g. cp -aR /home/jamie/Documents/ebackups/E_1622439936/.e* /home/jamie/
 # (Then press Ctrl+Alt+End to restart Enlightenment if you are currently logged into)
-
+#
 e_bkp() {
   TSTAMP=$(date +%s)
   mkdir -p $DOCDIR/ebackups
