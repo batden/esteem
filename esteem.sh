@@ -4,7 +4,7 @@
 # EFL-based applications, on Ubuntu.
 
 # See README.md for instructions on how to use this script.
-# See also our repository's wiki for post-installation hints.
+# See also the repository's wiki for post-installation hints.
 
 # Heads up!
 # Enlightenment programs installed from .deb packages or tarballs will inevitably
