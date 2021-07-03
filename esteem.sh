@@ -4,6 +4,7 @@
 # EFL-based applications, on Ubuntu.
 
 # See README.md for instructions on how to use this script.
+# See also our repository's wiki for post-installation hints.
 
 # Heads up!
 # Enlightenment programs installed from .deb packages or tarballs will inevitably
@@ -48,10 +49,7 @@ DISTRO=$(lsb_release -sc)
 LWEB=libwebp-1.2.0
 LAVF=0.9.1
 
-# Build dependencies, recommended and script-related packages...
-# On a side note, the Papirus Icon Theme fits nicely with the default theme for Enlightenment;
-# visit https://github.com/PapirusDevelopmentTeam/papirus-icon-theme
-#
+# Build dependencies, recommended and script-related packages.
 DEPS="arc-theme aspell build-essential ccache check cmake cowsay ddcutil doxygen \
 fonts-noto freeglut3-dev graphviz gstreamer1.0-libav gstreamer1.0-plugins-bad \
 gstreamer1.0-plugins-good gstreamer1.0-plugins-ugly imagemagick \
