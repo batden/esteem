@@ -352,7 +352,6 @@ rebuild_optim_mn() {
   git reset --hard &>/dev/null
   $REBASEF && git pull
   echo
-  sudo chown $USER build/.ninja*
   meson configure -Dexample=false -Dbuildtype=release \
     build
   ninja -C build || true
@@ -371,7 +370,6 @@ rebuild_optim_mn() {
 
     case $I in
     efl)
-      sudo chown $USER build/.ninja*
       meson configure -Dnative-arch-optimization=true -Dfb=true -Dharfbuzz=true \
         -Dlua-interpreter=lua -Delua=true -Dbindings=lua,cxx -Dbuild-tests=false \
         -Dbuild-examples=false -Devas-loaders-disabler= -Dbuildtype=release \
@@ -379,13 +377,11 @@ rebuild_optim_mn() {
       ninja -C build || mng_err
       ;;
     enlightenment)
-      sudo chown $USER build/.ninja*
       meson configure -Dbuildtype=release \
         build
       ninja -C build || mng_err
       ;;
     *)
-      sudo chown $USER build/.ninja*
       meson configure -Dbuildtype=release \
         build
       ninja -C build || true
@@ -438,7 +434,6 @@ rebuild_wld_mn() {
   git reset --hard &>/dev/null
   $REBASEF && git pull
   echo
-  sudo chown $USER build/.ninja*
   meson configure -Dexample=false -Dbuildtype=release \
     build
   ninja -C build || true
@@ -457,7 +452,6 @@ rebuild_wld_mn() {
 
     case $I in
     efl)
-      sudo chown $USER build/.ninja*
       meson configure -Dnative-arch-optimization=true -Dfb=true -Dharfbuzz=true \
         -Dlua-interpreter=lua -Delua=true -Dbindings=lua,cxx -Ddrm=true \
         -Dwl=true -Dopengl=es-egl -Dbuild-tests=false -Dbuild-examples=false \
@@ -466,13 +460,11 @@ rebuild_wld_mn() {
       ninja -C build || mng_err
       ;;
     enlightenment)
-      sudo chown $USER build/.ninja*
       meson configure -Dwl=true -Dbuildtype=release \
         build
       ninja -C build || mng_err
       ;;
     *)
-      sudo chown $USER build/.ninja*
       meson configure -Dbuildtype=release \
         build
       ninja -C build || true
