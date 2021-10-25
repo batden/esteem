@@ -46,7 +46,7 @@ REBASEF="git config pull.rebase false"
 CONFG="./configure --prefix=$PREFIX"
 SNIN="sudo ninja -C build install"
 DISTRO=$(lsb_release -sc)
-LWEB=libwebp-1.2.0
+LWEB=libwebp-1.2.1
 LAVF=0.9.1
 
 # Build dependencies, recommended and script-related packages.
@@ -223,6 +223,26 @@ rstrt_e() {
   fi
 }
 
+bump_wep() {
+  if [ -d $ESRC/libwebp-1.2.0 ]; then
+    printf "\n$BDY%s $OFF%s\n\n" "Updating libwebp..."
+    cd $ESRC/libwebp-1.2.0
+    sudo make uninstall &>/dev/null
+    cd .. && rm -rf $ESRC/libwebp-1.2.0
+    sudo rm -rf /usr/local/bin/cwebp
+    sudo rm -rf /usr/local/bin/dwebp
+    wget -c https://storage.googleapis.com/downloads.webmproject.org/releases/webp/$LWEB.tar.gz
+    tar xzvf $LWEB.tar.gz -C $ESRC
+    cd $ESRC/$LWEB
+    $CONFG --enable-everything
+    make
+    sudo make install
+    sudo ldconfig
+    rm -rf $ESRC/$LWEB.tar.gz
+    echo
+  fi
+}
+
 bump_avf() {
   if [ -d $ESRC/libavif-0.8.4 ]; then
     printf "\n$BDY%s $OFF%s\n\n" "Updating libavif..."
@@ -277,6 +297,7 @@ build_plain() {
 
 rebuild_plain() {
   ESRC=$(cat $HOME/.cache/ebuilds/storepath)
+  bump_wep
   bump_avf
   bin_deps
   e_tokens
@@ -331,6 +352,7 @@ rebuild_plain() {
 
 rebuild_optim_mn() {
   ESRC=$(cat $HOME/.cache/ebuilds/storepath)
+  bump_wep
   bump_avf
   bin_deps
   e_tokens
@@ -396,6 +418,7 @@ rebuild_wld_mn() {
   fi
 
   ESRC=$(cat $HOME/.cache/ebuilds/storepath)
+  bump_wep
   bump_avf
   bin_deps
   e_tokens
