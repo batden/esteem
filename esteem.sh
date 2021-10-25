@@ -223,6 +223,25 @@ rstrt_e() {
   fi
 }
 
+bump_avf() {
+  if [ -d $ESRC/libavif-0.8.4 ]; then
+    printf "\n$BDY%s $OFF%s\n\n" "Updating libavif..."
+    cd $ESRC/libavif-0.8.4/build
+    xargs sudo rm -rf <install_manifest.txt
+    cd ../..
+    wget -c https://github.com/AOMediaCodec/libavif/archive/refs/tags/v$LAVF.tar.gz
+    tar xzvf v$LAVF.tar.gz
+    cd libavif-$LAVF
+    mkdir -p build && cd build
+    cmake .. -DAVIF_CODEC_AOM=ON -DBUILD_SHARED_LIBS=OFF
+    make
+    sudo make install
+    rm -rf $ESRC/v$LAVF.tar.gz
+    rm -rf $ESRC/libavif-0.8.4
+    echo
+  fi
+}
+
 build_plain() {
   chk_path
 
@@ -565,25 +584,6 @@ do_lnk() {
   sudo ln -sf /usr/local/etc/enlightenment/sysactions.conf /etc/enlightenment/sysactions.conf
   sudo ln -sf /usr/local/etc/enlightenment/system.conf /etc/enlightenment/system.conf
   sudo ln -sf /usr/local/etc/xdg/menus/e-applications.menu /etc/xdg/menus/e-applications.menu
-}
-
-bump_avf() {
-  if [ -d $ESRC/libavif-0.8.4 ]; then
-    printf "\n$BDY%s $OFF%s\n\n" "Updating libavif..."
-    cd $ESRC/libavif-0.8.4/build
-    xargs sudo rm -rf <install_manifest.txt
-    cd ../..
-    wget -c https://github.com/AOMediaCodec/libavif/archive/refs/tags/v$LAVF.tar.gz
-    tar xzvf v$LAVF.tar.gz
-    cd libavif-$LAVF
-    mkdir -p build && cd build
-    cmake .. -DAVIF_CODEC_AOM=ON -DBUILD_SHARED_LIBS=OFF
-    make
-    sudo make install
-    rm -rf $ESRC/v$LAVF.tar.gz
-    rm -rf $ESRC/libavif-0.8.4
-    echo
-  fi
 }
 
 install_now() {
