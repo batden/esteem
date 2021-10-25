@@ -44,9 +44,7 @@ DOCDIR=$(xdg-user-dir DOCUMENTS)
 SCRFLR=$HOME/.esteem
 REBASEF="git config pull.rebase false"
 CONFG="./configure --prefix=$PREFIX"
-GEN="./autogen.sh --prefix=$PREFIX"
 SNIN="sudo ninja -C build install"
-SMIL="sudo make install"
 DISTRO=$(lsb_release -sc)
 LWEB=libwebp-1.2.0
 LAVF=0.9.1
@@ -80,14 +78,12 @@ CLONE25="git clone https://git.enlightenment.org/core/enlightenment.git"
 CLONEPH="git clone https://git.enlightenment.org/apps/ephoto.git"
 CLONERG="git clone https://git.enlightenment.org/apps/rage.git"
 CLONEVI="git clone https://git.enlightenment.org/apps/evisum.git"
-CLONEVE="git clone https://git.enlightenment.org/tools/enventor.git"
 CLONEXP="git clone https://git.enlightenment.org/apps/express.git"
 CLONECR="git clone https://git.enlightenment.org/apps/ecrire.git"
 CLONENT="git clone https://github.com/vtorri/entice"
 
-# 'MN' stands for Meson, 'AT' refers to Autotools.
+# 'MN' stands for Meson.
 PROG_MN="efl terminology enlightenment ephoto evisum rage express ecrire entice"
-PROG_AT="enventor"
 
 # ---------
 # FUNCTIONS
@@ -142,7 +138,7 @@ bin_deps() {
 
 ls_dir() {
   COUNT=$(ls -d -- */ | wc -l)
-  if [ $COUNT == 10 ]; then
+  if [ $COUNT == 9 ]; then
     printf "$BDG%s $OFF%s\n\n" "All programs have been downloaded successfully."
     sleep 2
   elif [ $COUNT == 0 ]; then
@@ -151,7 +147,7 @@ ls_dir() {
     beep_exit
     exit 1
   else
-    printf "\n$BDY%s %s\n" "WARNING: ONLY $COUNT OF 10 PROGRAMS HAVE BEEN DOWNLOADED!"
+    printf "\n$BDY%s %s\n" "WARNING: ONLY $COUNT OF 9 PROGRAMS HAVE BEEN DOWNLOADED!"
     printf "\n$BDY%s $OFF%s\n\n" "WAIT 12 SECONDS OR HIT CTRL+C TO QUIT."
     beep_attention
     sleep 12
@@ -258,17 +254,6 @@ build_plain() {
     $SNIN || true
     sudo ldconfig
   done
-
-  for I in $PROG_AT; do
-    cd $ESRC/e25/$I
-    printf "\n$BLD%s $OFF%s\n\n" "Building $I..."
-
-    $GEN
-    make || true
-    beep_attention
-    $SMIL || true
-    sudo ldconfig
-  done
 }
 
 rebuild_plain() {
@@ -321,23 +306,6 @@ rebuild_plain() {
     $SNIN || true
     sudo ldconfig
 
-    elap_stop
-  done
-
-  for I in $PROG_AT; do
-    elap_start
-    cd $ESRC/e25/$I
-
-    printf "\n$BLD%s $OFF%s\n\n" "Updating $I..."
-    sudo make distclean &>/dev/null
-    git reset --hard &>/dev/null
-    $REBASEF && git pull
-
-    $GEN
-    make || true
-    beep_attention
-    $SMIL || true
-    sudo ldconfig
     elap_stop
   done
 }
@@ -397,27 +365,6 @@ rebuild_optim_mn() {
     $SNIN || true
     sudo ldconfig
 
-    elap_stop
-  done
-}
-
-rebuild_optim_at() {
-  export CFLAGS="-O2 -ffast-math -march=native"
-
-  for I in $PROG_AT; do
-    elap_start
-    cd $ESRC/e25/$I
-
-    printf "\n$BLD%s $OFF%s\n\n" "Updating $I..."
-    sudo make distclean &>/dev/null
-    git reset --hard &>/dev/null
-    $REBASEF && git pull
-
-    $GEN
-    make || true
-    beep_attention
-    $SMIL || true
-    sudo ldconfig
     elap_stop
   done
 }
@@ -484,27 +431,6 @@ rebuild_wld_mn() {
     $SNIN || true
     sudo ldconfig
 
-    elap_stop
-  done
-}
-
-rebuild_wld_at() {
-  export CFLAGS="-O2 -ffast-math -march=native"
-
-  for I in $PROG_AT; do
-    elap_start
-    cd $ESRC/e25/$I
-
-    printf "\n$BLD%s $OFF%s\n\n" "Updating $I..."
-    sudo make distclean &>/dev/null
-    git reset --hard &>/dev/null
-    $REBASEF && git pull
-
-    $GEN
-    make || true
-    beep_attention
-    $SMIL || true
-    sudo ldconfig
     elap_stop
   done
 }
@@ -686,8 +612,6 @@ install_now() {
   echo
   $CLONEVI
   echo
-  $CLONEVE
-  echo
   $CLONEXP
   echo
   $CLONECR
@@ -759,7 +683,6 @@ release_go() {
   sleep 1
 
   rebuild_optim_mn
-  rebuild_optim_at
 
   sudo ln -sf /usr/local/share/xsessions/enlightenment.desktop \
     /usr/share/xsessions/enlightenment.desktop
@@ -785,7 +708,6 @@ wld_go() {
   sleep 1
 
   rebuild_wld_mn
-  rebuild_wld_at
 
   sudo mkdir -p /usr/share/wayland-sessions
   sudo ln -sf /usr/local/share/wayland-sessions/enlightenment.desktop \
