@@ -493,7 +493,7 @@ do_tests() {
     exit 1
   fi
 
-  if [ $DISTRO == focal ] || [ $DISTRO == hirsute ] || [ $DISTRO == impish ]; then
+  if [ $DISTRO == focal ] || [ $DISTRO == impish ] || [ $DISTRO == jammy ]; then
     printf "\n$BDG%s $OFF%s\n\n" "Ubuntu ${DISTRO^}... OK"
     sleep 2
   else
