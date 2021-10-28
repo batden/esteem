@@ -181,7 +181,7 @@ elap_stop() {
 # or visit https://www.epochconverter.com/
 # To restore a backup, use the same command that was executed but with
 # the source and destination reversed:
-# e.g. cp -aR /home/jamie/Documents/ebackups/E_1622439936/.e* /home/jamie/
+# e.g. cp -aR /home/riley/Documents/ebackups/E_1622439936/.e* /home/riley/
 # (Then press Ctrl+Alt+End to restart Enlightenment if you are currently logged into)
 #
 e_bkp() {
@@ -548,7 +548,7 @@ set_p_src() {
   beep_attention
   # Do not append a trailing slash (/) to the end of the path prefix.
   read -p "Please enter a path to the Enlightenment source folders \
-  (e.g. /home/jamie/Documents or /home/jamie/testing): " mypath
+  (e.g. /home/riley/Documents or /home/riley/testing): " mypath
   mkdir -p "$mypath"/sources
   ESRC="$mypath"/sources
   echo $ESRC >$HOME/.cache/ebuilds/storepath
