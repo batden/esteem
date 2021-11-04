@@ -92,6 +92,7 @@ PROG_MN="efl terminology enlightenment ephoto evisum rage express ecrire entice"
 # FUNCTIONS
 # ---------
 
+# Audible feedback: Make sure the sound is turned on.
 beep_attention() {
   paplay /usr/share/sounds/freedesktop/stereo/dialog-warning.oga
 }
