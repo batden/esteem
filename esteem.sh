@@ -83,10 +83,11 @@ CLONERG="git clone https://git.enlightenment.org/apps/rage.git"
 CLONEVI="git clone https://git.enlightenment.org/apps/evisum.git"
 CLONEXP="git clone https://git.enlightenment.org/apps/express.git"
 CLONECR="git clone https://git.enlightenment.org/apps/ecrire.git"
+CLONEVE="git clone https://git.enlightenment.org/tools/enventor.git"
 CLONENT="git clone https://github.com/vtorri/entice"
 
 # 'MN' stands for Meson.
-PROG_MN="efl terminology enlightenment ephoto evisum rage express ecrire entice"
+PROG_MN="efl terminology enlightenment ephoto evisum rage express ecrire enventor entice"
 
 # ---------
 # FUNCTIONS
@@ -142,7 +143,7 @@ bin_deps() {
 
 ls_dir() {
   COUNT=$(ls -d -- */ | wc -l)
-  if [ $COUNT == 9 ]; then
+  if [ $COUNT == 10 ]; then
     printf "$BDG%s $OFF%s\n\n" "All programs have been downloaded successfully."
     sleep 2
   elif [ $COUNT == 0 ]; then
@@ -151,7 +152,7 @@ ls_dir() {
     beep_exit
     exit 1
   else
-    printf "\n$BDY%s %s\n" "WARNING: ONLY $COUNT OF 9 PROGRAMS HAVE BEEN DOWNLOADED!"
+    printf "\n$BDY%s %s\n" "WARNING: ONLY $COUNT OF 10 PROGRAMS HAVE BEEN DOWNLOADED!"
     printf "\n$BDY%s $OFF%s\n\n" "WAIT 12 SECONDS OR HIT CTRL+C TO QUIT."
     beep_attention
     sleep 12
@@ -305,6 +306,7 @@ rebuild_plain() {
   bump_avf
   bin_deps
   e_tokens
+  chk_eventor
   elap_start
 
   cd $ESRC/rlottie
@@ -360,6 +362,7 @@ rebuild_optim_mn() {
   bump_avf
   bin_deps
   e_tokens
+  chk_eventor
   elap_start
 
   cd $ESRC/rlottie
@@ -426,6 +429,7 @@ rebuild_wld_mn() {
   bump_avf
   bin_deps
   e_tokens
+  chk_eventor
   elap_start
 
   cd $ESRC/rlottie
@@ -620,6 +624,20 @@ do_lnk() {
   sudo ln -sf /usr/local/etc/xdg/menus/e-applications.menu /etc/xdg/menus/e-applications.menu
 }
 
+chk_eventor() {
+  if [ -d $ESRC/e25 ] && [ ! -d $ESRC/e25/enventor ]; then
+    cd $ESRC/e25
+    printf "\n$BLD%s $OFF%s\n" "New application Enventor..."
+    sleep 2
+    $CLONEVE
+    echo
+    cd $ESRC/e25/enventor
+    meson build
+    ninja -C build || true
+    sudo ninja -C build || true
+  fi
+}
+
 install_now() {
   clear
   printf "\n$BDG%s $OFF%s\n\n" "* INSTALLING ENLIGHTENMENT DESKTOP: PLAIN BUILD *"
@@ -649,6 +667,8 @@ install_now() {
   $CLONEXP
   echo
   $CLONECR
+  echo
+  $CLONEVE
   printf "\n\n$BLD%s $OFF%s\n\n" "Fetching source code from vtorri's github repo..."
   $CLONENT
   echo
