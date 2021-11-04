@@ -627,7 +627,7 @@ do_lnk() {
 chk_eventor() {
   if [ -d $ESRC/e25 ] && [ ! -d $ESRC/e25/enventor ]; then
     cd $ESRC/e25
-    printf "\n$BLD%s $OFF%s\n" "New application Enventor..."
+    printf "\n$BLD%s $OFF%s\n" "New EFL-based application Enventor..."
     sleep 2
     $CLONEVE
     echo
