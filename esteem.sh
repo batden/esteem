@@ -554,7 +554,7 @@ set_p_src() {
   echo
   beep_attention
   # Do not append a trailing slash (/) to the end of the path prefix.
-  read -p "Please enter a path to the Enlightenment source folders \
+  read -p "Please enter a path for the Enlightenment source folders \
   (e.g. /home/riley/Documents or /home/riley/testing): " mypath
   mkdir -p "$mypath"/sources
   ESRC="$mypath"/sources
