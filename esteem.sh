@@ -185,7 +185,7 @@ elap_stop() {
 # or visit https://www.epochconverter.com/
 # To restore a backup, use the same command that was executed but with
 # the source and destination reversed:
-# e.g. cp -aR /home/riley/Documents/ebackups/E_1622439936/.e* /home/riley/
+# e.g. cp -aR /home/riley/Documents/ebackups/E_1636017137/.e* /home/riley/
 # (Then press Ctrl+Alt+End to restart Enlightenment if you are currently logged into)
 #
 e_bkp() {
