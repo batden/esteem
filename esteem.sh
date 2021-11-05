@@ -225,7 +225,7 @@ e_tokens() {
 rstrt_e() {
   if [ "$XDG_CURRENT_DESKTOP" == "Enlightenment" ]; then
     enlightenment_remote -restart
-    sleep 1 && spd-say 'enlightenment is awsome'
+    spd-say 'enlightenment is awesome'
   fi
 }
 
