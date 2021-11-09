@@ -86,7 +86,13 @@ CLONECR="git clone https://git.enlightenment.org/apps/ecrire.git"
 CLONEVE="git clone https://git.enlightenment.org/tools/enventor.git"
 CLONENT="git clone https://github.com/vtorri/entice"
 
-# 'MN' stands for Meson (the Meson build sytem).
+# 'MN' stands for Meson——the Meson build sytem.
+#
+# Note for the Ubuntu Jammy Jellyfish testers: You may experience "incompatible Meson versions"
+# errors when updating Enlightenment. This will happen regularly during the Ubuntu development
+# process, so be prepared... You have no other option than to uninstall then reinstall
+# your Enlightenment desktop.
+#
 PROG_MN="efl terminology enlightenment ephoto evisum rage express ecrire enventor entice"
 
 # ---------
