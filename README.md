@@ -2,7 +2,7 @@
 
 **An easy-to-use Bash script to build and install Enlightenment on Ubuntu :kiss:**
 
-Please take a look at the comments in the script (lines starting with '#') before running it.
+Please take a look at the comments in the script (lines beginning with '#') before running it.
 
 *See also [meetse.sh](https://github.com/batden/meetse)*
 
