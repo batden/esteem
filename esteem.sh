@@ -1,10 +1,10 @@
 #!/bin/bash
 
-# This Bash script allows you to easily and safely install Enlightenment along with other
-# EFL-based applications, on your Ubuntu desktop system.
+# This Bash script allows you to easily and safely install Enlightenment along with
+# other EFL-based applications, on your Ubuntu desktop system.
 
-# ESTEEM.SH takes care of downloading, configuring and building everything you need
-# to enjoy the very latest version of Enlightenment.
+# ESTEEM.SH takes care of downloading, configuring and building everything you
+# need to enjoy the very latest version of Enlightenment.
 
 # Tip: Set your terminal to unlimited scrolling so that you can scroll up
 # to look at earlier output at any time.
