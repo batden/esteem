@@ -190,6 +190,7 @@ elap_stop() {
 
 # Timestamp: See the date man page to convert epoch to human-readable date
 # or visit https://www.epochconverter.com/
+#
 # To restore a backup, use the same command that was executed but with
 # the source and destination reversed:
 # e.g. cp -aR /home/riley/Documents/ebackups/E_1636017137/.e* /home/riley/
