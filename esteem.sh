@@ -521,7 +521,7 @@ do_tests() {
     sleep 2
   elif [ $DISTRO == jammy ]; then
     printf "\n$BDY%s $OFF%s\n\n" "Ubuntu unstable branch... here be dragons!"
-    sleep 2
+    sleep 3
   else
     printf "\n$BDR%s $OFF%s\n\n" "UNSUPPORTED OPERATING SYSTEM [ $(lsb_release -d | cut -f2) ]."
     beep_exit
