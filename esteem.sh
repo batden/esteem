@@ -218,7 +218,6 @@ m_bkp() {
     mkdir -p $DOCDIR/mbackups/$I
     cp -aR $ESRC/e25/$I/build $DOCDIR/mbackups/$I
   done
-
 }
 
 e_tokens() {
