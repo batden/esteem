@@ -207,6 +207,20 @@ e_bkp() {
   sleep 2
 }
 
+m_bkp() {
+  mkdir -p $DOCDIR/mbackups
+
+  mkdir -p $DOCDIR/mbackups/rlottie
+  cp -aR $ESRC/rlottie/build $DOCDIR/mbackups/rlottie
+
+  for I in $PROG_MN; do
+    cd $ESRC/e25/$I
+    mkdir -p $DOCDIR/mbackups/$I
+    cp -aR $ESRC/e25/$I/build $DOCDIR/mbackups/$I
+  done
+
+}
+
 e_tokens() {
   echo $(date +%s) >>$HOME/.cache/ebuilds/etokens
 
@@ -697,6 +711,8 @@ install_now() {
 
   sudo ln -sf /usr/local/share/xsessions/enlightenment.desktop \
     /usr/share/xsessions/enlightenment.desktop
+
+  m_bkp
 
   sudo updatedb
   beep_ok
