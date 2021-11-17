@@ -1,6 +1,6 @@
 # esteem
 
-**An easy-to-use Bash script to build and install Enlightenment on Ubuntu :kiss:**
+**A neat Bash script to build and install Enlightenment on Ubuntu :kiss:**
 
 Please take a look at the comments in the script (lines beginning with '#') before running it.
 
