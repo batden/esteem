@@ -71,7 +71,7 @@ libunibreak-dev libunwind-dev libxcb-keysyms1-dev libxcursor-dev \
 libxinerama-dev libxkbcommon-x11-dev libxkbfile-dev lxmenu-data \
 libxrandr-dev libxss-dev libxtst-dev lolcat manpages-dev \
 manpages-posix-dev meson mlocate nasm ninja-build qt5-gtk2-platformtheme \
-speech-dispatcher texlive-base unity-greeter-badges valgrind wayland-protocols \
+texlive-base unity-greeter-badges valgrind wayland-protocols \
 wmctrl xdotool xserver-xephyr xwayland"
 
 # Latest development code.
@@ -246,6 +246,9 @@ e_tokens() {
 rstrt_e() {
   if [ "$XDG_CURRENT_DESKTOP" == "Enlightenment" ]; then
     enlightenment_remote -restart
+  fi
+
+  if [ -x /usr/bin/spd-say ]; then
     spd-say --language Rob 'enlightenment is awesome'
   fi
 }
