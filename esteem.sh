@@ -246,10 +246,9 @@ e_tokens() {
 rstrt_e() {
   if [ "$XDG_CURRENT_DESKTOP" == "Enlightenment" ]; then
     enlightenment_remote -restart
-  fi
-
-  if [ -x /usr/bin/spd-say ]; then
-    spd-say --language Rob 'enlightenment is awesome'
+    if [ -x /usr/bin/spd-say ]; then
+      spd-say --language Rob 'enlightenment is awesome'
+    fi
   fi
 }
 
