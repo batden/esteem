@@ -382,7 +382,7 @@ rebuild_plain() {
   done
 }
 
-rebuild_optim_mn() {
+rebuild_optim() {
   ESRC=$(cat $HOME/.cache/ebuilds/storepath)
   bump_wep
   bump_avf
@@ -443,7 +443,7 @@ rebuild_optim_mn() {
   done
 }
 
-rebuild_wld_mn() {
+rebuild_wld() {
   if [ "$XDG_SESSION_TYPE" == "tty" ] && [ "$XDG_CURRENT_DESKTOP" == "Enlightenment" ]; then
     printf "\n$BDR%s $OFF%s\n\n" "PLEASE LOG IN TO THE DEFAULT DESKTOP ENVIRONMENT TO EXECUTE THIS SCRIPT."
     beep_exit
@@ -767,7 +767,7 @@ release_go() {
   chmod +x $HOME/.local/bin/esteem.sh
   sleep 1
 
-  rebuild_optim_mn
+  rebuild_optim
 
   sudo ln -sf /usr/local/share/xsessions/enlightenment.desktop \
     /usr/share/xsessions/enlightenment.desktop
@@ -792,7 +792,7 @@ wld_go() {
   chmod +x $HOME/.local/bin/esteem.sh
   sleep 1
 
-  rebuild_wld_mn
+  rebuild_wld
 
   sudo mkdir -p /usr/share/wayland-sessions
   sudo ln -sf /usr/local/share/wayland-sessions/enlightenment.desktop \
