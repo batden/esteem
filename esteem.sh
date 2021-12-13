@@ -332,7 +332,6 @@ rebuild_plain() {
   bump_avf
   bin_deps
   e_tokens
-  chk_eventor
   elap_start
 
   cd $ESRC/rlottie
@@ -388,7 +387,6 @@ rebuild_optim() {
   bump_avf
   bin_deps
   e_tokens
-  chk_eventor
   elap_start
 
   cd $ESRC/rlottie
@@ -455,7 +453,6 @@ rebuild_wld() {
   bump_avf
   bin_deps
   e_tokens
-  chk_eventor
   elap_start
 
   cd $ESRC/rlottie
@@ -651,20 +648,6 @@ do_lnk() {
   sudo ln -sf /usr/local/etc/enlightenment/sysactions.conf /etc/enlightenment/sysactions.conf
   sudo ln -sf /usr/local/etc/enlightenment/system.conf /etc/enlightenment/system.conf
   sudo ln -sf /usr/local/etc/xdg/menus/e-applications.menu /etc/xdg/menus/e-applications.menu
-}
-
-chk_eventor() {
-  if [ -d $ESRC/e25 ] && [ ! -d $ESRC/e25/enventor ]; then
-    cd $ESRC/e25
-    printf "\n$BLD%s $OFF%s\n" "New EFL-based application Enventor..."
-    sleep 2
-    $CLONEVE
-    echo
-    cd $ESRC/e25/enventor
-    meson build
-    ninja -C build || true
-    sudo ninja -C build || true
-  fi
 }
 
 install_now() {
