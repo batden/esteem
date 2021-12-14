@@ -53,6 +53,7 @@ SNIN="sudo ninja -C build install"
 DISTRO=$(lsb_release -sc)
 LWEB=libwebp-1.2.1
 LAVF=0.9.1
+DDTL=1.2.1
 
 # Build dependencies, recommended and script-related packages.
 DEPS="arc-theme aspell build-essential ccache check cmake cowsay doxygen \
@@ -631,6 +632,16 @@ get_preq() {
   make
   sudo make install
   rm -rf $DLDIR/v$LAVF.tar.gz
+  echo
+
+  cd $DLDIR
+  wget -c https://github.com/rockowitz/ddcutil/archive/refs/tags/v1.2.1.tar.gz
+  tar xzvf ddcutil-$DDTL.tar.gz -C $ESRC
+  cd $ESRC/ddcutil-$DDTL
+  $CONFG
+  make
+  sudo make install
+  rm -rf $DLDIR/ddcutil-$DDTL.tar.gz
   echo
 
   cd $ESRC
