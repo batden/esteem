@@ -675,10 +675,11 @@ chk_ddcl() {
   sudo make install
   rm -rf $DLDIR/ddcutil-$DDTL.tar.gz
   echo
+  fi
 }
 
 install_now() {
-  clear
+   clear
   printf "\n$BDG%s $OFF%s\n\n" "* INSTALLING ENLIGHTENMENT DESKTOP: PLAIN BUILD *"
   beep_attention
   do_bsh_alias
