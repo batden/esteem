@@ -79,7 +79,7 @@ wmctrl xdotool xserver-xephyr xwayland"
 # Latest development code.
 CLONEFL="git clone https://git.enlightenment.org/core/efl.git"
 CLONETY="git clone https://git.enlightenment.org/apps/terminology.git"
-CLONE25="git clone https://git.enlightenment.org/core/enlightenment.git"
+CLONE26="git clone https://git.enlightenment.org/core/enlightenment.git"
 CLONEPH="git clone https://git.enlightenment.org/apps/ephoto.git"
 CLONERG="git clone https://git.enlightenment.org/apps/rage.git"
 CLONEVI="git clone https://git.enlightenment.org/apps/evisum.git"
@@ -218,7 +218,7 @@ m_bkp() {
   for I in $PROG_MN; do
     cd $ESRC/e26/$I
     mkdir -p $DOCDIR/mbackups/$I
-    cp -aR $ESRC/e25/$I/build $DOCDIR/mbackups/$I
+    cp -aR $ESRC/e26/$I/build $DOCDIR/mbackups/$I
   done
 }
 
