@@ -300,7 +300,7 @@ build_plain() {
   sudo ldconfig
 
   for I in $PROG_MN; do
-    cd $ESRC/e25/$I
+    cd $ESRC/e26/$I
     printf "\n$BLD%s $OFF%s\n\n" "Building $I..."
 
     case $I in
@@ -349,7 +349,7 @@ rebuild_plain() {
   for I in $PROG_MN; do
     elap_start
 
-    cd $ESRC/e25/$I
+    cd $ESRC/e26/$I
     printf "\n$BLD%s $OFF%s\n\n" "Updating $I..."
     git reset --hard &>/dev/null
     $REBASEF && git pull
@@ -406,7 +406,7 @@ rebuild_optim() {
   for I in $PROG_MN; do
     elap_start
 
-    cd $ESRC/e25/$I
+    cd $ESRC/e26/$I
     printf "\n$BLD%s $OFF%s\n\n" "Updating $I..."
     git reset --hard &>/dev/null
     $REBASEF && git pull
@@ -472,7 +472,7 @@ rebuild_wld() {
   for I in $PROG_MN; do
     elap_start
 
-    cd $ESRC/e25/$I
+    cd $ESRC/e26/$I
     printf "\n$BLD%s $OFF%s\n\n" "Updating $I..."
     git reset --hard &>/dev/null
     $REBASEF && git pull
@@ -660,15 +660,15 @@ install_now() {
   get_preq
 
   cd $HOME
-  mkdir -p $ESRC/e25
-  cd $ESRC/e25
+  mkdir -p $ESRC/e26
+  cd $ESRC/e26
 
   printf "\n\n$BLD%s $OFF%s\n\n" "Fetching source code from the Enlightenment git repositories..."
   $CLONEFL
   echo
   $CLONETY
   echo
-  $CLONE25
+  $CLONE26
   echo
   $CLONEPH
   echo
