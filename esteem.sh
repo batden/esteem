@@ -555,6 +555,8 @@ do_tests() {
   [[ ! -d $HOME/.local/bin ]] && mkdir -p $HOME/.local/bin
 
   [[ ! -d $HOME/.cache/ebuilds ]] && mkdir -p $HOME/.cache/ebuilds
+
+  [[ -d $ESRC/e25 ]] && mv $ESRC/e25 $ESRC/e26
 }
 
 do_bsh_alias() {
@@ -661,10 +663,6 @@ do_lnk() {
   sudo ln -sf /usr/local/etc/xdg/menus/e-applications.menu /etc/xdg/menus/e-applications.menu
 }
 
-e_ver() {
-# e25 -> e26 pour chaque re-compil
-}
-
 chk_ddcl() {
   if [ -d $ESRC/e26 ] && [ ! -x /usr/local/bin/ddcutil ]; then
   cd $DLDIR
@@ -754,7 +752,7 @@ update_go() {
   chmod +x $HOME/.local/bin/esteem.sh
   sleep 1
 
-chk_ddcl
+  chk_ddcl
   rebuild_plain
 
   sudo ln -sf /usr/local/share/xsessions/enlightenment.desktop \
@@ -781,7 +779,7 @@ release_go() {
   chmod +x $HOME/.local/bin/esteem.sh
   sleep 1
 
-chk_ddcl
+  chk_ddcl
   rebuild_optim
 
   sudo ln -sf /usr/local/share/xsessions/enlightenment.desktop \
@@ -807,7 +805,7 @@ wld_go() {
   chmod +x $HOME/.local/bin/esteem.sh
   sleep 1
 
-chk_ddcl
+  chk_ddcl
   rebuild_wld
 
   sudo mkdir -p /usr/share/wayland-sessions
