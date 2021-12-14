@@ -661,6 +661,24 @@ do_lnk() {
   sudo ln -sf /usr/local/etc/xdg/menus/e-applications.menu /etc/xdg/menus/e-applications.menu
 }
 
+e_ver() {
+# e25 -> e26 pour chaque re-compil
+}
+
+chk_ddcl() {
+  if [ -d $ESRC/e26 ] && [ ! -x /usr/local/bin/ddcutil ]; then
+  cd $DLDIR
+  printf "\n$BLD%s $OFF%s\n" "Updating ddcutil version..."
+  wget -c https://github.com/rockowitz/ddcutil/archive/refs/tags/v1.2.1.tar.gz
+  tar xzvf ddcutil-$DDTL.tar.gz -C $ESRC
+  cd $ESRC/ddcutil-$DDTL
+  $CONFG
+  make
+  sudo make install
+  rm -rf $DLDIR/ddcutil-$DDTL.tar.gz
+  echo
+}
+
 install_now() {
   clear
   printf "\n$BDG%s $OFF%s\n\n" "* INSTALLING ENLIGHTENMENT DESKTOP: PLAIN BUILD *"
@@ -736,6 +754,7 @@ update_go() {
   chmod +x $HOME/.local/bin/esteem.sh
   sleep 1
 
+chk_ddcl
   rebuild_plain
 
   sudo ln -sf /usr/local/share/xsessions/enlightenment.desktop \
@@ -758,9 +777,11 @@ release_go() {
   printf "\n$BDP%s $OFF%s\n\n" "* UPDATING ENLIGHTENMENT DESKTOP: RELEASE BUILD *"
 
   cp -f $SCRFLR/esteem.sh $HOME/.local/bin
+
   chmod +x $HOME/.local/bin/esteem.sh
   sleep 1
 
+chk_ddcl
   rebuild_optim
 
   sudo ln -sf /usr/local/share/xsessions/enlightenment.desktop \
@@ -786,6 +807,7 @@ wld_go() {
   chmod +x $HOME/.local/bin/esteem.sh
   sleep 1
 
+chk_ddcl
   rebuild_wld
 
   sudo mkdir -p /usr/share/wayland-sessions
