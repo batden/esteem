@@ -216,7 +216,7 @@ m_bkp() {
   cp -aR $ESRC/rlottie/build $DOCDIR/mbackups/rlottie
 
   for I in $PROG_MN; do
-    cd $ESRC/e25/$I
+    cd $ESRC/e26/$I
     mkdir -p $DOCDIR/mbackups/$I
     cp -aR $ESRC/e25/$I/build $DOCDIR/mbackups/$I
   done
