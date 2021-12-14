@@ -665,21 +665,21 @@ do_lnk() {
 
 chk_ddcl() {
   if [ -d $ESRC/e26 ] && [ ! -x /usr/local/bin/ddcutil ]; then
-  cd $DLDIR
-  printf "\n$BLD%s $OFF%s\n" "Updating ddcutil version..."
-  wget -c https://github.com/rockowitz/ddcutil/archive/refs/tags/v1.2.1.tar.gz
-  tar xzvf ddcutil-$DDTL.tar.gz -C $ESRC
-  cd $ESRC/ddcutil-$DDTL
-  $CONFG
-  make
-  sudo make install
-  rm -rf $DLDIR/ddcutil-$DDTL.tar.gz
-  echo
+    cd $DLDIR
+    printf "\n$BLD%s $OFF%s\n" "Updating ddcutil version..."
+    wget -c https://github.com/rockowitz/ddcutil/archive/refs/tags/v1.2.1.tar.gz
+    tar xzvf ddcutil-$DDTL.tar.gz -C $ESRC
+    cd $ESRC/ddcutil-$DDTL
+    $CONFG
+    make
+    sudo make install
+    rm -rf $DLDIR/ddcutil-$DDTL.tar.gz
+    echo
   fi
 }
 
 install_now() {
-   clear
+  clear
   printf "\n$BDG%s $OFF%s\n\n" "* INSTALLING ENLIGHTENMENT DESKTOP: PLAIN BUILD *"
   beep_attention
   do_bsh_alias
