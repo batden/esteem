@@ -668,7 +668,7 @@ install_now() {
   echo
   $CLONETY
   echo
-  $CLONE25
+  $CLONE26
   echo
   $CLONEPH
   echo
