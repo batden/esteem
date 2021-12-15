@@ -294,6 +294,21 @@ bump_avf() {
   fi
 }
 
+chk_ddcl() {
+  if [ -d $ESRC/e26 ] && [ ! -x /usr/local/bin/ddcutil ]; then
+    cd $DLDIR
+    printf "\n$BLD%s $OFF%s\n" "Updating ddcutil version..."
+    wget -c https://github.com/rockowitz/ddcutil/archive/refs/tags/v1.2.1.tar.gz
+    tar xzvf ddcutil-$DDTL.tar.gz -C $ESRC
+    cd $ESRC/ddcutil-$DDTL
+    $CONFG
+    make
+    sudo make install
+    rm -rf $DLDIR/ddcutil-$DDTL.tar.gz
+    echo
+  fi
+}
+
 build_plain() {
   chk_path
 
@@ -332,6 +347,7 @@ rebuild_plain() {
   bump_wep
   bump_avf
   bin_deps
+  chk_ddcl
   e_tokens
   elap_start
 
@@ -387,6 +403,7 @@ rebuild_optim() {
   bump_wep
   bump_avf
   bin_deps
+  chk_ddcl
   e_tokens
   elap_start
 
@@ -453,6 +470,7 @@ rebuild_wld() {
   bump_wep
   bump_avf
   bin_deps
+  chk_ddcl
   e_tokens
   elap_start
 
@@ -661,21 +679,6 @@ do_lnk() {
   sudo ln -sf /usr/local/etc/xdg/menus/e-applications.menu /etc/xdg/menus/e-applications.menu
 }
 
-chk_ddcl() {
-  if [ -d $ESRC/e26 ] && [ ! -x /usr/local/bin/ddcutil ]; then
-    cd $DLDIR
-    printf "\n$BLD%s $OFF%s\n" "Updating ddcutil version..."
-    wget -c https://github.com/rockowitz/ddcutil/archive/refs/tags/v1.2.1.tar.gz
-    tar xzvf ddcutil-$DDTL.tar.gz -C $ESRC
-    cd $ESRC/ddcutil-$DDTL
-    $CONFG
-    make
-    sudo make install
-    rm -rf $DLDIR/ddcutil-$DDTL.tar.gz
-    echo
-  fi
-}
-
 install_now() {
   clear
   printf "\n$BDG%s $OFF%s\n\n" "* INSTALLING ENLIGHTENMENT DESKTOP: PLAIN BUILD *"
@@ -752,7 +755,6 @@ update_go() {
   sleep 1
 
   [[ -d $ESRC/e25 ]] && mv $ESRC/e25 $ESRC/e26
-  chk_ddcl
   rebuild_plain
 
   sudo ln -sf /usr/local/share/xsessions/enlightenment.desktop \
@@ -780,7 +782,6 @@ release_go() {
   sleep 1
 
   [[ -d $ESRC/e25 ]] && mv $ESRC/e25 $ESRC/e26
-  chk_ddcl
   rebuild_optim
 
   sudo ln -sf /usr/local/share/xsessions/enlightenment.desktop \
@@ -807,7 +808,6 @@ wld_go() {
   sleep 1
 
   [[ -d $ESRC/e25 ]] && mv $ESRC/e25 $ESRC/e26
-  chk_ddcl
   rebuild_wld
 
   sudo mkdir -p /usr/share/wayland-sessions
