@@ -300,12 +300,12 @@ chk_ddcl() {
     cd $DLDIR
     printf "\n$BLD%s $OFF%s\n" "Updating ddcutil version..."
     wget -c https://github.com/rockowitz/ddcutil/archive/refs/tags/v1.2.1.tar.gz
-    tar xzvf ddcutil-$DDTL.tar.gz -C $ESRC
+    tar xzvf v$DDTL.tar.gz -C $ESRC
     cd $ESRC/ddcutil-$DDTL
-    $CONFG
+    $AUTGN
     make
     sudo make install
-    rm -rf $DLDIR/ddcutil-$DDTL.tar.gz
+    rm -rf $DLDIR/v$DDTL.tar.gz
     echo
   fi
 }
