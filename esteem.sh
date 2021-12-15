@@ -660,7 +660,7 @@ get_preq() {
   $AUTGN
   make
   sudo make install
-  rm -rf $DLDIR/ddcutil-$DDTL.tar.gz
+  rm -rf $DLDIR/v$DDTL.tar.gz
   echo
 
   cd $ESRC
