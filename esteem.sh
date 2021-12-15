@@ -776,7 +776,6 @@ release_go() {
   printf "\n$BDP%s $OFF%s\n\n" "* UPDATING ENLIGHTENMENT DESKTOP: RELEASE BUILD *"
 
   cp -f $SCRFLR/esteem.sh $HOME/.local/bin
-
   chmod +x $HOME/.local/bin/esteem.sh
   sleep 1
 
