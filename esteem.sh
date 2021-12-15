@@ -70,7 +70,7 @@ libopenjp2-7-dev libosmesa6-dev libpam0g-dev libpoppler-cpp-dev \
 libpoppler-dev libpoppler-private-dev libpulse-dev libraw-dev \
 librsvg2-dev libsdl1.2-dev libscim-dev libsndfile1-dev libspectre-dev \
 libssl-dev libsystemd-dev libtiff5-dev libtool libudev-dev libudisks2-dev \
-libunibreak-dev libunwind-dev libusb-1.0.0-dev libxcb-keysyms1-dev \
+libunibreak-dev libunwind-dev libusb-1.0-0-dev libxcb-keysyms1-dev \
 libxcursor-dev libxinerama-dev libxkbcommon-x11-dev libxkbfile-dev \
 lxmenu-data libxrandr-dev libxss-dev libxtst-dev lolcat manpages-dev \
 manpages-posix-dev meson mlocate nasm ninja-build qt5-gtk2-platformtheme \
