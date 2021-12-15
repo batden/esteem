@@ -655,7 +655,7 @@ get_preq() {
 
   cd $DLDIR
   wget -c https://github.com/rockowitz/ddcutil/archive/refs/tags/v1.2.1.tar.gz
-  tar xzvf ddcutil-$DDTL.tar.gz -C $ESRC
+  tar xzvf v$DDTL.tar.gz -C $ESRC
   cd $ESRC/ddcutil-$DDTL
   $AUTGN
   make
