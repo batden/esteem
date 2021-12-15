@@ -49,6 +49,7 @@ DOCDIR=$(xdg-user-dir DOCUMENTS)
 SCRFLR=$HOME/.esteem
 REBASEF="git config pull.rebase false"
 CONFG="./configure --prefix=$PREFIX"
+AUTGN="./autogen.sh --prefix=$PREFIX"
 SNIN="sudo ninja -C build install"
 DISTRO=$(lsb_release -sc)
 LWEB=libwebp-1.2.1
@@ -656,7 +657,7 @@ get_preq() {
   wget -c https://github.com/rockowitz/ddcutil/archive/refs/tags/v1.2.1.tar.gz
   tar xzvf ddcutil-$DDTL.tar.gz -C $ESRC
   cd $ESRC/ddcutil-$DDTL
-  $CONFG
+  $AUTGN
   make
   sudo make install
   rm -rf $DLDIR/ddcutil-$DDTL.tar.gz
