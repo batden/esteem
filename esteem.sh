@@ -555,8 +555,6 @@ do_tests() {
   [[ ! -d $HOME/.local/bin ]] && mkdir -p $HOME/.local/bin
 
   [[ ! -d $HOME/.cache/ebuilds ]] && mkdir -p $HOME/.cache/ebuilds
-
-  [[ -d $ESRC/e25 ]] && mv $ESRC/e25 $ESRC/e26
 }
 
 do_bsh_alias() {
@@ -753,6 +751,7 @@ update_go() {
   chmod +x $HOME/.local/bin/esteem.sh
   sleep 1
 
+  [[ -d $ESRC/e25 ]] && mv $ESRC/e25 $ESRC/e26
   chk_ddcl
   rebuild_plain
 
@@ -780,6 +779,7 @@ release_go() {
   chmod +x $HOME/.local/bin/esteem.sh
   sleep 1
 
+  [[ -d $ESRC/e25 ]] && mv $ESRC/e25 $ESRC/e26
   chk_ddcl
   rebuild_optim
 
@@ -806,6 +806,7 @@ wld_go() {
   chmod +x $HOME/.local/bin/esteem.sh
   sleep 1
 
+  [[ -d $ESRC/e25 ]] && mv $ESRC/e25 $ESRC/e26
   chk_ddcl
   rebuild_wld
 
