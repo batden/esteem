@@ -217,9 +217,9 @@ m_bkp() {
   cp -aR $ESRC/rlottie/build $DOCDIR/mbackups/rlottie
 
   for I in $PROG_MN; do
-    cd $ESRC/e26/$I
+    cd $ESRC/e25/$I
     mkdir -p $DOCDIR/mbackups/$I
-    cp -aR $ESRC/e26/$I/build $DOCDIR/mbackups/$I
+    cp -aR $ESRC/e25/$I/build $DOCDIR/mbackups/$I
   done
 }
 
@@ -295,7 +295,7 @@ bump_avf() {
 }
 
 chk_ddcl() {
-  if [ -d $ESRC/e26 ] && [ ! -x /usr/local/bin/ddcutil ]; then
+  if [ -d $ESRC/e25 ] && [ ! -x /usr/local/bin/ddcutil ]; then
     cd $DLDIR
     printf "\n$BLD%s $OFF%s\n" "Updating ddcutil version..."
     wget -c https://github.com/rockowitz/ddcutil/archive/refs/tags/v1.2.1.tar.gz
@@ -316,7 +316,7 @@ build_plain() {
   sudo ldconfig
 
   for I in $PROG_MN; do
-    cd $ESRC/e26/$I
+    cd $ESRC/e25/$I
     printf "\n$BLD%s $OFF%s\n\n" "Building $I..."
 
     case $I in
@@ -366,7 +366,7 @@ rebuild_plain() {
   for I in $PROG_MN; do
     elap_start
 
-    cd $ESRC/e26/$I
+    cd $ESRC/e25/$I
     printf "\n$BLD%s $OFF%s\n\n" "Updating $I..."
     git reset --hard &>/dev/null
     $REBASEF && git pull
@@ -424,7 +424,7 @@ rebuild_optim() {
   for I in $PROG_MN; do
     elap_start
 
-    cd $ESRC/e26/$I
+    cd $ESRC/e25/$I
     printf "\n$BLD%s $OFF%s\n\n" "Updating $I..."
     git reset --hard &>/dev/null
     $REBASEF && git pull
@@ -491,7 +491,7 @@ rebuild_wld() {
   for I in $PROG_MN; do
     elap_start
 
-    cd $ESRC/e26/$I
+    cd $ESRC/e25/$I
     printf "\n$BLD%s $OFF%s\n\n" "Updating $I..."
     git reset --hard &>/dev/null
     $REBASEF && git pull
@@ -689,15 +689,15 @@ install_now() {
   get_preq
 
   cd $HOME
-  mkdir -p $ESRC/e26
-  cd $ESRC/e26
+  mkdir -p $ESRC/e25
+  cd $ESRC/e25
 
   printf "\n\n$BLD%s $OFF%s\n\n" "Fetching source code from the Enlightenment git repositories..."
   $CLONEFL
   echo
   $CLONETY
   echo
-  $CLONE26
+  $CLONE25
   echo
   $CLONEPH
   echo
@@ -754,7 +754,6 @@ update_go() {
   chmod +x $HOME/.local/bin/esteem.sh
   sleep 1
 
-  [[ -d $ESRC/e25 ]] && mv $ESRC/e25 $ESRC/e26
   rebuild_plain
 
   sudo ln -sf /usr/local/share/xsessions/enlightenment.desktop \
@@ -781,7 +780,6 @@ release_go() {
   chmod +x $HOME/.local/bin/esteem.sh
   sleep 1
 
-  [[ -d $ESRC/e25 ]] && mv $ESRC/e25 $ESRC/e26
   rebuild_optim
 
   sudo ln -sf /usr/local/share/xsessions/enlightenment.desktop \
@@ -807,7 +805,6 @@ wld_go() {
   chmod +x $HOME/.local/bin/esteem.sh
   sleep 1
 
-  [[ -d $ESRC/e25 ]] && mv $ESRC/e25 $ESRC/e26
   rebuild_wld
 
   sudo mkdir -p /usr/share/wayland-sessions
