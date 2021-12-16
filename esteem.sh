@@ -49,13 +49,15 @@ DOCDIR=$(xdg-user-dir DOCUMENTS)
 SCRFLR=$HOME/.esteem
 REBASEF="git config pull.rebase false"
 CONFG="./configure --prefix=$PREFIX"
+AUTGN="./autogen.sh --prefix=$PREFIX"
 SNIN="sudo ninja -C build install"
 DISTRO=$(lsb_release -sc)
 LWEB=libwebp-1.2.1
 LAVF=0.9.1
+DDTL=1.2.1
 
 # Build dependencies, recommended and script-related packages.
-DEPS="arc-theme aspell build-essential ccache check cmake cowsay ddcutil doxygen \
+DEPS="arc-theme aspell build-essential ccache check cmake cowsay doxygen \
 fonts-noto freeglut3-dev graphviz gstreamer1.0-libav gstreamer1.0-plugins-bad \
 gstreamer1.0-plugins-good gstreamer1.0-plugins-ugly imagemagick \
 libasound2-dev libavahi-client-dev libblkid-dev libbluetooth-dev \
@@ -64,14 +66,14 @@ libfreetype6-dev libfribidi-dev libgbm-dev libgeoclue-2-dev \
 libgif-dev libgraphviz-dev libgstreamer1.0-dev \
 libgstreamer-plugins-base1.0-dev libharfbuzz-dev libheif-dev \
 libi2c-dev libibus-1.0-dev libinput-dev libinput-tools libjpeg-dev \
-liblua5.2-dev liblz4-dev libmenu-cache-dev libmount-dev \
+libkmod-dev liblua5.2-dev liblz4-dev libmenu-cache-dev libmount-dev \
 libopenjp2-7-dev libosmesa6-dev libpam0g-dev libpoppler-cpp-dev \
 libpoppler-dev libpoppler-private-dev libpulse-dev libraw-dev \
 librsvg2-dev libsdl1.2-dev libscim-dev libsndfile1-dev libspectre-dev \
 libssl-dev libsystemd-dev libtiff5-dev libtool libudev-dev libudisks2-dev \
-libunibreak-dev libunwind-dev libxcb-keysyms1-dev libxcursor-dev \
-libxinerama-dev libxkbcommon-x11-dev libxkbfile-dev lxmenu-data \
-libxrandr-dev libxss-dev libxtst-dev lolcat manpages-dev \
+libunibreak-dev libunwind-dev libusb-1.0-0-dev libxcb-keysyms1-dev \
+libxcursor-dev libxinerama-dev libxkbcommon-x11-dev libxkbfile-dev \
+lxmenu-data libxrandr-dev libxss-dev libxtst-dev lolcat manpages-dev \
 manpages-posix-dev meson mlocate nasm ninja-build qt5-gtk2-platformtheme \
 texlive-base unity-greeter-badges valgrind wayland-protocols \
 wmctrl xdotool xserver-xephyr xwayland"
@@ -293,6 +295,21 @@ bump_avf() {
   fi
 }
 
+chk_ddcl() {
+  if [ -d $ESRC/e25 ] && [ ! -x /usr/local/bin/ddcutil ]; then
+    cd $DLDIR
+    printf "\n$BLD%s $OFF%s\n" "Updating ddcutil version..."
+    wget -c https://github.com/rockowitz/ddcutil/archive/refs/tags/v1.2.1.tar.gz
+    tar xzvf v$DDTL.tar.gz -C $ESRC
+    cd $ESRC/ddcutil-$DDTL
+    $AUTGN
+    make
+    sudo make install
+    rm -rf $DLDIR/v$DDTL.tar.gz
+    echo
+  fi
+}
+
 build_plain() {
   chk_path
 
@@ -331,6 +348,7 @@ rebuild_plain() {
   bump_wep
   bump_avf
   bin_deps
+  chk_ddcl
   e_tokens
   elap_start
 
@@ -386,6 +404,7 @@ rebuild_optim() {
   bump_wep
   bump_avf
   bin_deps
+  chk_ddcl
   e_tokens
   elap_start
 
@@ -452,6 +471,7 @@ rebuild_wld() {
   bump_wep
   bump_avf
   bin_deps
+  chk_ddcl
   e_tokens
   elap_start
 
@@ -631,6 +651,16 @@ get_preq() {
   make
   sudo make install
   rm -rf $DLDIR/v$LAVF.tar.gz
+  echo
+
+  cd $DLDIR
+  wget -c https://github.com/rockowitz/ddcutil/archive/refs/tags/v1.2.1.tar.gz
+  tar xzvf v$DDTL.tar.gz -C $ESRC
+  cd $ESRC/ddcutil-$DDTL
+  $AUTGN
+  make
+  sudo make install
+  rm -rf $DLDIR/v$DDTL.tar.gz
   echo
 
   cd $ESRC
