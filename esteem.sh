@@ -299,6 +299,7 @@ chk_ddcl() {
   if [ -d $ESRC/e25 ] && [ ! -x /usr/local/bin/ddcutil ]; then
     cd $DLDIR
     printf "\n$BLD%s $OFF%s\n" "Updating ddcutil version..."
+    sleep 2
     wget -c https://github.com/rockowitz/ddcutil/archive/refs/tags/v1.2.1.tar.gz
     tar xzvf v$DDTL.tar.gz -C $ESRC
     cd $ESRC/ddcutil-$DDTL
