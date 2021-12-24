@@ -53,7 +53,7 @@ AUTGN="./autogen.sh --prefix=$PREFIX"
 SNIN="sudo ninja -C build install"
 DISTRO=$(lsb_release -sc)
 LWEB=libwebp-1.2.1
-LAVF=0.9.1
+LAVF=0.9.3
 DDTL=1.2.1
 
 # Build dependencies, recommended and script-related packages.
@@ -277,9 +277,9 @@ bump_wep() {
 }
 
 bump_avf() {
-  if [ -d $ESRC/libavif-0.8.4 ]; then
+  if [ -d $ESRC/libavif-0.9.1 ]; then
     printf "\n$BDY%s $OFF%s\n\n" "Updating libavif..."
-    cd $ESRC/libavif-0.8.4/build
+    cd $ESRC/libavif-0.9.1/build
     xargs sudo rm -rf <install_manifest.txt
     cd ../..
     wget -c https://github.com/AOMediaCodec/libavif/archive/refs/tags/v$LAVF.tar.gz
@@ -290,7 +290,7 @@ bump_avf() {
     make
     sudo make install
     rm -rf $ESRC/v$LAVF.tar.gz
-    rm -rf $ESRC/libavif-0.8.4
+    rm -rf $ESRC/libavif-0.9.1
     echo
   fi
 }
