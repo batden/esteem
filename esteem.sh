@@ -481,7 +481,7 @@ rebuild_optim() {
       ;;
     edi)
       sudo chown $USER build/.ninja*
-      meson -Dlibclang-headerdir=/usr/lib/llvm-11/include/ \
+      meson --reconfigure -Dlibclang-headerdir=/usr/lib/llvm-11/include/ \
         -Dlibclang-libdir=/usr/lib/llvm-11/lib/ \
         -Dbuildtype=release \
         build
@@ -524,7 +524,7 @@ rebuild_wld() {
   $REBASEF && git pull
   echo
   sudo chown $USER build/.ninja*
-  meson configure -Dexample=false -Dbuildtype=release \
+  meson --reconfigure -Dexample=false -Dbuildtype=release \
     build
   ninja -C build || true
   $SNIN || true
