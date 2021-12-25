@@ -558,7 +558,7 @@ rebuild_wld() {
       ;;
     edi)
       sudo chown $USER build/.ninja*
-      meson -Dlibclang-headerdir=/usr/lib/llvm-11/include/ \
+      meson --reconfigure -Dlibclang-headerdir=/usr/lib/llvm-11/include/ \
         -Dlibclang-libdir=/usr/lib/llvm-11/lib/ \
         -Dbuildtype=release \
         build
