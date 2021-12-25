@@ -61,7 +61,7 @@ DEPS="arc-theme aspell bear build-essential ccache check cmake cowsay doxygen \
 fonts-noto freeglut3-dev graphviz gstreamer1.0-libav gstreamer1.0-plugins-bad \
 gstreamer1.0-plugins-good gstreamer1.0-plugins-ugly imagemagick \
 libasound2-dev libavahi-client-dev libblkid-dev libbluetooth-dev \
-libegl1-mesa-dev libexif-dev libfontconfig1-dev libdrm-dev \
+libclang-11-dev libegl1-mesa-dev libexif-dev libfontconfig1-dev libdrm-dev \
 libfreetype6-dev libfribidi-dev libgbm-dev libgeoclue-2-dev \
 libgif-dev libgraphviz-dev libgstreamer1.0-dev \
 libgstreamer-plugins-base1.0-dev libharfbuzz-dev libheif-dev \
@@ -347,6 +347,12 @@ build_plain() {
     enlightenment)
       meson build
       ninja -C build || mng_err
+      ;;
+    edi)
+      meson -Dlibclang-headerdir=/usr/lib/llvm-11/include/ \
+        -Dlibclang-libdir=/usr/lib/llvm-11/lib/ \
+        build
+      ninja -C build || true
       ;;
     *)
       meson build
