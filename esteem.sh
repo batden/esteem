@@ -329,6 +329,7 @@ chk_di() {
 build_plain() {
   chk_path
 
+  beep_attention
   sudo ln -sf /usr/lib/x86_64-linux-gnu/preloadable_libintl.so /usr/lib/libintl.so
   sudo ldconfig
 
