@@ -412,6 +412,7 @@ rebuild_plain() {
       ninja -C build || mng_err
       ;;
     edi)
+      sudo chown $USER build/.ninja*
       meson -Dlibclang-headerdir=/usr/lib/llvm-11/include/ \
         -Dlibclang-libdir=/usr/lib/llvm-11/lib/ \
         build
@@ -479,8 +480,10 @@ rebuild_optim() {
       ninja -C build || mng_err
       ;;
     edi)
+      sudo chown $USER build/.ninja*
       meson -Dlibclang-headerdir=/usr/lib/llvm-11/include/ \
         -Dlibclang-libdir=/usr/lib/llvm-11/lib/ \
+        -Dbuildtype=release \
         build
       ninja -C build || true
       ;;
@@ -552,6 +555,14 @@ rebuild_wld() {
       meson configure -Dwl=true -Dbuildtype=release \
         build
       ninja -C build || mng_err
+      ;;
+    edi)
+      sudo chown $USER build/.ninja*
+      meson -Dlibclang-headerdir=/usr/lib/llvm-11/include/ \
+        -Dlibclang-libdir=/usr/lib/llvm-11/lib/ \
+        -Dbuildtype=release \
+        build
+      ninja -C build || true
       ;;
     *)
       sudo chown $USER build/.ninja*
