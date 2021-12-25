@@ -88,6 +88,7 @@ CLONEVI="git clone https://git.enlightenment.org/apps/evisum.git"
 CLONEXP="git clone https://git.enlightenment.org/apps/express.git"
 CLONECR="git clone https://git.enlightenment.org/apps/ecrire.git"
 CLONEVE="git clone https://git.enlightenment.org/tools/enventor.git"
+CLONEDI="git clone https://git.enlightenment.org/apps/edi.git"
 CLONENT="git clone https://github.com/vtorri/entice"
 
 # 'MN' stands for Meson——the Meson build system.
@@ -98,7 +99,7 @@ CLONENT="git clone https://github.com/vtorri/entice"
 # (companion script) now deals with such issues.
 # See https://github.com/batden/meetse
 
-PROG_MN="efl terminology enlightenment ephoto evisum rage express ecrire enventor entice"
+PROG_MN="efl terminology enlightenment ephoto evisum rage express ecrire enventor edi entice"
 
 # ---------
 # FUNCTIONS
@@ -154,7 +155,7 @@ bin_deps() {
 
 ls_dir() {
   COUNT=$(ls -d -- */ | wc -l)
-  if [ $COUNT == 10 ]; then
+  if [ $COUNT == 11 ]; then
     printf "$BDG%s $OFF%s\n\n" "All programs have been downloaded successfully."
     sleep 2
   elif [ $COUNT == 0 ]; then
@@ -163,7 +164,7 @@ ls_dir() {
     beep_exit
     exit 1
   else
-    printf "\n$BDY%s %s\n" "WARNING: ONLY $COUNT OF 10 PROGRAMS HAVE BEEN DOWNLOADED!"
+    printf "\n$BDY%s %s\n" "WARNING: ONLY $COUNT OF 11 PROGRAMS HAVE BEEN DOWNLOADED!"
     printf "\n$BDY%s $OFF%s\n\n" "WAIT 12 SECONDS OR HIT CTRL+C TO QUIT."
     beep_attention
     sleep 12
@@ -311,6 +312,20 @@ chk_ddcl() {
   fi
 }
 
+chk_di() {
+  if [ -d $ESRC/e25 ] && [ ! -d $ESRC/e25/edi ]; then
+    cd $ESRC/e25
+    printf "\n$BLD%s $OFF%s\n" "New EFL-based application Edi..."
+    sleep 2
+    $CLONEDI
+    echo
+    cd $ESRC/e25/edi
+    meson build
+    ninja -C build || true
+    sudo ninja -C build || true
+  fi
+}
+
 build_plain() {
   chk_path
 
@@ -350,6 +365,7 @@ rebuild_plain() {
   bump_avf
   bin_deps
   chk_ddcl
+  chk_di
   e_tokens
   elap_start
 
@@ -406,6 +422,7 @@ rebuild_optim() {
   bump_avf
   bin_deps
   chk_ddcl
+  chk_di
   e_tokens
   elap_start
 
@@ -473,6 +490,7 @@ rebuild_wld() {
   bump_avf
   bin_deps
   chk_ddcl
+  chk_di
   e_tokens
   elap_start
 
