@@ -320,9 +320,11 @@ chk_di() {
     $CLONEDI
     echo
     cd $ESRC/e25/edi
-    meson build
+    meson -Dlibclang-headerdir=/usr/lib/llvm-11/include/ \
+      -Dlibclang-libdir=/usr/lib/llvm-11/lib/ \
+      build
     ninja -C build || true
-    sudo ninja -C build || true
+    $SNIN || true
   fi
 }
 
@@ -409,6 +411,12 @@ rebuild_plain() {
       meson build
       ninja -C build || mng_err
       ;;
+    edi)
+      meson -Dlibclang-headerdir=/usr/lib/llvm-11/include/ \
+        -Dlibclang-libdir=/usr/lib/llvm-11/lib/ \
+        build
+      ninja -C build || true
+      ;;
     *)
       meson build
       ninja -C build || true
@@ -469,6 +477,12 @@ rebuild_optim() {
       meson configure -Dbuildtype=release \
         build
       ninja -C build || mng_err
+      ;;
+    edi)
+      meson -Dlibclang-headerdir=/usr/lib/llvm-11/include/ \
+        -Dlibclang-libdir=/usr/lib/llvm-11/lib/ \
+        build
+      ninja -C build || true
       ;;
     *)
       sudo chown $USER build/.ninja*
