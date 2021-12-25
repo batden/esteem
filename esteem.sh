@@ -57,7 +57,7 @@ LAVF=0.9.3
 DDTL=1.2.1
 
 # Build dependencies, recommended and script-related packages.
-DEPS="arc-theme aspell build-essential ccache check cmake cowsay doxygen \
+DEPS="arc-theme aspell bear build-essential ccache check cmake cowsay doxygen \
 fonts-noto freeglut3-dev graphviz gstreamer1.0-libav gstreamer1.0-plugins-bad \
 gstreamer1.0-plugins-good gstreamer1.0-plugins-ugly imagemagick \
 libasound2-dev libavahi-client-dev libblkid-dev libbluetooth-dev \
