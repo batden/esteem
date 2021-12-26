@@ -320,11 +320,12 @@ chk_di() {
     $CLONEDI
     echo
     cd $ESRC/e25/edi
-    meson -Dlibclang-headerdir=/usr/lib/llvm-11/include/ \
-      -Dlibclang-libdir=/usr/lib/llvm-11/lib/ \
+    meson -Dlibclang-headerdir=/usr/lib/llvm-11/include \
+      -Dlibclang-libdir=/usr/lib/llvm-11/lib \
       build
     ninja -C build || true
     $SNIN || true
+    sudo ldconfig
   fi
 }
 
