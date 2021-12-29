@@ -760,6 +760,9 @@ install_now() {
   $CLONECR
   echo
   $CLONEVE
+  echo
+  $CLONEDI
+  echo
   printf "\n\n$BLD%s $OFF%s\n\n" "Fetching source code from vtorri's github repo..."
   $CLONENT
   echo
