@@ -326,6 +326,7 @@ chk_di() {
     ninja -C build || true
     $SNIN || true
     sudo ldconfig
+    cp -aR $ESRC/e25/build $DOCDIR/mbackups/edi
   fi
 }
 
