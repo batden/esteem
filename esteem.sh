@@ -323,8 +323,8 @@ chk_di() {
     meson -Dlibclang-headerdir=/usr/lib/llvm-11/include \
       -Dlibclang-libdir=/usr/lib/llvm-11/lib \
       build
-    ninja -C build || true
-    $SNIN || true
+    ninja -C build
+    $SNIN
     sudo ldconfig
     cp -aR $ESRC/e25/edi/build $DOCDIR/mbackups/edi
   fi
