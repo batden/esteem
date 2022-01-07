@@ -41,6 +41,9 @@ BDR="\e[1;31m" # Bold red text.
 BDG="\e[1;32m" # Bold green text.
 BDY="\e[1;33m" # Bold yellow text.
 BDP="\e[1;35m" # Bold purple text.
+LWG="\e[2;32m" # Low intensity green text.
+LWP="\e[2;35m" # Low intensity purple text.
+LWY="\e[2;33m" # Low intensity yellow text.
 OFF="\e[0m"    # Turn off ANSI colors and formatting.
 
 PREFIX=/usr/local
@@ -127,6 +130,19 @@ beep_ok() {
 # 3: A feature-rich, decently optimized build; however, occasionally technical glitches do happen...
 # 4: Same as above, but running Enlightenment as a Wayland compositor is still considered experimental.
 #
+menu_sel() {
+  if [ $INPUT -lt 1 ]; then
+    echo
+    printf "1  $BDG%s $OFF%s\n\n" "INSTALL Enlightenment now"
+    printf "2  $LWG%s $OFF%s\n\n" "Update and REBUILD Enlightenment"
+    printf "3  $LWP%s $OFF%s\n\n" "Update and rebuild Enlightenment in RELEASE mode"
+    printf "4  $LWY%s $OFF%s\n\n" "Update and rebuild Enlightenment with WAYLAND support"
+
+    sleep 1 && printf "$ITA%s $OFF%s\n\n" "Or press Ctrl+C to quit."
+    read INPUT
+  fi
+}
+
 sel_menu() {
   if [ $INPUT -lt 1 ]; then
     echo
@@ -892,7 +908,12 @@ main() {
 
   INPUT=0
   printf "\n$BLD%s $OFF%s\n" "Please enter the number of your choice:"
-  sel_menu
+
+  if [ ! -x /usr/local/bin/enlightenment_start ]; then
+    menu_sel
+  else
+    sel_menu
+  fi
 
   if [ $INPUT == 1 ]; then
     do_tests
