@@ -146,7 +146,7 @@ menu_sel() {
 sel_menu() {
   if [ $INPUT -lt 1 ]; then
     echo
-    printf "1  $BDG%s $OFF%s\n\n" "INSTALL Enlightenment now"
+    printf "1  $LWG%s $OFF%s\n\n" "INSTALL Enlightenment now"
     printf "2  $BDG%s $OFF%s\n\n" "Update and REBUILD Enlightenment"
     printf "3  $BDP%s $OFF%s\n\n" "Update and rebuild Enlightenment in RELEASE mode"
     printf "4  $BDY%s $OFF%s\n\n" "Update and rebuild Enlightenment with WAYLAND support"
