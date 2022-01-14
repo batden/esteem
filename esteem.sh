@@ -467,7 +467,7 @@ rebuild_optim() {
   $REBASEF && git pull
   echo
   sudo chown $USER build/.ninja*
-  meson reconfigure -Dexample=false -Dbuildtype=release \
+  meson configure -Dexample=false -Dbuildtype=release \
     build
   ninja -C build || true
   $SNIN || true
@@ -736,7 +736,7 @@ get_preq() {
   cd $ESRC
   git clone https://github.com/Samsung/rlottie.git
   cd $ESRC/rlottie
-  meson -Dexample=false  -Dbuildtype=plain \
+  meson -Dexample=false -Dbuildtype=plain \
     build
   ninja -C build
   $SNIN
