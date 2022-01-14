@@ -373,16 +373,16 @@ build_plain() {
       meson -Dlibclang-headerdir=/usr/lib/llvm-11/include/ \
         -Dlibclang-libdir=/usr/lib/llvm-11/lib/ \
         build
-      ninja -C build || true
+      ninja -C build
       ;;
     *)
       meson build
-      ninja -C build || true
+      ninja -C build
       ;;
     esac
 
     beep_attention
-    $SNIN || true
+    $SNIN
     sudo ldconfig
   done
 }
@@ -404,8 +404,8 @@ rebuild_plain() {
   rm -rf build
   meson -Dexample=false -Dbuildtype=plain \
     build
-  ninja -C build || true
-  $SNIN || true
+  ninja -C build
+  $SNIN
   sudo ldconfig
 
   elap_stop
@@ -435,16 +435,16 @@ rebuild_plain() {
       meson -Dlibclang-headerdir=/usr/lib/llvm-11/include/ \
         -Dlibclang-libdir=/usr/lib/llvm-11/lib/ \
         build
-      ninja -C build || true
+      ninja -C build
       ;;
     *)
       meson build
-      ninja -C build || true
+      ninja -C build
       ;;
     esac
 
     beep_attention
-    $SNIN || true
+    $SNIN
     sudo ldconfig
 
     elap_stop
@@ -469,8 +469,8 @@ rebuild_optim() {
   sudo chown $USER build/.ninja*
   meson --reconfigure -Dexample=false -Dbuildtype=release \
     build
-  ninja -C build || true
-  $SNIN || true
+  ninja -C build
+  $SNIN
   sudo ldconfig
 
   elap_stop
@@ -504,17 +504,17 @@ rebuild_optim() {
         -Dlibclang-libdir=/usr/lib/llvm-11/lib/ \
         -Dbuildtype=release \
         build
-      ninja -C build || true
+      ninja -C build
       ;;
     *)
       sudo chown $USER build/.ninja*
       meson --reconfigure -Dbuildtype=release \
         build
-      ninja -C build || true
+      ninja -C build
       ;;
     esac
 
-    $SNIN || true
+    $SNIN
     sudo ldconfig
 
     elap_stop
@@ -545,8 +545,8 @@ rebuild_wld() {
   sudo chown $USER build/.ninja*
   meson --reconfigure -Dexample=false -Dbuildtype=release \
     build
-  ninja -C build || true
-  $SNIN || true
+  ninja -C build
+  $SNIN
   sudo ldconfig
 
   elap_stop
@@ -581,17 +581,17 @@ rebuild_wld() {
         -Dlibclang-libdir=/usr/lib/llvm-11/lib/ \
         -Dbuildtype=release \
         build
-      ninja -C build || true
+      ninja -C build
       ;;
     *)
       sudo chown $USER build/.ninja*
       meson --reconfigure -Dbuildtype=release \
         build
-      ninja -C build || true
+      ninja -C build
       ;;
     esac
 
-    $SNIN || true
+    $SNIN
     sudo ldconfig
 
     elap_stop
