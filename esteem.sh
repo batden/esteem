@@ -486,7 +486,7 @@ rebuild_optim() {
     case $I in
     efl)
       sudo chown $USER build/.ninja*
-      meson configure -Dnative-arch-optimization=true -Dfb=true -Dharfbuzz=true \
+      meson --reconfigure -Dnative-arch-optimization=true -Dfb=true -Dharfbuzz=true \
         -Dlua-interpreter=lua -Delua=true -Dbindings=lua,cxx -Dbuild-tests=false \
         -Dbuild-examples=false -Devas-loaders-disabler= -Dbuildtype=release \
         build
@@ -494,7 +494,7 @@ rebuild_optim() {
       ;;
     enlightenment)
       sudo chown $USER build/.ninja*
-      meson configure -Dbuildtype=release \
+      meson --reconfigure -Dbuildtype=release \
         build
       ninja -C build || mng_err
       ;;
@@ -508,7 +508,7 @@ rebuild_optim() {
       ;;
     *)
       sudo chown $USER build/.ninja*
-      meson configure -Dbuildtype=release \
+      meson --reconfigure -Dbuildtype=release \
         build
       ninja -C build || true
       ;;
@@ -562,7 +562,7 @@ rebuild_wld() {
     case $I in
     efl)
       sudo chown $USER build/.ninja*
-      meson configure -Dnative-arch-optimization=true -Dfb=true -Dharfbuzz=true \
+      meson --reconfigure -Dnative-arch-optimization=true -Dfb=true -Dharfbuzz=true \
         -Dlua-interpreter=lua -Delua=true -Dbindings=lua,cxx -Ddrm=true \
         -Dwl=true -Dopengl=es-egl -Dbuild-tests=false -Dbuild-examples=false \
         -Devas-loaders-disabler= -Dbuildtype=release \
@@ -571,7 +571,7 @@ rebuild_wld() {
       ;;
     enlightenment)
       sudo chown $USER build/.ninja*
-      meson configure -Dwl=true -Dbuildtype=release \
+      meson --reconfigure -Dwl=true -Dbuildtype=release \
         build
       ninja -C build || mng_err
       ;;
@@ -585,7 +585,7 @@ rebuild_wld() {
       ;;
     *)
       sudo chown $USER build/.ninja*
-      meson configure -Dbuildtype=release \
+      meson --reconfigure -Dbuildtype=release \
         build
       ninja -C build || true
       ;;
