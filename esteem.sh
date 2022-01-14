@@ -738,8 +738,8 @@ get_preq() {
   cd $ESRC/rlottie
   meson -Dexample=false \
     build
-  ninja -C build || true
-  $SNIN || true
+  ninja -C build
+  $SNIN
   sudo ldconfig
   echo
 }
