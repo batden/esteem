@@ -467,7 +467,7 @@ rebuild_optim() {
   $REBASEF && git pull
   echo
   sudo chown $USER build/.ninja*
-  meson configure -Dexample=false -Dbuildtype=release \
+  meson --reconfigure -Dexample=false -Dbuildtype=release \
     build
   ninja -C build || true
   $SNIN || true
