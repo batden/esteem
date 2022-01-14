@@ -402,7 +402,7 @@ rebuild_plain() {
   git reset --hard &>/dev/null
   $REBASEF && git pull
   rm -rf build
-  meson -Dexample=false \
+  meson -Dexample=false -Dbuildtype=plain \
     build
   ninja -C build || true
   $SNIN || true
@@ -736,7 +736,7 @@ get_preq() {
   cd $ESRC
   git clone https://github.com/Samsung/rlottie.git
   cd $ESRC/rlottie
-  meson -Dexample=false \
+  meson -Dexample=false  -Dbuildtype=plain \
     build
   ninja -C build
   $SNIN
