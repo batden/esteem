@@ -98,8 +98,9 @@ CLONENT="git clone https://github.com/vtorri/entice"
 #
 # Attention Ubuntu Jammy Jellyfish testers: You may experience "incompatible Meson versions"
 # errors when updating Enlightenment (build version mismatch). This typically happens
-# during the Ubuntu development process, so be prepared. Luckily, MEETSE.SH
-# (companion script) now deals with such issues.
+# during the Ubuntu development process, so be prepared. If you get errors of this
+# kind, relaunch the script and select option 2.
+# If that's not enough, MEETSE.SH now deals with such issues.
 # See https://github.com/batden/meetse
 
 PROG_MN="efl terminology enlightenment ephoto evisum rage express ecrire enventor edi entice"
