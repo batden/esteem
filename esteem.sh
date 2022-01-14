@@ -401,7 +401,8 @@ rebuild_plain() {
   printf "\n$BLD%s $OFF%s\n\n" "Updating rlottie..."
   git reset --hard &>/dev/null
   $REBASEF && git pull
-  meson --reconfigure -Dexample=false \
+  rm -rf build
+  meson -Dexample=false \
     build
   ninja -C build || true
   $SNIN || true
@@ -466,7 +467,7 @@ rebuild_optim() {
   $REBASEF && git pull
   echo
   sudo chown $USER build/.ninja*
-  meson configure -Dexample=false -Dbuildtype=release \
+  meson reconfigure -Dexample=false -Dbuildtype=release \
     build
   ninja -C build || true
   $SNIN || true
