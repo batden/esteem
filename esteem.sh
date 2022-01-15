@@ -100,7 +100,7 @@ CLONENT="git clone https://github.com/vtorri/entice"
 # errors when updating Enlightenment (build version mismatch). This typically happens
 # during the Ubuntu development process, so be prepared. If you get errors of this
 # kind, relaunch the script and select option 2.
-# If that's not enough, MEETSE.SH now deals with such issues.
+# If that's not enough, please use MEETSE.SH (companion script).
 # See https://github.com/batden/meetse
 
 PROG_MN="efl terminology enlightenment ephoto evisum rage express ecrire enventor edi entice"
