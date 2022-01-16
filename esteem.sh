@@ -831,6 +831,7 @@ install_now() {
     /usr/share/xsessions/enlightenment.desktop
 
   m_bkp
+  p_bkp
 
   sudo updatedb
   beep_ok
