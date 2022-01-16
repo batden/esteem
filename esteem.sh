@@ -233,6 +233,7 @@ e_bkp() {
   sleep 2
 }
 
+# Used by MEETSE.SH.
 m_bkp() {
   mkdir -p $DOCDIR/mbackups
 
@@ -244,6 +245,29 @@ m_bkp() {
     mkdir -p $DOCDIR/mbackups/$I
     cp -aR $ESRC/e25/$I/build $DOCDIR/mbackups/$I
   done
+}
+
+p_bkp() {
+  # Backup list of currently installed .deb packages.
+  if [ ! -f $DOCDIR/pbackups/installed_pkgs.log ] &&
+    [ ! -x /usr/local/bin/enlightenment_start ]; then
+    mkdir -p $DOCDIR/pbackups
+
+    apt-cache dumpavail >/tmp/apt-avail
+    sudo dpkg --merge-avail /tmp/apt-avail
+    rm /tmp/apt-avail
+    dpkg --get-selections >$DOCDIR/pbackups/installed_pkgs.log
+
+    # Backup list of manually installed .deb packages.
+    echo $(comm -23 <(apt-mark showmanual | sort -u) <(gzip -dc /var/log/installer/initial-status.gz |
+      sed -n 's/^Package: //p' | sort -u)) >$DOCDIR/pbackups/manually_installed_pkgs.txt
+
+    # Backup list of available repositories.
+    grep -Erh ^deb /etc/apt/sources.list* >$DOCDIR/pbackups/available_repos.txt
+
+    # Backup list of currently installed snap packages.
+    snap list --all >$DOCDIR/pbackups/installed_snaps.txt
+  fi
 }
 
 e_tokens() {
