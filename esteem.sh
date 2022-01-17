@@ -253,7 +253,7 @@ p_bkp() {
     mkdir -p $DOCDIR/pbackups
 
     apt-cache dumpavail >/tmp/apt-avail
-    sudo dpkg --merge-avail /tmp/apt-avail
+    sudo dpkg --merge-avail /tmp/apt-avail &>/dev/null
     rm /tmp/apt-avail
     dpkg --get-selections >$DOCDIR/pbackups/installed_pkgs.log
 
@@ -654,7 +654,7 @@ do_tests() {
     sleep 2
   elif [ $DISTRO == jammy ]; then
     printf "\n$BDY%s $OFF%s\n\n" "Ubuntu unstable branch... here be dragons!"
-    sleep 3
+    sleep 2
   else
     printf "\n$BDR%s $OFF%s\n\n" "UNSUPPORTED OPERATING SYSTEM [ $(lsb_release -d | cut -f2) ]."
     beep_exit
