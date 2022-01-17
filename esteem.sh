@@ -249,8 +249,7 @@ m_bkp() {
 
 p_bkp() {
   # Backup list of currently installed .deb packages.
-  if [ ! -f $DOCDIR/pbackups/installed_pkgs.log ] &&
-    [ ! -x /usr/local/bin/enlightenment_start ]; then
+  if [ ! -f $DOCDIR/pbackups/installed_pkgs.log ]; then
     mkdir -p $DOCDIR/pbackups
 
     apt-cache dumpavail >/tmp/apt-avail
