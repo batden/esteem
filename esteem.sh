@@ -113,7 +113,7 @@ PROG_MN="efl terminology enlightenment ephoto evisum rage express ecrire envento
 # FUNCTIONS
 # ---------
 
-# Audible feedback (error, sudo prompt...). Make sure the sound is turned on.
+# Audible feedback (error, sudo prompt...). Make sure the sound is turned on and loud enough.
 beep_attention() {
   paplay /usr/share/sounds/freedesktop/stereo/dialog-warning.oga
 }
