@@ -346,7 +346,7 @@ chk_ddcl() {
     cd $DLDIR
     printf "\n$BLD%s $OFF%s\n" "Updating ddcutil..."
     sleep 2
-    wget -c https://github.com/rockowitz/ddcutil/archive/refs/tags/v1.2.1.tar.gz
+    wget -c https://github.com/rockowitz/ddcutil/archive/refs/tags/v$DDTL.tar.gz
     tar xzvf v$DDTL.tar.gz -C $ESRC
     cd $ESRC/ddcutil-$DDTL
     $AUTGN
@@ -753,7 +753,7 @@ get_preq() {
   echo
 
   cd $DLDIR
-  wget -c https://github.com/rockowitz/ddcutil/archive/refs/tags/v1.2.1.tar.gz
+  wget -c https://github.com/rockowitz/ddcutil/archive/refs/tags/v$DDTL.tar.gz
   tar xzvf v$DDTL.tar.gz -C $ESRC
   cd $ESRC/ddcutil-$DDTL
   $AUTGN
