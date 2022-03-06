@@ -107,6 +107,7 @@ PROG_MN="efl terminology enlightenment ephoto evisum rage express ecrire envento
 
 # Uncomment the following to force messages to display in English
 # during the build process (bug reporting).
+#
 # export LC_ALL=C
 
 # ---------
