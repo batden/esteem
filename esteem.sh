@@ -557,13 +557,6 @@ do_tests() {
     exit 1
   fi
 
-  if [ -f /etc/bodhi/info ]; then
-    printf "\n$BDR%s %s\n" "ESTEEM.SH IS NOT COMPATIBLE WITH BODHI lINUX——SORRY."
-    printf "$BDR%s $OFF%s\n\n" "SCRIPT ABORTED."
-    beep_exit
-    exit 1
-  fi
-
   if [ $DISTRO == focal ] || [ $DISTRO == impish ]; then
     printf "\n$BDG%s $OFF%s\n\n" "Ubuntu ${DISTRO^}... OK"
     sleep 2
