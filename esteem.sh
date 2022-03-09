@@ -357,25 +357,6 @@ chk_ddcl() {
   fi
 }
 
-chk_di() {
-  if [ -d $ESRC/e25 ] && [ ! -d $ESRC/e25/edi ]; then
-    cd $ESRC/e25
-    printf "\n$BLD%s $OFF%s\n" "New EFL-based application Edi..."
-    sleep 2
-    $CLONEDI
-    echo
-    cd $ESRC/e25/edi
-    meson -Dlibclang-headerdir=/usr/lib/llvm-11/include \
-      -Dlibclang-libdir=/usr/lib/llvm-11/lib \
-      build
-    ninja -C build
-    $SNIN
-    sudo ldconfig
-    mkdir -p $DOCDIR/mbackups/edi
-    cp -aR $ESRC/e25/edi/build $DOCDIR/mbackups/edi
-  fi
-}
-
 build_plain() {
   chk_path
 
@@ -422,7 +403,6 @@ rebuild_plain() {
   bump_avf
   bin_deps
   chk_ddcl
-  chk_di
   e_tokens
   elap_start
 
@@ -486,7 +466,6 @@ rebuild_optim() {
   bump_avf
   bin_deps
   chk_ddcl
-  chk_di
   e_tokens
   elap_start
 
@@ -562,7 +541,6 @@ rebuild_wld() {
   bump_avf
   bin_deps
   chk_ddcl
-  chk_di
   e_tokens
   elap_start
 
