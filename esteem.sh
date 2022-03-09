@@ -341,22 +341,6 @@ bump_avf() {
   fi
 }
 
-chk_ddcl() {
-  if [ -d $ESRC/e25 ] && [ ! -x /usr/local/bin/ddcutil ]; then
-    cd $DLDIR
-    printf "\n$BLD%s $OFF%s\n" "Updating ddcutil..."
-    sleep 2
-    wget -c https://github.com/rockowitz/ddcutil/archive/refs/tags/v$DDTL.tar.gz
-    tar xzvf v$DDTL.tar.gz -C $ESRC
-    cd $ESRC/ddcutil-$DDTL
-    $AUTGN
-    make
-    sudo make install
-    rm -rf $DLDIR/v$DDTL.tar.gz
-    echo
-  fi
-}
-
 build_plain() {
   chk_path
 
@@ -402,7 +386,6 @@ rebuild_plain() {
   bump_wep
   bump_avf
   bin_deps
-  chk_ddcl
   e_tokens
   elap_start
 
@@ -465,7 +448,6 @@ rebuild_optim() {
   bump_wep
   bump_avf
   bin_deps
-  chk_ddcl
   e_tokens
   elap_start
 
@@ -540,7 +522,6 @@ rebuild_wld() {
   bump_wep
   bump_avf
   bin_deps
-  chk_ddcl
   e_tokens
   elap_start
 
