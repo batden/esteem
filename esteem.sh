@@ -94,7 +94,7 @@ CLONEVE="git clone https://git.enlightenment.org/tools/enventor.git"
 CLONEDI="git clone https://git.enlightenment.org/apps/edi.git"
 CLONENT="git clone https://github.com/vtorri/entice"
 
-# 'MN' stands for Meson——the Meson build system.
+# “MN” stands for Meson——the Meson build system.
 #
 # Attention Ubuntu Jammy Jellyfish testers: You may experience “incompatible Meson versions”
 # errors when updating Enlightenment (build version mismatch). This typically happens
