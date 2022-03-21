@@ -3,7 +3,7 @@
 # This Bash script allows you to easily and safely install Enlightenment, along with
 # other EFL-based applications, on your Ubuntu desktop system.
 
-# ESTEEM.SH takes care of downloading, configuring and building everything
+# ESTEEM takes care of downloading, configuring and building everything
 # you need to enjoy the very latest version of Enlightenment.
 
 # Tip: Set your terminal to unlimited scrolling so that you can scroll up
@@ -16,7 +16,7 @@
 # conflict with programs compiled from git repositories——do not mix source code
 # with prebuilt binaries! So, please remove thoroughly any previous binary
 # installation of EFL/Enlightenment/E-apps (track down and delete any
-# leftover files), before running ESTEEM.SH.
+# leftover files), before running ESTEEM.
 
 # Once installed, you can update your shiny new Enlightenment desktop whenever you want to.
 # However, because software gains entropy over time (performance regression, unexpected
@@ -26,7 +26,7 @@
 # same steps (uninstall before upgrading...) if you plan to upgrade your
 # current system to a newer version of Ubuntu.
 
-# ESTEEM.SH is written and maintained by batden@sfr.fr and carlasensa@sfr.fr,
+# ESTEEM is written and maintained by batden@sfr.fr and carlasensa@sfr.fr,
 # feel free to use this script as you see fit.
 # Please consider starring our repositories to show your support.
 # Cheers!
@@ -96,11 +96,11 @@ CLONENT="git clone https://github.com/vtorri/entice"
 
 # 'MN' stands for Meson——the Meson build system.
 #
-# Attention Ubuntu Jammy Jellyfish testers: You may experience "incompatible Meson versions"
+# Attention Ubuntu Jammy Jellyfish testers: You may experience “incompatible Meson versions”
 # errors when updating Enlightenment (build version mismatch). This typically happens
 # during the Ubuntu development process, so be prepared. If you get errors of this
 # kind, relaunch the script and select option 2.
-# If that's not enough, please use MEETSE.SH (companion script).
+# If that's not enough, please use MEETSE (companion script).
 # See https://github.com/batden/meetse
 
 PROG_MN="efl terminology enlightenment ephoto evisum rage express ecrire enventor edi entice"
@@ -222,7 +222,7 @@ elap_stop() {
 # To restore a backup, use the same command that was executed but with
 # the source and destination reversed:
 # e.g. cp -aR /home/riley/Documents/ebackups/E_1636017137/.e* /home/riley/
-# (Then press Ctrl+Alt+End to restart Enlightenment if you are currently logged into)
+# (Then press Ctrl+Alt+End to restart Enlightenment if you are currently logged into.)
 #
 e_bkp() {
   TSTAMP=$(date +%s)
@@ -234,7 +234,7 @@ e_bkp() {
   sleep 2
 }
 
-# Used by MEETSE.SH.
+# Used by MEETSE.
 m_bkp() {
   mkdir -p $DOCDIR/mbackups
 
@@ -551,7 +551,7 @@ do_tests() {
   printf "\n\n$BLD%s $OFF%s\n" "System check..."
 
   if systemd-detect-virt -q --container; then
-    printf "\n$BDR%s %s\n" "ESTEEM.SH IS NOT INTENDED FOR USE INSIDE CONTAINERS."
+    printf "\n$BDR%s %s\n" "ESTEEM IS NOT INTENDED FOR USE INSIDE CONTAINERS."
     printf "$BDR%s $OFF%s\n\n" "SCRIPT ABORTED."
     beep_exit
     exit 1
@@ -591,7 +591,7 @@ do_bsh_alias() {
     # GLOBAL VARIABLES
     # ----------------
 
-    # Compiler and linker flags added by esteem.
+    # Compiler and linker flags added by ESTEEM.
     export CC="ccache gcc"
     export CXX="ccache g++"
     export USE_CCACHE=1
@@ -727,7 +727,7 @@ install_now() {
   ls_dir
   build_plain
 
-  printf "\n%s\n\n" "Almost done..."
+  printf "\n%s\n\n" "Finalizing..."
 
   mkdir -p $HOME/.elementary/themes
 
@@ -744,8 +744,8 @@ install_now() {
   beep_ok
 
   printf "\n\n$BDY%s %s" "Initial setup wizard tips:"
-  printf "\n$BDY%s %s" "'Update checking' —— you can disable this feature because it serves no useful purpose."
-  printf "\n$BDY%s $OFF%s\n\n\n" "'Network management support' —— Connman is not needed (ignore the warning message)."
+  printf "\n$BDY%s %s" "“Update checking” —— you can disable this feature because it serves no useful purpose."
+  printf "\n$BDY%s $OFF%s\n\n\n" "“Network management support” —— Connman is not needed (ignore the warning message)."
   # Enlightenment adds three shortcut icons (namely home.desktop, root.desktop and tmp.desktop)
   # to your Desktop, you can safely delete them if it bothers you.
 
