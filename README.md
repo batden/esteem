@@ -60,5 +60,3 @@ git pull
 That's it.
 
 Mind the cows! :cow2: :cow2: :cow2:
-
-### *[Just installed Ubuntu 22.04 LTS?](https://github.com/batden/elluminate)*
