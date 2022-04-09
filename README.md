@@ -4,7 +4,9 @@
 
 Please take a look at the comments in the script (lines beginning with '#') before running it.
 
-*See also [meetse.sh](https://github.com/batden/meetse)*
+See also [meetse.sh](https://github.com/batden/meetse) (companion script).
+
+*Just installed Ubuntu 22.04 LTS? check out [elluminate.sh](https://github.com/batden/elluminate)*
 
 ## Get started
 
@@ -58,3 +60,5 @@ git pull
 That's it.
 
 Mind the cows! :cow2: :cow2: :cow2:
+
+### *[Just installed Ubuntu 22.04 LTS?](https://github.com/batden/elluminate)*
