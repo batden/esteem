@@ -6,7 +6,7 @@ Please take a look at the comments in the script before running it.
 
 See also [meetse.sh](https://github.com/batden/meetse) (companion script).
 
-*Just installed Ubuntu 22.04 LTS? check out [elluminate.sh](https://github.com/batden/elluminate)*
+*Just installed Ubuntu 22.04 LTS? Check out [elluminate.sh](https://github.com/batden/elluminate)*
 
 ## Get started
 
