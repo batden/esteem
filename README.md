@@ -48,7 +48,7 @@ esteem.sh
 
 (Use tab completion: Just type *est* and press Tab)
 
-### Update local repository
+## Update local repository
 
 Be sure to check for updates at least once a week.
 In order to do this, change to ~/.esteem/ and run:
