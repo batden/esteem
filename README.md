@@ -1,12 +1,12 @@
 # esteem
 
-**A neat Bash script to build and install Enlightenment 25 on Ubuntu :kiss:**
+~~A neat Bash script to build and install Enlightenment 25 on Ubuntu~~
 
-Please take a look at the comments in the script before running it.
+~~Please take a look at the comments in the script before running it~~
 
 See also [meetse.sh](https://github.com/batden/meetse) (companion script).
 
-*Just installed Ubuntu 22.04 LTS? Check out [elluminate.sh](https://github.com/batden/elluminate)*
+**This script is deprecated, please see [elluminate.sh](https://github.com/batden/elluminate)**
 
 ## Get started
 
