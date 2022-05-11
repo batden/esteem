@@ -82,16 +82,17 @@ texlive-base unity-greeter-badges valgrind wayland-protocols wmctrl \
 xdotool xserver-xephyr xwayland"
 
 # Latest development code.
-CLONEFL="git clone https://git.enlightenment.org/core/efl.git"
-CLONETY="git clone https://git.enlightenment.org/apps/terminology.git"
-CLONE25="git clone https://git.enlightenment.org/core/enlightenment.git"
-CLONEPH="git clone https://git.enlightenment.org/apps/ephoto.git"
-CLONERG="git clone https://git.enlightenment.org/apps/rage.git"
-CLONEVI="git clone https://git.enlightenment.org/apps/evisum.git"
-CLONEXP="git clone https://git.enlightenment.org/apps/express.git"
-CLONECR="git clone https://git.enlightenment.org/apps/ecrire.git"
-CLONEVE="git clone https://git.enlightenment.org/tools/enventor.git"
-CLONEDI="git clone https://git.enlightenment.org/apps/edi.git"
+GIT_HOME="https://git.enlightenment.org/enlightenment"
+CLONEFL="git clone $GIT_HOME/efl.git"
+CLONETY="git clone $GIT_HOME/terminology.git"
+CLONE25="git clone $GIT_HOME/enlightenment.git"
+CLONEPH="git clone $GIT_HOME/ephoto.git"
+CLONERG="git clone $GIT_HOME/rage.git"
+CLONEVI="git clone $GIT_HOME/evisum.git"
+CLONEXP="git clone $GIT_HOME/express.git"
+CLONECR="git clone $GIT_HOME/ecrire.git"
+CLONEVE="git clone $GIT_HOME/enventor.git"
+CLONEDI="git clone $GIT_HOME/edi.git"
 CLONENT="git clone https://github.com/vtorri/entice"
 
 # “MN” stands for Meson——the Meson build system.
@@ -366,8 +367,20 @@ rebuild_plain() {
 
     cd $ESRC/e25/$I
     printf "\n$BLD%s $OFF%s\n\n" "Updating $I..."
+    remote=`git remote -v`
+    if [[ $remote =~ enlightenment.org/(core|apps|tools)/ ]]; then
+        git remote rm origin
+        git remote add origin $GIT_HOME/$I.git
+        git fetch origin
+        git branch --set-upstream-to=origin/master master
+    fi
     git reset --hard &>/dev/null
     $REBASEF && git pull
+    if [ "$?" != "0" ]; then
+        echo "Error: failed to update $I"
+        exit
+    fi
+
     rm -rf build
     echo
 
@@ -484,6 +497,10 @@ rebuild_wld() {
   printf "\n$BLD%s $OFF%s\n\n" "Updating rlottie..."
   git reset --hard &>/dev/null
   $REBASEF && git pull
+  if [ $? ]; then
+      echo "Error: failed to update rlottie"
+      exit
+  fi
   echo
   sudo chown $USER build/.ninja*
   meson --reconfigure -Dexample=false -Dbuildtype=release \
@@ -495,12 +512,23 @@ rebuild_wld() {
   elap_stop
 
   for I in $PROG_MN; do
+      echo $I
     elap_start
 
     cd $ESRC/e25/$I
     printf "\n$BLD%s $OFF%s\n\n" "Updating $I..."
     git reset --hard &>/dev/null
+    if [ $? ]; then
+        echo "Error: failed to update $I"
+        exit
+    fi
+
     $REBASEF && git pull
+
+    if [ $? ]; then
+        echo "Error: failed to update $I"
+        exit
+    fi
 
     case $I in
     efl)
@@ -569,9 +597,9 @@ do_tests() {
     exit 1
   fi
 
-  git ls-remote https://git.enlightenment.org/core/efl.git HEAD &>/dev/null
+  git ls-remote $GIT_HOME/efl.git HEAD
   if [ $? -ne 0 ]; then
-    printf "\n$BDR%s %s\n" "REMOTE HOST IS UNREACHABLE——TRY AGAIN LATER"
+    printf "\n$BDR%s %s\n" "REMOTE HOST $GIT_HOME IS UNREACHABLE——TRY AGAIN LATER"
     printf "$BDR%s $OFF%s\n\n" "OR CHECK YOUR INTERNET CONNECTION."
     beep_exit
     exit 1
