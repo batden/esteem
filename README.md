@@ -6,7 +6,7 @@
 
 See also [meetse.sh](https://github.com/batden/meetse) (companion script).
 
-**This script is deprecated, please go check out [elluminate.sh](https://github.com/batden/elluminate)**
+**This script is no longer maintained. Please go check out [elluminate.sh](https://github.com/batden/elluminate)**
 
 ## Get started
 
