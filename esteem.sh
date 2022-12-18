@@ -80,16 +80,16 @@ texlive-base unity-greeter-badges valgrind wayland-protocols wmctrl \
 xdotool xserver-xephyr xwayland"
 
 # Latest development code.
-CLONEFL="git clone https://git.enlightenment.org/core/efl.git"
-CLONETY="git clone https://git.enlightenment.org/apps/terminology.git"
-CLONE26="git clone https://git.enlightenment.org/core/enlightenment.git"
-CLONEPH="git clone https://git.enlightenment.org/apps/ephoto.git"
-CLONERG="git clone https://git.enlightenment.org/apps/rage.git"
-CLONEVI="git clone https://git.enlightenment.org/apps/evisum.git"
-CLONEXP="git clone https://git.enlightenment.org/apps/express.git"
-CLONECR="git clone https://git.enlightenment.org/apps/ecrire.git"
-CLONEVE="git clone https://git.enlightenment.org/tools/enventor.git"
-CLONEDI="git clone https://git.enlightenment.org/apps/edi.git"
+CLONEFL="git clone https://git.enlightenment.org/enlightenment/efl.git"
+CLONETY="git clone https://git.enlightenment.org/enlightenment/terminology.git"
+CLONE26="git clone https://git.enlightenment.org/enlightenment/enlightenment.git"
+CLONEPH="git clone https://git.enlightenment.org/enlightenment/ephoto.git"
+CLONERG="git clone https://git.enlightenment.org/enlightenment/rage.git"
+CLONEVI="git clone https://git.enlightenment.org/enlightenment/evisum.git"
+CLONEXP="git clone https://git.enlightenment.org/enlightenment/express.git"
+CLONECR="git clone https://git.enlightenment.org/enlightenment/ecrire.git"
+CLONEVE="git clone https://git.enlightenment.org/enlightenment/enventor.git"
+CLONEDI="git clone https://git.enlightenment.org/enlightenment/edi.git"
 CLONENT="git clone https://git.enlightenment.org/vtorri/entice.git"
 
 # “MN” stands for Meson——the Meson build system.
@@ -570,7 +570,7 @@ do_tests() {
     exit 1
   fi
 
-  git ls-remote https://git.enlightenment.org/core/efl.git HEAD &>/dev/null
+  git ls-remote http://git.enlightenment.org/enlightenment/efl.git HEAD &>/dev/null
   if [ $? -ne 0 ]; then
     printf "\n$BDR%s %s\n" "REMOTE HOST IS UNREACHABLE——TRY AGAIN LATER"
     printf "$BDR%s $OFF%s\n\n" "OR CHECK YOUR INTERNET CONNECTION."
