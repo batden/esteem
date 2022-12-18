@@ -1,8 +1,8 @@
-# esteem
+# esteem - Work in progress
 
-~~A neat Bash script to build and install Enlightenment 25 on Ubuntu~~
+A neat Bash script to build and install Enlightenment on Ubuntu
 
-~~Please take a look at the comments in the script before running it~~
+Please take a look at the comments in the script before running it
 
 See also [meetse.sh](https://github.com/batden/meetse) (companion script).
 
@@ -10,12 +10,12 @@ See also [meetse.sh](https://github.com/batden/meetse) (companion script).
 
 ## Get started
 
-Before you start using esteem, you'll need to install Git on your system.
+Before you start using elluminate, you'll need to install the packages git and sound-icons on your system.
 
 Open a terminal window and type in the following:
 
 ```bash
-sudo apt install git
+sudo apt install git sound-icons
 ```
 
 Next, clone this repository:
@@ -47,4 +47,3 @@ esteem.sh
 ```
 
 (Use tab completion: Just type *est* and press Tab.)
-
