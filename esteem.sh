@@ -754,6 +754,10 @@ update_go() {
     sudo rm -rf /usr/share/wayland-sessions/enlightenment.desktop
   fi
 
+  if [ -f /usr/local/share/wayland-sessions/enlightenment.desktop ]; then
+    sudo rm -rf /usr/local/share/wayland-sessions/enlightenment.desktop
+  fi
+
   sudo updatedb
   beep_ok
   rstrt_e
@@ -779,6 +783,10 @@ release_go() {
 
   if [ -f /usr/share/wayland-sessions/enlightenment.desktop ]; then
     sudo rm -rf /usr/share/wayland-sessions/enlightenment.desktop
+  fi
+
+  if [ -f /usr/local/share/wayland-sessions/enlightenment.desktop ]; then
+    sudo rm -rf /usr/local/share/wayland-sessions/enlightenment.desktop
   fi
 
   sudo updatedb
