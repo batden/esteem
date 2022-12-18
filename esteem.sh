@@ -567,10 +567,7 @@ do_bsh_alias() {
     export CCACHE_COMPRESS=1
     export CPPFLAGS=-I/usr/local/include
     export LDFLAGS=-L/usr/local/lib
-    export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
-
-    # Parallel build.
-    export MAKE="make -j$(($(nproc) * 2))"
+    export PKG_CONFIG_PATH=/usr/local/lib/x86_64-linux-gnu/pkgconfig:/usr/local/lib/pkgconfig
 EOF
 
     source $HOME/.bash_aliases
