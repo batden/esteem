@@ -1,12 +1,12 @@
 # esteem - work in progress
 
-A neat Bash script to build and install Enlightenment on Ubuntu
+A neat Bash script to build and install Enlightenment on Ubuntu.
 
 Please take a look at the comments in the script before running it
 
 See also [meetse.sh](https://github.com/batden/meetse) (companion script).
 
-**This script is no longer maintained. Please go check out [elluminate.sh](https://github.com/batden/elluminate)**
+**This script is under heavy development. Please go check out [elluminate.sh](https://github.com/batden/elluminate).**
 
 ## Get started
 
