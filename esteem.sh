@@ -271,6 +271,14 @@ rstrt_e() {
   fi
 }
 
+# Ubuntu jammy/kinetic:
+# JPEG XL currently has to be compiled from source. If you need jxl
+# support in efl, follow the instructions below:
+# https://gist.github.com/batden/0f45f8b8578ec70ee911b920b6eacd39
+
+# # Then change the option “-Devas-loaders-disabler=jxl” to
+# “-Devas-loaders-disabler=” before running the script.
+#
 build_plain() {
   beep_attention
   sudo ln -sf /usr/lib/x86_64-linux-gnu/preloadable_libintl.so /usr/lib/libintl.so
@@ -282,10 +290,17 @@ build_plain() {
 
     case $I in
     efl)
-      meson -Dbuild-tests=false -Dlua-interpreter=lua -Devas-loaders-disabler=jxl \
-        -Dbindings= \
-        build
-      ninja -C build || mng_err
+      if [ $DISTRO == lunar ]; then
+        meson -Dbuild-tests=false -Dlua-interpreter=lua -Devas-loaders-disabler= \
+          -Dbindings= \
+          build
+        ninja -C build || mng_err
+      else
+        meson -Dbuild-tests=false -Dlua-interpreter=lua -Devas-loaders-disabler=jxl \
+          -Dbindings= \
+          build
+        ninja -C build || mng_err
+      fi
       ;;
     enlightenment)
       meson build
@@ -340,10 +355,17 @@ rebuild_plain() {
 
     case $I in
     efl)
-      meson -Dbuild-tests=false -Dlua-interpreter=lua -Devas-loaders-disabler=jxl \
-        -Dbindings= \
-        build
-      ninja -C build || mng_err
+      if [ $DISTRO == lunar ]; then
+        meson -Dbuild-tests=false -Dlua-interpreter=lua -Devas-loaders-disabler= \
+          -Dbindings= \
+          build
+        ninja -C build || mng_err
+      else
+        meson -Dbuild-tests=false -Dlua-interpreter=lua -Devas-loaders-disabler=jxl \
+          -Dbindings= \
+          build
+        ninja -C build || mng_err
+      fi
       ;;
     enlightenment)
       meson build
@@ -529,7 +551,7 @@ do_tests() {
     exit 1
   fi
 
-  if [ $DISTRO == focal ] || [ $DISTRO == impish ] || [ $DISTRO == lunar ]; then
+  if [ $DISTRO == jammy ] || [ $DISTRO == kinetic ] || [ $DISTRO == lunar ]; then
     printf "\n$BDG%s $OFF%s\n\n" "Ubuntu ${DISTRO^}... OK"
     sleep 1
   else
@@ -602,7 +624,7 @@ get_preq() {
     rm -rf $DLDIR/v$DDTL.tar.gz
     echo
   else
-    sudo apt install ddcutil
+    sudo apt install ddcutil libjxl-dev
   fi
 
   cd $ESRC
