@@ -282,8 +282,8 @@ build_plain() {
 
     case $I in
     efl)
-      meson -Dbuild-examples=false -Dbuild-tests=false \
-        -Dlua-interpreter=lua -Dbindings= \
+      meson -Dbuild-tests=false -Dlua-interpreter=lua -Devas-loaders-disabler=jxl \
+        -Dbindings= \
         build
       ninja -C build || mng_err
       ;;
@@ -340,8 +340,8 @@ rebuild_plain() {
 
     case $I in
     efl)
-      meson -Dbuild-examples=false -Dbuild-tests=false \
-        -Dlua-interpreter=lua -Dbindings= \
+      meson -Dbuild-tests=false -Dlua-interpreter=lua -Devas-loaders-disabler=jxl \
+        -Dbindings= \
         build
       ninja -C build || mng_err
       ;;
@@ -398,17 +398,22 @@ rebuild_optim() {
     $REBASEF && git pull
 
     case $I in
+    # If you experience screen stuttering/glitching with Nvidia drivers, try changing
+    # the option “-Ddrm=true” to “-Ddrm=false”.
+    # See also https://www.enlightenment.org/docs/distros/nvidia-start.md
+    #
     efl)
       sudo chown $USER build/.ninja*
       meson --reconfigure -Dnative-arch-optimization=true -Dfb=true -Dharfbuzz=true \
-        -Dlua-interpreter=lua -Delua=true -Dbindings=lua,cxx -Dbuild-tests=false \
-        -Dbuild-examples=false -Devas-loaders-disabler= -Dbuildtype=release \
+        -Dlua-interpreter=lua -Delua=true -Dbindings=lua,cxx -Devas-loaders-disabler=jxl \
+        -Ddrm=true -Dbuild-tests=false -Dwl=false \
+        -Dbuildtype=release \
         build
       ninja -C build || mng_err
       ;;
     enlightenment)
       sudo chown $USER build/.ninja*
-      meson --reconfigure -Dbuildtype=release \
+      meson --reconfigure -Dwl=false -Dbuildtype=release \
         build
       ninja -C build || mng_err
       ;;
@@ -473,9 +478,9 @@ rebuild_wld() {
     efl)
       sudo chown $USER build/.ninja*
       meson --reconfigure -Dnative-arch-optimization=true -Dfb=true -Dharfbuzz=true \
-        -Dlua-interpreter=lua -Delua=true -Dbindings=lua,cxx -Ddrm=true \
-        -Dwl=true -Dopengl=es-egl -Dbuild-tests=false -Dbuild-examples=false \
-        -Devas-loaders-disabler= -Dbuildtype=release \
+        -Dlua-interpreter=lua -Delua=true -Dbindings=lua,cxx -Devas-loaders-disabler=jxl \
+        -Ddrm=true -Dwl=true -Dopengl=es-egl -Dbuild-tests=false \
+        -Dbuildtype=release \
         build
       ninja -C build || mng_err
       ;;
