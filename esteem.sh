@@ -1,13 +1,15 @@
 #!/bin/bash
 
 # This Bash script allows you to easily and safely install Enlightenment, along with
-# other EFL-based applications, on your Ubuntu desktop system.
+# other EFL-based applications, on your K/X/Ubuntu desktop system.
 
 # ESTEEM takes care of downloading, configuring and building everything
-# you need to enjoy the very latest version of Enlightenment.
+# you need to enjoy the very latest version of Enlightenment
+# (.deb packages tend to lag far behind).
 
 # Tip: Set your terminal scrollback to unlimited so that you can scroll up
 # to look at earlier output at any time.
+
 # See README.md for instructions on how to use this script.
 # See also the repository's wiki for post-installation hints.
 
@@ -22,12 +24,11 @@
 # However, because software gains entropy over time (performance regression, unexpected
 # behavior... and this is especially true when dealing directly with source code), we
 # highly recommend doing a complete uninstall and reinstall of your Enlightenment
-# desktop every three weeks or so for an optimal user experience. Follow the
-# same steps (uninstall before upgrading...) if you plan to upgrade your
-# current system to a newer version of Ubuntu.
+# desktop every three weeks or so for an optimal user experience.
 
 # ESTEEM is written and maintained by batden@sfr.fr and carlasensa@sfr.fr,
 # feel free to use this script as you see fit.
+
 # Please consider starring our repositories to show your support.
 # Cheers!
 
@@ -51,19 +52,16 @@ DLDIR=$(xdg-user-dir DOWNLOAD)
 DOCDIR=$(xdg-user-dir DOCUMENTS)
 SCRFLR=$HOME/.esteem
 REBASEF="git config pull.rebase false"
-CONFG="./configure --prefix=$PREFIX"
 AUTGN="./autogen.sh --prefix=$PREFIX"
 SNIN="sudo ninja -C build install"
 DISTRO=$(lsb_release -sc)
-LWEB=libwebp-1.2.1
-LAVF=0.9.3
-DDTL=1.2.1
+DDTL=1.3.0
 
 # Build dependencies, recommended and script-related packages.
 DEPS="arc-theme aspell bear build-essential ccache check cmake cowsay doxygen \
 fonts-noto freeglut3-dev graphviz gstreamer1.0-libav gstreamer1.0-plugins-bad \
-gstreamer1.0-plugins-good gstreamer1.0-plugins-ugly imagemagick \
-libasound2-dev libavahi-client-dev libblkid-dev libbluetooth-dev \
+gstreamer1.0-plugins-good gstreamer1.0-plugins-ugly imagemagick libaom-dev \
+libasound2-dev libavahi-client-dev libavif-dev libblkid-dev libbluetooth-dev \
 libclang-11-dev libegl1-mesa-dev libexif-dev libfontconfig1-dev libdrm-dev \
 libfreetype6-dev libfribidi-dev libgbm-dev libgeoclue-2-dev \
 libgif-dev libgraphviz-dev libgstreamer1.0-dev \
@@ -74,7 +72,7 @@ libopenjp2-7-dev libosmesa6-dev libpam0g-dev libpoppler-cpp-dev \
 libpoppler-dev libpoppler-private-dev libpulse-dev libraw-dev \
 librsvg2-dev libsdl1.2-dev libscim-dev libsndfile1-dev libspectre-dev \
 libssl-dev libsystemd-dev libtiff5-dev libtool libudev-dev libudisks2-dev \
-libunibreak-dev libunwind-dev libusb-1.0-0-dev libxcb-keysyms1-dev \
+libunibreak-dev libunwind-dev libusb-1.0-0-dev libwebp-dev libxcb-keysyms1-dev \
 libxcursor-dev libxinerama-dev libxkbcommon-x11-dev libxkbfile-dev \
 lxmenu-data libxrandr-dev libxss-dev libxtst-dev lolcat manpages-dev \
 manpages-posix-dev meson mlocate nasm ninja-build papirus-icon-theme \
@@ -92,17 +90,9 @@ CLONEXP="git clone https://git.enlightenment.org/apps/express.git"
 CLONECR="git clone https://git.enlightenment.org/apps/ecrire.git"
 CLONEVE="git clone https://git.enlightenment.org/tools/enventor.git"
 CLONEDI="git clone https://git.enlightenment.org/apps/edi.git"
-CLONENT="git clone https://github.com/vtorri/entice"
+CLONENT="git clone https://git.enlightenment.org/vtorri/entice.git"
 
 # “MN” stands for Meson——the Meson build system.
-#
-# Attention Ubuntu Jammy Jellyfish testers: You may experience “incompatible Meson versions”
-# errors when updating Enlightenment (build version mismatch). This typically happens
-# during the Ubuntu development process, so be prepared. If you get errors of this
-# kind, relaunch the script and select option 2.
-# If that's not enough, please use MEETSE (companion script).
-# See https://github.com/batden/meetse
-
 PROG_MN="efl terminology enlightenment ephoto evisum rage express ecrire enventor edi entice"
 
 # Uncomment the following to force messages to display in English
@@ -114,21 +104,21 @@ PROG_MN="efl terminology enlightenment ephoto evisum rage express ecrire envento
 # FUNCTIONS
 # ---------
 
-# Audible feedback (error, sudo prompt...). Make sure the sound is turned on and loud enough.
+# Audible feedback (error, sudo prompt...) on most systems.
 beep_attention() {
-  paplay /usr/share/sounds/freedesktop/stereo/dialog-warning.oga
+  aplay --quiet /usr/share/sounds/sound-icons/percussion-50.wav 2>/dev/null
 }
 
 beep_question() {
-  paplay /usr/share/sounds/freedesktop/stereo/dialog-information.oga
+  aplay --quiet /usr/share/sounds/sound-icons/guitar-13.wav 2>/dev/null
 }
 
 beep_exit() {
-  paplay /usr/share/sounds/freedesktop/stereo/suspend-error.oga
+  aplay --quiet /usr/share/sounds/sound-icons/pipe.wav 2>/dev/null
 }
 
 beep_ok() {
-  paplay /usr/share/sounds/freedesktop/stereo/complete.oga
+  aplay --quiet /usr/share/sounds/sound-icons/trumpet-12.wav 2>/dev/null
 }
 
 # Hints.
@@ -199,13 +189,7 @@ mng_err() {
   exit 1
 }
 
-chk_path() {
-  if ! echo $PATH | grep -q $HOME/.local/bin; then
-    echo -e '    export PATH=$HOME/.local/bin:$PATH' >>$HOME/.bash_aliases
-    source $HOME/.bash_aliases
-  fi
-}
-
+() {
 elap_start() {
   START=$(date +%s)
 }
@@ -232,20 +216,6 @@ e_bkp() {
     cp -aR $HOME/.elementary $DOCDIR/ebackups/E_$TSTAMP &&
     cp -aR $HOME/.e $DOCDIR/ebackups/E_$TSTAMP
   sleep 2
-}
-
-# Used by MEETSE.
-m_bkp() {
-  mkdir -p $DOCDIR/mbackups
-
-  mkdir -p $DOCDIR/mbackups/rlottie
-  cp -aR $ESRC/rlottie/build $DOCDIR/mbackups/rlottie
-
-  for I in $PROG_MN; do
-    cd $ESRC/e25/$I
-    mkdir -p $DOCDIR/mbackups/$I
-    cp -aR $ESRC/e25/$I/build $DOCDIR/mbackups/$I
-  done
 }
 
 p_bkp() {
@@ -303,8 +273,6 @@ rstrt_e() {
 }
 
 build_plain() {
-  chk_path
-
   beep_attention
   sudo ln -sf /usr/lib/x86_64-linux-gnu/preloadable_libintl.so /usr/lib/libintl.so
   sudo ldconfig
@@ -557,12 +525,9 @@ do_tests() {
     exit 1
   fi
 
-  if [ $DISTRO == focal ] || [ $DISTRO == impish ]; then
+  if [ $DISTRO == focal ] || [ $DISTRO == impish ] || [ $DISTRO == lunar ]; then
     printf "\n$BDG%s $OFF%s\n\n" "Ubuntu ${DISTRO^}... OK"
-    sleep 2
-  elif [ $DISTRO == jammy ]; then
-    printf "\n$BDY%s $OFF%s\n\n" "Ubuntu unstable branch... here be dragons!"
-    sleep 2
+    sleep 1
   else
     printf "\n$BDR%s $OFF%s\n\n" "UNSUPPORTED OPERATING SYSTEM [ $(lsb_release -d | cut -f2) ]."
     beep_exit
@@ -602,8 +567,6 @@ do_bsh_alias() {
 
     # Parallel build.
     export MAKE="make -j$(($(nproc) * 2))"
-
-    # This script adds the ~/.local/bin directory to your PATH environment variable if required.
 EOF
 
     source $HOME/.bash_aliases
@@ -625,40 +588,9 @@ set_p_src() {
 
 get_preq() {
   ESRC=$(cat $HOME/.cache/ebuilds/storepath)
-  cd $DLDIR
   printf "\n\n$BLD%s $OFF%s\n\n" "Installing prerequisites..."
-  wget -c https://storage.googleapis.com/downloads.webmproject.org/releases/webp/$LWEB.tar.gz
-  tar xzvf $LWEB.tar.gz -C $ESRC
-  cd $ESRC/$LWEB
-  $CONFG --enable-everything
-  make
-  sudo make install
-  sudo ldconfig
-  rm -rf $DLDIR/$LWEB.tar.gz
-  echo
 
-  cd $ESRC
-  git clone https://aomedia.googlesource.com/aom
-  cd $ESRC/aom
-  mkdir -p aom-build && cd aom-build
-  printf "\n$BLD%s $OFF%s\n" "This may take a while. Please be patient."
-  sleep 2
-  cmake .. -DENABLE_CCACHE=1 -DENABLE_NASM=ON
-  make
-  sudo make install
-  echo
-
-  cd $DLDIR
-  wget -c https://github.com/AOMediaCodec/libavif/archive/refs/tags/v$LAVF.tar.gz
-  tar xzvf v$LAVF.tar.gz -C $ESRC
-  cd $ESRC/libavif-$LAVF
-  mkdir -p build && cd build
-  cmake .. -DAVIF_CODEC_AOM=ON -DBUILD_SHARED_LIBS=OFF
-  make
-  sudo make install
-  rm -rf $DLDIR/v$LAVF.tar.gz
-  echo
-
+if [ $DISTRO == jammy ] || [ $DISTRO == kinetic ]; then
   cd $DLDIR
   wget -c https://github.com/rockowitz/ddcutil/archive/refs/tags/v$DDTL.tar.gz
   tar xzvf v$DDTL.tar.gz -C $ESRC
@@ -668,6 +600,9 @@ get_preq() {
   sudo make install
   rm -rf $DLDIR/v$DDTL.tar.gz
   echo
+else
+  sudo apt install ddcutil
+fi
 
   cd $ESRC
   git clone https://github.com/Samsung/rlottie.git
@@ -720,7 +655,6 @@ install_now() {
   echo
   $CLONEDI
   echo
-  printf "\n\n$BLD%s $OFF%s\n\n" "Fetching source code from vtorri's github repo..."
   $CLONENT
   echo
 
@@ -737,7 +671,6 @@ install_now() {
   sudo ln -sf /usr/local/share/xsessions/enlightenment.desktop \
     /usr/share/xsessions/enlightenment.desktop
 
-  m_bkp
   p_bkp
 
   sudo updatedb
