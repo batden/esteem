@@ -635,6 +635,7 @@ get_preq() {
     echo
   else
     sudo apt install ddcutil libjxl-dev
+    echo
   fi
 
   cd $ESRC
