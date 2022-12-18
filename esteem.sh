@@ -189,7 +189,6 @@ mng_err() {
   exit 1
 }
 
-() {
 elap_start() {
   START=$(date +%s)
 }
@@ -590,19 +589,19 @@ get_preq() {
   ESRC=$(cat $HOME/.cache/ebuilds/storepath)
   printf "\n\n$BLD%s $OFF%s\n\n" "Installing prerequisites..."
 
-if [ $DISTRO == jammy ] || [ $DISTRO == kinetic ]; then
-  cd $DLDIR
-  wget -c https://github.com/rockowitz/ddcutil/archive/refs/tags/v$DDTL.tar.gz
-  tar xzvf v$DDTL.tar.gz -C $ESRC
-  cd $ESRC/ddcutil-$DDTL
-  $AUTGN
-  make
-  sudo make install
-  rm -rf $DLDIR/v$DDTL.tar.gz
-  echo
-else
-  sudo apt install ddcutil
-fi
+  if [ $DISTRO == jammy ] || [ $DISTRO == kinetic ]; then
+    cd $DLDIR
+    wget -c https://github.com/rockowitz/ddcutil/archive/refs/tags/v$DDTL.tar.gz
+    tar xzvf v$DDTL.tar.gz -C $ESRC
+    cd $ESRC/ddcutil-$DDTL
+    $AUTGN
+    make
+    sudo make install
+    rm -rf $DLDIR/v$DDTL.tar.gz
+    echo
+  else
+    sudo apt install ddcutil
+  fi
 
   cd $ESRC
   git clone https://github.com/Samsung/rlottie.git
