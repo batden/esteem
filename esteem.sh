@@ -425,13 +425,23 @@ rebuild_optim() {
     # See also https://www.enlightenment.org/docs/distros/nvidia-start.md
     #
     efl)
-      sudo chown $USER build/.ninja*
-      meson --reconfigure -Dnative-arch-optimization=true -Dfb=true -Dharfbuzz=true \
-        -Dlua-interpreter=lua -Delua=true -Dbindings=lua,cxx -Devas-loaders-disabler=jxl \
-        -Ddrm=true -Dbuild-tests=false -Dwl=false \
-        -Dbuildtype=release \
-        build
-      ninja -C build || mng_err
+      if [ $DISTRO == lunar ]; then
+        sudo chown $USER build/.ninja*
+        meson --reconfigure -Dnative-arch-optimization=true -Dfb=true -Dharfbuzz=true \
+          -Dlua-interpreter=lua -Delua=true -Dbindings=lua,cxx -Devas-loaders-disabler= \
+          -Ddrm=true -Dbuild-tests=false -Dwl=false \
+          -Dbuildtype=release \
+          build
+        ninja -C build || mng_err
+      else
+        sudo chown $USER build/.ninja*
+        meson --reconfigure -Dnative-arch-optimization=true -Dfb=true -Dharfbuzz=true \
+          -Dlua-interpreter=lua -Delua=true -Dbindings=lua,cxx -Devas-loaders-disabler=jxl \
+          -Ddrm=true -Dbuild-tests=false -Dwl=false \
+          -Dbuildtype=release \
+          build
+        ninja -C build || mng_err
+      fi
       ;;
     enlightenment)
       sudo chown $USER build/.ninja*
