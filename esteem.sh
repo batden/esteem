@@ -22,9 +22,9 @@
 
 # Once installed, you can update your shiny new Enlightenment desktop whenever you want to.
 # However, because software gains entropy over time (performance regression, unexpected
-# behavior... and this is especially true when dealing directly with source code), we
-# highly recommend doing a complete uninstall and reinstall of your Enlightenment
-# desktop every three weeks or so for an optimal user experience.
+# behavior... and this is especially true when dealing directly with source code),
+# we highly recommend doing a complete uninstallation and reinstallation of your
+# Enlightenment desktop every three weeks or so for an optimal user experience.
 
 # ESTEEM is written and maintained by batden@sfr.fr and carlasensa@sfr.fr,
 # feel free to use this script as you see fit.
