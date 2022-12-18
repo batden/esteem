@@ -827,7 +827,8 @@ wld_go() {
   exit 0
 }
 
-main() {
+# Lo and behold!
+lo() {
   trap '{ printf "\n$BDR%s $OFF%s\n\n" "KEYBOARD INTERRUPT."; exit 130; }' INT
 
   INPUT=0
@@ -838,7 +839,9 @@ main() {
   else
     sel_menu
   fi
+}
 
+bhd() {
   if [ $INPUT == 1 ]; then
     do_tests
     install_now
@@ -857,4 +860,5 @@ main() {
   fi
 }
 
-main
+lo
+bhd
