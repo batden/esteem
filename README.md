@@ -1,4 +1,4 @@
-# esteem - work in progress
+# esteem
 
 A neat Bash script to build and install Enlightenment on Ubuntu.
 
