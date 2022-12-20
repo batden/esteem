@@ -6,8 +6,6 @@ Please take a look at the comments in the script before running it.
 
 See also [meetse.sh](https://github.com/batden/meetse) (companion script).
 
-**This script is under heavy development. Please go check out [elluminate.sh](https://github.com/batden/elluminate).**
-
 ## Get started
 
 Before you start using esteem, you'll need to install the packages git and sound-icons on your system.
