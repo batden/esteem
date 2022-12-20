@@ -3,8 +3,8 @@
 # This Bash script allows you to easily and safely install Enlightenment, along with
 # other EFL-based applications, on your K/X/Ubuntu desktop system.
 
-# ESTEEM takes care of downloading, configuring and building everything
-# you need to enjoy the very latest version of Enlightenment
+# ESTEEM takes care of downloading, configuring and building everything you
+# need to enjoy the very latest version of the Enlightenment environment
 # (.deb packages tend to lag far behind).
 
 # Tip: Set your terminal scrollback to unlimited so that you can scroll up
