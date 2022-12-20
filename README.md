@@ -4,7 +4,7 @@
 
 Please take a look at the comments in the script before running it.
 
-See also [meetse.sh](https://github.com/batden/meetse) (companion script).
+*See also [meetse.sh](https://github.com/batden/meetse) (companion script).*
 
 ## Get started
 
