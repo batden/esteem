@@ -71,7 +71,7 @@ libdrm-dev libfreetype6-dev libfribidi-dev libgbm-dev libgeoclue-2-dev \
 libgif-dev libgraphviz-dev libgstreamer1.0-dev \
 libgstreamer-plugins-base1.0-dev libharfbuzz-dev libheif-dev \
 libi2c-dev libibus-1.0-dev libinput-dev libinput-tools libjpeg-dev \
-libkmod-dev liblua5.2-dev liblz4-dev libmenu-cache-dev libmount-dev \
+libjson-c-dev libkmod-dev liblua5.2-dev liblz4-dev libmenu-cache-dev libmount-dev \
 libopenjp2-7-dev libosmesa6-dev libpam0g-dev libpoppler-cpp-dev \
 libpoppler-dev libpoppler-private-dev libpulse-dev libraw-dev \
 librsvg2-dev libsdl1.2-dev libscim-dev libsndfile1-dev libspectre-dev \
@@ -95,9 +95,10 @@ CLONECR="git clone https://git.enlightenment.org/enlightenment/ecrire.git"
 CLONEVE="git clone https://git.enlightenment.org/enlightenment/enventor.git"
 CLONEDI="git clone https://git.enlightenment.org/enlightenment/edi.git"
 CLONENT="git clone https://git.enlightenment.org/vtorri/entice.git"
+CLONEFT="git clone https://git.enlightenment.org/enlightenment/enlightenment-module-forecasts.git"
 
 # “MN” stands for Meson——the Meson build system.
-PROG_MN="efl terminology enlightenment ephoto evisum rage express ecrire enventor edi entice"
+PROG_MN="efl terminology enlightenment ephoto evisum rage express ecrire enventor edi entice enlightenment-module-forecasts"
 
 # Bug reporting: Uncomment the following (remove the leading # character) to force messages to
 # display in English during the build process.
@@ -171,7 +172,7 @@ bin_deps() {
 
 ls_dir() {
   COUNT=$(ls -d -- */ | wc -l)
-  if [ $COUNT == 11 ]; then
+  if [ $COUNT == 12 ]; then
     printf "$BDG%s $OFF%s\n\n" "All programs have been downloaded successfully."
     sleep 2
   elif [ $COUNT == 0 ]; then
@@ -180,7 +181,7 @@ ls_dir() {
     beep_exit
     exit 1
   else
-    printf "\n$BDY%s %s\n" "WARNING: ONLY $COUNT OF 11 PROGRAMS HAVE BEEN DOWNLOADED!"
+    printf "\n$BDY%s %s\n" "WARNING: ONLY $COUNT OF 12 PROGRAMS HAVE BEEN DOWNLOADED!"
     printf "\n$BDY%s $OFF%s\n\n" "WAIT 12 SECONDS OR HIT CTRL+C TO QUIT."
     beep_attention
     sleep 12
@@ -332,6 +333,7 @@ rebuild_plain() {
   ESRC=$(cat $HOME/.cache/ebuilds/storepath)
   bin_deps
   e_tokens
+  chk_fcst
   elap_start
 
   cd $ESRC/rlottie
@@ -399,6 +401,7 @@ rebuild_optim() {
   ESRC=$(cat $HOME/.cache/ebuilds/storepath)
   bin_deps
   e_tokens
+  chk_fcst
   elap_start
 
   cd $ESRC/rlottie
@@ -486,6 +489,7 @@ rebuild_wld() {
   ESRC=$(cat $HOME/.cache/ebuilds/storepath)
   bin_deps
   e_tokens
+  chk_fcst
   elap_start
 
   cd $ESRC/rlottie
@@ -690,6 +694,22 @@ do_lnk() {
   sudo ln -sf /usr/local/etc/enlightenment/sysactions.conf /etc/enlightenment/sysactions.conf
   sudo ln -sf /usr/local/etc/enlightenment/system.conf /etc/enlightenment/system.conf
   sudo ln -sf /usr/local/etc/xdg/menus/e-applications.menu /etc/xdg/menus/e-applications.menu
+}
+
+chk_fcst() {
+  if [ ! -d $ESRC/e26/enlightenment-module-forecasts ]; then
+    cd $ESRC/e26
+    printf "\n$BLD%s $OFF%s\n" "New module Forecasts..."
+    sleep 1
+    $CLONEFT
+    cd $ESRC/e26/enlightenment-module-forecasts
+    meson build
+    ninja -C build
+    $SNIN
+    meson build
+    ninja -C build
+    sudo ninja -C build install
+  fi
 }
 
 install_now() {
