@@ -699,7 +699,7 @@ do_lnk() {
 chk_fcst() {
   if [ ! -d $ESRC/e26/enlightenment-module-forecasts ]; then
     cd $ESRC/e26
-    printf "\n$BLD%s $OFF%s\n" "Add module Forecasts..."
+    printf "\n$BLD%s $OFF%s\n" "Add Forecasts module..."
     sleep 1
     $CLONEFT
     cd $ESRC/e26/enlightenment-module-forecasts
