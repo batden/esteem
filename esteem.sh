@@ -706,9 +706,6 @@ chk_fcst() {
     meson build
     ninja -C build
     $SNIN
-    meson build
-    ninja -C build
-    sudo ninja -C build install
   fi
 }
 
