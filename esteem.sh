@@ -699,7 +699,7 @@ do_lnk() {
 chk_fcst() {
   if [ ! -d $ESRC/e26/enlightenment-module-forecasts ]; then
     cd $ESRC/e26
-    printf "\n$BLD%s $OFF%s\n" "New module Forecasts..."
+    printf "\n$BLD%s $OFF%s\n" "Add module Forecasts..."
     sleep 1
     $CLONEFT
     cd $ESRC/e26/enlightenment-module-forecasts
@@ -744,6 +744,8 @@ install_now() {
   $CLONEDI
   echo
   $CLONENT
+  echo
+  $CLONEFT
   echo
 
   ls_dir
