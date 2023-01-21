@@ -71,8 +71,8 @@ libdrm-dev libfreetype6-dev libfribidi-dev libgbm-dev libgeoclue-2-dev \
 libgif-dev libgraphviz-dev libgstreamer1.0-dev \
 libgstreamer-plugins-base1.0-dev libharfbuzz-dev libheif-dev \
 libi2c-dev libibus-1.0-dev libinput-dev libinput-tools libjpeg-dev \
-libjson-c-dev libkmod-dev liblua5.2-dev liblz4-dev libmenu-cache-dev libmount-dev \
-libopenjp2-7-dev libosmesa6-dev libpam0g-dev libpoppler-cpp-dev \
+libjson-c-dev libkmod-dev liblua5.2-dev liblz4-dev libmenu-cache-dev \
+libmount-dev libopenjp2-7-dev libosmesa6-dev libpam0g-dev libpoppler-cpp-dev \
 libpoppler-dev libpoppler-private-dev libpulse-dev libraw-dev \
 librsvg2-dev libsdl1.2-dev libscim-dev libsndfile1-dev libspectre-dev \
 libssl-dev libsystemd-dev libtiff5-dev libtool libudev-dev libudisks2-dev \
