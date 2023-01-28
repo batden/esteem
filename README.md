@@ -1,6 +1,6 @@
 # esteem
 
-**A neat Bash script to build and install Enlightenment on Ubuntu.** :full_moon:
+**A neat Bash script to build and install the Enlightenment ecosystem on Ubuntu.** :full_moon:
 
 Please take a look at the comments in the script before running it.
 
