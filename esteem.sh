@@ -407,18 +407,20 @@ rebuild_plain() {
     $SNIN
     sudo ldconfig
 
-    for I in $PROG_AT; do
-      cd $ESRC/e26/$I
-      printf "\n$BLD%s $OFF%s\n\n" "Updating $I..."
-      git reset --hard &>/dev/null
-      $REBASEF && git pull
-      make clean &>/dev/null
-      $AUTGN
-      make
-      beep_attention
-      $SMIL
-    done
+    elap_stop
+  done
 
+  for I in $PROG_AT; do
+    elap_start
+    cd $ESRC/e26/$I
+    printf "\n$BLD%s $OFF%s\n\n" "Updating $I..."
+    git reset --hard &>/dev/null
+    $REBASEF && git pull
+    make clean &>/dev/null
+    $AUTGN
+    make
+    beep_attention
+    $SMIL
     elap_stop
   done
 }
@@ -499,21 +501,24 @@ rebuild_optim() {
       ;;
     esac
 
+    beep_attention
     $SNIN
     sudo ldconfig
 
-    for I in $PROG_AT; do
-      cd $ESRC/e26/$I
-      printf "\n$BLD%s $OFF%s\n\n" "Updating $I..."
-      git reset --hard &>/dev/null
-      $REBASEF && git pull
-      make clean &>/dev/null
-      ./configure CFLAGS="-O3 -ffast-math -march=native"
-      make
-      beep_attention
-      $SMIL
-    done
+    elap_stop
+  done
 
+  for I in $PROG_AT; do
+    elap_start
+    cd $ESRC/e26/$I
+    printf "\n$BLD%s $OFF%s\n\n" "Updating $I..."
+    git reset --hard &>/dev/null
+    $REBASEF && git pull
+    make clean &>/dev/null
+    ./configure CFLAGS="-O3 -ffast-math -march=native"
+    make
+    beep_attention
+    $SMIL
     elap_stop
   done
 }
@@ -596,21 +601,24 @@ rebuild_wld() {
       ;;
     esac
 
+    beep_attention
     $SNIN
     sudo ldconfig
 
-    for I in $PROG_AT; do
-      cd $ESRC/e26/$I
-      printf "\n$BLD%s $OFF%s\n\n" "Updating $I..."
-      git reset --hard &>/dev/null
-      $REBASEF && git pull
-      make clean &>/dev/null
-      ./configure CFLAGS="-O3 -ffast-math -march=native"
-      make
-      beep_attention
-      $SMIL
-    done
+    elap_stop
+  done
 
+  for I in $PROG_AT; do
+    elap_start
+    cd $ESRC/e26/$I
+    printf "\n$BLD%s $OFF%s\n\n" "Updating $I..."
+    git reset --hard &>/dev/null
+    $REBASEF && git pull
+    make clean &>/dev/null
+    ./configure CFLAGS="-O3 -ffast-math -march=native"
+    make
+    beep_attention
+    $SMIL
     elap_stop
   done
 }
@@ -751,7 +759,7 @@ do_lnk() {
 chk_efte() {
   if [ ! -d $ESRC/e26/eflete ]; then
     cd $ESRC/e26
-    printf "\n$BLD%s $OFF%s\n" "Add Eflete application..."
+    printf "\n$BLD%s $OFF%s\n" "Add Eflete application to the ecosystem..."
     sleep 1
     $CLONETE
     cd $ESRC/e26/eflete
@@ -764,7 +772,7 @@ chk_efte() {
 chk_fcst() {
   if [ ! -d $ESRC/e26/enlightenment-module-forecasts ]; then
     cd $ESRC/e26
-    printf "\n$BLD%s $OFF%s\n" "Add Forecasts module..."
+    printf "\n$BLD%s $OFF%s\n" "Add Forecasts module to the ecosystem..."
     sleep 1
     $CLONEFT
     cd $ESRC/e26/enlightenment-module-forecasts
