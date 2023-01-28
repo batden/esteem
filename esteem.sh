@@ -255,10 +255,10 @@ e_tokens() {
     beep_question
     read -t 12 -p "Do you want to back up your Enlightenment settings now? [y/N] " answer
     case $answer in
-    [yY])
+    y | Y)
       e_bkp
       ;;
-    [nN])
+    n | N)
       printf "\n$ITA%s $OFF%s\n\n" "(no backup made... OK)"
       ;;
     *)
