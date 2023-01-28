@@ -413,6 +413,7 @@ rebuild_plain() {
 
   for I in $PROG_AT; do
     elap_start
+
     cd $ESRC/e26/$I
     printf "\n$BLD%s $OFF%s\n\n" "Updating $I..."
     git reset --hard &>/dev/null
@@ -422,6 +423,7 @@ rebuild_plain() {
     make
     beep_attention
     $SMIL
+
     elap_stop
   done
 }
@@ -511,6 +513,7 @@ rebuild_optim() {
 
   for I in $PROG_AT; do
     elap_start
+
     cd $ESRC/e26/$I
     printf "\n$BLD%s $OFF%s\n\n" "Updating $I..."
     git reset --hard &>/dev/null
@@ -520,6 +523,7 @@ rebuild_optim() {
     make
     beep_attention
     $SMIL
+
     elap_stop
   done
 }
@@ -611,6 +615,7 @@ rebuild_wld() {
 
   for I in $PROG_AT; do
     elap_start
+
     cd $ESRC/e26/$I
     printf "\n$BLD%s $OFF%s\n\n" "Updating $I..."
     git reset --hard &>/dev/null
@@ -620,6 +625,7 @@ rebuild_wld() {
     make
     beep_attention
     $SMIL
+
     elap_stop
   done
 }
