@@ -56,6 +56,7 @@ DLDIR=$(xdg-user-dir DOWNLOAD)
 DOCDIR=$(xdg-user-dir DOCUMENTS)
 SCRFLR=$HOME/.esteem
 REBASEF="git config pull.rebase false"
+CONFG="./configure --prefix=$PREFIX"
 AUTGN="./autogen.sh --prefix=$PREFIX"
 SNIN="sudo ninja -C build install"
 SMIL="sudo make install"
@@ -515,7 +516,7 @@ rebuild_optim() {
     git reset --hard &>/dev/null
     $REBASEF && git pull
     make clean &>/dev/null
-    ./configure CFLAGS="-O3 -ffast-math -march=native"
+    $CONFG CFLAGS="-O3 -ffast-math -march=native"
     make
     beep_attention
     $SMIL
@@ -615,7 +616,7 @@ rebuild_wld() {
     git reset --hard &>/dev/null
     $REBASEF && git pull
     make clean &>/dev/null
-    ./configure CFLAGS="-O3 -ffast-math -march=native"
+    $CONFG CFLAGS="-O3 -ffast-math -march=native"
     make
     beep_attention
     $SMIL
