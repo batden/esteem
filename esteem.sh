@@ -826,7 +826,7 @@ install_now() {
   $CLONENT
   echo
   $CLONEFT
-  printf "\n\n$BLD%s $OFF%s\n\n" "Fetching source code from Dimmus git repository..."
+  printf "\n\n$BLD%s $OFF%s\n\n" "Fetching source code from Dimmus' git repository..."
   $CLONETE
   echo
 
