@@ -742,6 +742,7 @@ get_preq() {
     $AUTGN
     make
     $SMIL
+    sudo ldconfig
     rm -rf $DLDIR/v$DDTL.tar.gz
     echo
   else
@@ -767,25 +768,22 @@ do_lnk() {
 }
 
 chk_ddcl() {
-  if [ $DISTRO == jammy ] || [ $DISTRO == kinetic ]; then
-    if [ -d $ESRC/e26/ddcutil-1.3.0 ]; then
-      printf "\n$BLD%s $OFF%s\n" "Updating ddcutil..."
-      cd $ESRC/e26/ddcutil-1.3.0
-      sudo make uninstall &>/dev/null
-      cd ..
-      rm -rf $ESRC/e26/ddcutil-1.3.0
-      cd $DLDIR
-      wget -c https://github.com/rockowitz/ddcutil/archive/refs/tags/v$DDTL.tar.gz
-      tar xzvf v$DDTL.tar.gz -C $ESRC
-      cd $ESRC/ddcutil-$DDTL
-      $AUTGN
-      make
-      sudo make install
-      sudo ldconfig
-      cd ..
-      rm -rf $DLDIR/v$DDTL.tar.gz
-      echo
-    fi
+  if [ $DISTRO == jammy ] || [ $DISTRO == kinetic ] && [ -d $ESRC/e26/ddcutil-1.3.0 ]; then
+    printf "\n$BLD%s $OFF%s\n" "Updating ddcutil..."
+    cd $ESRC/e26/ddcutil-1.3.0
+    sudo make uninstall &>/dev/null
+    cd ..
+    rm -rf $ESRC/e26/ddcutil-1.3.0
+    cd $DLDIR
+    wget -c https://github.com/rockowitz/ddcutil/archive/refs/tags/v$DDTL.tar.gz
+    tar xzvf v$DDTL.tar.gz -C $ESRC
+    cd $ESRC/ddcutil-$DDTL
+    $AUTGN
+    make
+    $SMIL
+    sudo ldconfig
+    rm -rf $DLDIR/v$DDTL.tar.gz
+    echo
   fi
 }
 
