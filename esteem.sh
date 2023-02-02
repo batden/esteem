@@ -770,6 +770,7 @@ do_lnk() {
 chk_ddcl() {
   if [ $DISTRO == jammy ] || [ $DISTRO == kinetic ] && [ -d $ESRC/e26/ddcutil-1.3.0 ]; then
     printf "\n$BLD%s $OFF%s\n" "Updating ddcutil..."
+    sleep 1
     cd $ESRC/e26/ddcutil-1.3.0
     sudo make uninstall &>/dev/null
     cd ..
