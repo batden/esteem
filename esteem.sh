@@ -768,13 +768,12 @@ do_lnk() {
 }
 
 chk_ddcl() {
-  if [ $DISTRO == jammy ] || [ $DISTRO == kinetic ] && [ -d $ESRC/e26/ddcutil-1.3.0 ]; then
+  if [ $DISTRO == jammy ] || [ $DISTRO == kinetic ] && [ -d $ESRC/ddcutil-1.3.0 ]; then
     printf "\n$BLD%s $OFF%s\n" "Updating ddcutil..."
     sleep 1
-    cd $ESRC/e26/ddcutil-1.3.0
+    cd $ESRC/ddcutil-1.3.0
     sudo make uninstall &>/dev/null
-    cd ..
-    rm -rf $ESRC/e26/ddcutil-1.3.0
+    cd .. && rm -rf $ESRC/ddcutil-1.3.0
     cd $DLDIR
     wget -c https://github.com/rockowitz/ddcutil/archive/refs/tags/v$DDTL.tar.gz
     tar xzvf v$DDTL.tar.gz -C $ESRC
