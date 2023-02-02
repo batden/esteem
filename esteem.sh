@@ -61,7 +61,7 @@ AUTGN="./autogen.sh --prefix=$PREFIX"
 SNIN="sudo ninja -C build install"
 SMIL="sudo make install"
 DISTRO=$(lsb_release -sc)
-DDTL=1.3.0
+DDTL=1.4.1
 
 # Build dependencies, recommended and script-related packages.
 DEPS="acpid arc-theme aspell bear build-essential ccache check cmake cowsay doxygen \
@@ -347,6 +347,7 @@ rebuild_plain() {
   ESRC=$(cat $HOME/.cache/ebuilds/storepath)
   bin_deps
   e_tokens
+  chk_ddcl
   chk_efte
   chk_fcst
   elap_start
@@ -432,6 +433,7 @@ rebuild_optim() {
   ESRC=$(cat $HOME/.cache/ebuilds/storepath)
   bin_deps
   e_tokens
+  chk_ddcl
   chk_efte
   chk_fcst
   elap_start
@@ -538,6 +540,7 @@ rebuild_wld() {
   ESRC=$(cat $HOME/.cache/ebuilds/storepath)
   bin_deps
   e_tokens
+  chk_ddcl
   chk_efte
   chk_fcst
   elap_start
@@ -761,6 +764,29 @@ do_lnk() {
   sudo ln -sf /usr/local/etc/enlightenment/sysactions.conf /etc/enlightenment/sysactions.conf
   sudo ln -sf /usr/local/etc/enlightenment/system.conf /etc/enlightenment/system.conf
   sudo ln -sf /usr/local/etc/xdg/menus/e-applications.menu /etc/xdg/menus/e-applications.menu
+}
+
+chk_ddcl() {
+  if [ $DISTRO == jammy ] || [ $DISTRO == kinetic ]; then
+    if [ -d $ESRC/e26/ddcutil-1.3.0 ]; then
+      printf "\n$BLD%s $OFF%s\n" "Updating ddcutil..."
+      cd $ESRC/e26/ddcutil-1.3.0
+      sudo make uninstall &>/dev/null
+      cd ..
+      rm -rf $ESRC/e26/ddcutil-1.3.0
+      cd $DLDIR
+      wget -c https://github.com/rockowitz/ddcutil/archive/refs/tags/v$DDTL.tar.gz
+      tar xzvf v$DDTL.tar.gz -C $ESRC
+      cd $ESRC/ddcutil-$DDTL
+      $AUTGN
+      make
+      sudo make install
+      sudo ldconfig
+      cd ..
+      rm -rf $DLDIR/v$DDTL.tar.gz
+      echo
+    fi
+  fi
 }
 
 chk_efte() {
