@@ -317,7 +317,7 @@ build_plain() {
       ;;
     edi)
       if [ $DISTRO == lunar ]; then
-        printf "\n$BDY%s $OFF%s\n\n" "SKIP COMPILATION OF EDI FOR NOW."
+        printf "\n$BDY%s $OFF%s\n\n" "LUNAR NO LONGER PROVIDES THE LIBCLANG VERSION EDI IS EXPECTING."
         sleep 1
       else
         meson -Dlibclang-headerdir=/usr/lib/llvm-11/include \
@@ -399,7 +399,7 @@ rebuild_plain() {
       ;;
     edi)
       if [ $DISTRO == lunar ]; then
-        printf "\n$BDY%s $OFF%s\n\n" "SKIP COMPILATION OF EDI FOR NOW."
+        printf "\n$BDY%s $OFF%s\n\n" "LUNAR NO LONGER PROVIDES THE LIBCLANG VERSION EDI IS EXPECTING."
         sleep 1
       else
         meson -Dlibclang-headerdir=/usr/lib/llvm-11/include \
@@ -501,7 +501,7 @@ rebuild_optim() {
       ;;
     edi)
       if [ $DISTRO == lunar ]; then
-        printf "\n$BDY%s $OFF%s\n\n" "SKIP COMPILATION OF EDI FOR NOW."
+        printf "\n$BDY%s $OFF%s\n\n" "LUNAR NO LONGER PROVIDES THE LIBCLANG VERSION EDI IS EXPECTING."
         sleep 1
       else
         sudo chown $USER build/.ninja*
@@ -609,7 +609,7 @@ rebuild_wld() {
       ;;
     edi)
       if [ $DISTRO == lunar ]; then
-        printf "\n$BDY%s $OFF%s\n\n" "SKIP COMPILATION OF EDI FOR NOW."
+        printf "\n$BDY%s $OFF%s\n\n" "LUNAR NO LONGER PROVIDES THE LIBCLANG VERSION EDI IS EXPECTING."
         sleep 1
       else
         sudo chown $USER build/.ninja*
