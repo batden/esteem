@@ -316,10 +316,15 @@ build_plain() {
       ninja -C build || mng_err
       ;;
     edi)
-      meson -Dlibclang-headerdir=/usr/lib/llvm-11/include \
-        -Dlibclang-libdir=/usr/lib/llvm-11/lib \
-        build
-      ninja -C build
+      if [ $DISTRO == lunar ]; then
+        printf "\n$BDY%s $OFF%s\n\n" "SKIP COMPILATION OF EDI FOR NOW."
+        sleep 1
+      else
+        meson -Dlibclang-headerdir=/usr/lib/llvm-11/include \
+          -Dlibclang-libdir=/usr/lib/llvm-11/lib \
+          build
+        ninja -C build
+      fi
       ;;
     *)
       meson build
@@ -393,10 +398,15 @@ rebuild_plain() {
       ninja -C build || mng_err
       ;;
     edi)
-      meson -Dlibclang-headerdir=/usr/lib/llvm-11/include \
-        -Dlibclang-libdir=/usr/lib/llvm-11/lib \
-        build
-      ninja -C build
+      if [ $DISTRO == lunar ]; then
+        printf "\n$BDY%s $OFF%s\n\n" "SKIP COMPILATION OF EDI FOR NOW."
+        sleep 1
+      else
+        meson -Dlibclang-headerdir=/usr/lib/llvm-11/include \
+          -Dlibclang-libdir=/usr/lib/llvm-11/lib \
+          build
+        ninja -C build
+      fi
       ;;
     *)
       meson build
@@ -490,12 +500,17 @@ rebuild_optim() {
       ninja -C build || mng_err
       ;;
     edi)
-      sudo chown $USER build/.ninja*
-      meson --reconfigure -Dlibclang-headerdir=/usr/lib/llvm-11/include \
-        -Dlibclang-libdir=/usr/lib/llvm-11/lib \
-        -Dbuildtype=release \
-        build
-      ninja -C build
+      if [ $DISTRO == lunar ]; then
+        printf "\n$BDY%s $OFF%s\n\n" "SKIP COMPILATION OF EDI FOR NOW."
+        sleep 1
+      else
+        sudo chown $USER build/.ninja*
+        meson --reconfigure -Dlibclang-headerdir=/usr/lib/llvm-11/include \
+          -Dlibclang-libdir=/usr/lib/llvm-11/lib \
+          -Dbuildtype=release \
+          build
+        ninja -C build
+      fi
       ;;
     *)
       sudo chown $USER build/.ninja*
@@ -593,12 +608,17 @@ rebuild_wld() {
       ninja -C build || mng_err
       ;;
     edi)
-      sudo chown $USER build/.ninja*
-      meson --reconfigure -Dlibclang-headerdir=/usr/lib/llvm-11/include \
-        -Dlibclang-libdir=/usr/lib/llvm-11/lib \
-        -Dbuildtype=release \
-        build
-      ninja -C build
+      if [ $DISTRO == lunar ]; then
+        printf "\n$BDY%s $OFF%s\n\n" "SKIP COMPILATION OF EDI FOR NOW."
+        sleep 1
+      else
+        sudo chown $USER build/.ninja*
+        meson --reconfigure -Dlibclang-headerdir=/usr/lib/llvm-11/include \
+          -Dlibclang-libdir=/usr/lib/llvm-11/lib \
+          -Dbuildtype=release \
+          build
+        ninja -C build
+      fi
       ;;
     *)
       sudo chown $USER build/.ninja*
