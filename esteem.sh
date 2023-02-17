@@ -321,15 +321,10 @@ build_plain() {
       # https://gist.github.com/batden/99a7ebdd5ba9d9e83b2446ab5f05f3dc
       #
     edi)
-      if [ $DISTRO == lunar ]; then
-        printf "\n$BDY%s $OFF%s\n\n" "LUNAR NO LONGER PROVIDES THE LIBCLANG VERSION EDI IS EXPECTING."
-        sleep 1
-      else
-        meson -Dlibclang-headerdir=/usr/lib/llvm-11/include \
-          -Dlibclang-libdir=/usr/lib/llvm-11/lib \
-          build
-        ninja -C build
-      fi
+      meson -Dlibclang-headerdir=/usr/lib/llvm-11/include \
+        -Dlibclang-libdir=/usr/lib/llvm-11/lib \
+        build
+      ninja -C build
       ;;
     *)
       meson build
@@ -403,15 +398,10 @@ rebuild_plain() {
       ninja -C build || mng_err
       ;;
     edi)
-      if [ $DISTRO == lunar ]; then
-        printf "\n$BDY%s $OFF%s\n\n" "LUNAR NO LONGER PROVIDES THE LIBCLANG VERSION EDI IS EXPECTING."
-        sleep 1
-      else
-        meson -Dlibclang-headerdir=/usr/lib/llvm-11/include \
-          -Dlibclang-libdir=/usr/lib/llvm-11/lib \
-          build
-        ninja -C build
-      fi
+      meson -Dlibclang-headerdir=/usr/lib/llvm-11/include \
+        -Dlibclang-libdir=/usr/lib/llvm-11/lib \
+        build
+      ninja -C build
       ;;
     *)
       meson build
@@ -505,17 +495,13 @@ rebuild_optim() {
       ninja -C build || mng_err
       ;;
     edi)
-      if [ $DISTRO == lunar ]; then
-        printf "\n$BDY%s $OFF%s\n\n" "LUNAR NO LONGER PROVIDES THE LIBCLANG VERSION EDI IS EXPECTING."
-        sleep 1
       else
-        sudo chown $USER build/.ninja*
-        meson --reconfigure -Dlibclang-headerdir=/usr/lib/llvm-11/include \
-          -Dlibclang-libdir=/usr/lib/llvm-11/lib \
-          -Dbuildtype=release \
-          build
-        ninja -C build
-      fi
+      sudo chown $USER build/.ninja*
+      meson --reconfigure -Dlibclang-headerdir=/usr/lib/llvm-11/include \
+        -Dlibclang-libdir=/usr/lib/llvm-11/lib \
+        -Dbuildtype=release \
+        build
+      ninja -C build
       ;;
     *)
       sudo chown $USER build/.ninja*
@@ -613,17 +599,12 @@ rebuild_wld() {
       ninja -C build || mng_err
       ;;
     edi)
-      if [ $DISTRO == lunar ]; then
-        printf "\n$BDY%s $OFF%s\n\n" "LUNAR NO LONGER PROVIDES THE LIBCLANG VERSION EDI IS EXPECTING."
-        sleep 1
-      else
-        sudo chown $USER build/.ninja*
-        meson --reconfigure -Dlibclang-headerdir=/usr/lib/llvm-11/include \
-          -Dlibclang-libdir=/usr/lib/llvm-11/lib \
-          -Dbuildtype=release \
-          build
-        ninja -C build
-      fi
+      sudo chown $USER build/.ninja*
+      meson --reconfigure -Dlibclang-headerdir=/usr/lib/llvm-11/include \
+        -Dlibclang-libdir=/usr/lib/llvm-11/lib \
+        -Dbuildtype=release \
+        build
+      ninja -C build
       ;;
     *)
       sudo chown $USER build/.ninja*
