@@ -397,6 +397,11 @@ rebuild_plain() {
       meson build
       ninja -C build || mng_err
       ;;
+      # Ubuntu lunar:
+      # If you want edi to compile, you'll need to install the packages
+      # listed in the link below before running the script:
+      # https://gist.github.com/batden/99a7ebdd5ba9d9e83b2446ab5f05f3dc
+      #
     edi)
       if [ $DISTRO == lunar ]; then
         printf "\n$BDY%s $OFF%s\n\n" "LUNAR NO LONGER PROVIDES THE LIBCLANG VERSION EDI IS EXPECTING."
