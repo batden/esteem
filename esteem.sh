@@ -280,7 +280,7 @@ rstrt_e() {
   fi
 }
 
-# Ubuntu jammy/kinetic:
+# UBUNTU JAMMY/KINETIC:
 # JPEG XL currently has to be compiled from source. If you need jxl
 # support in efl, follow the instructions below:
 # https://gist.github.com/batden/0f45f8b8578ec70ee911b920b6eacd39
@@ -315,7 +315,7 @@ build_plain() {
       meson build
       ninja -C build || mng_err
       ;;
-      # Ubuntu lunar:
+      # UBUNTU LUNAR:
       # If you want edi to compile, you'll need to install the packages
       # listed in the link below before running the script:
       # https://gist.github.com/batden/99a7ebdd5ba9d9e83b2446ab5f05f3dc
