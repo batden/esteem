@@ -783,7 +783,7 @@ chk_ddcl() {
     sudo make uninstall &>/dev/null
     cd .. && rm -rf $ESRC/ddcutil-1.3.0
     cd $DLDIR
-    wget -c https://github.com/rockowitz/ddcutil/archive/refs/tags/v$DDTL.tar.gz
+    wget https://github.com/rockowitz/ddcutil/archive/refs/tags/v$DDTL.tar.gz
     tar xzvf v$DDTL.tar.gz -C $ESRC
     cd $ESRC/ddcutil-$DDTL
     $AUTGN
