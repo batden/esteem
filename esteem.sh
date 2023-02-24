@@ -300,19 +300,19 @@ build_plain() {
     case $I in
     efl)
       if [ $DISTRO == lunar ]; then
-        meson -Dbuild-tests=false -Dlua-interpreter=lua -Devas-loaders-disabler= \
-          -Dbindings= \
+        meson -Dbuildtype=plain -Dbuild-tests=false -Dlua-interpreter=lua \
+          -Devas-loaders-disabler= \
           build
         ninja -C build || mng_err
       else
-        meson -Dbuild-tests=false -Dlua-interpreter=lua -Devas-loaders-disabler=jxl \
-          -Dbindings= \
+        meson -Dbuildtype=plain -Dbuild-tests=false -Dlua-interpreter=lua \
+          -Devas-loaders-disabler=jxl \
           build
         ninja -C build || mng_err
       fi
       ;;
     enlightenment)
-      meson build
+      meson -Dbuildtype=plain build
       ninja -C build || mng_err
       ;;
       # UBUNTU LUNAR:
@@ -321,13 +321,13 @@ build_plain() {
       # https://gist.github.com/batden/99a7ebdd5ba9d9e83b2446ab5f05f3dc
       #
     edi)
-      meson -Dlibclang-headerdir=/usr/lib/llvm-11/include \
+      meson -Dbuildtype=plain -Dlibclang-headerdir=/usr/lib/llvm-11/include \
         -Dlibclang-libdir=/usr/lib/llvm-11/lib \
         build
       ninja -C build
       ;;
     *)
-      meson build
+      meson -Dbuildtype=plain build
       ninja -C build
       ;;
     esac
@@ -376,35 +376,35 @@ rebuild_plain() {
     printf "\n$BLD%s $OFF%s\n\n" "Updating $I..."
     git reset --hard &>/dev/null
     $REBASEF && git pull
-    rm -rf build
+    sudo rm -rf build
     echo
 
     case $I in
     efl)
       if [ $DISTRO == lunar ]; then
-        meson -Dbuild-tests=false -Dlua-interpreter=lua -Devas-loaders-disabler= \
-          -Dbindings= \
+        meson -Dbuildtype=plain -Dbuild-tests=false -Dlua-interpreter=lua \
+          -Devas-loaders-disabler= \
           build
         ninja -C build || mng_err
       else
-        meson -Dbuild-tests=false -Dlua-interpreter=lua -Devas-loaders-disabler=jxl \
-          -Dbindings= \
+        meson -Dbuildtype=plain -Dbuild-tests=false -Dlua-interpreter=lua \
+          -Devas-loaders-disabler=jxl \
           build
         ninja -C build || mng_err
       fi
       ;;
     enlightenment)
-      meson build
+      meson -Dbuildtype=plain build
       ninja -C build || mng_err
       ;;
     edi)
-      meson -Dlibclang-headerdir=/usr/lib/llvm-11/include \
+      meson -Dbuildtype=plain -Dlibclang-headerdir=/usr/lib/llvm-11/include \
         -Dlibclang-libdir=/usr/lib/llvm-11/lib \
         build
       ninja -C build
       ;;
     *)
-      meson build
+      meson -Dbuildtype=plain build
       ninja -C build
       ;;
     esac
