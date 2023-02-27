@@ -3,7 +3,7 @@
 # This Bash script allows you to easily and safely install Enlightenment, along with
 # other EFL-based applications, on your K/X/Ubuntu desktop system.
 
-# Supported Ubuntu versions: 22.04 LTS, 22.10 and 23.04 (development branch).
+# Supported Ubuntu distributions: Jammy Jellyfish, kinetic Kudu, Lunar Lobster.
 
 # ESTEEM takes care of downloading, configuring and building everything you
 # need to enjoy the very latest version of the Enlightenment environment
