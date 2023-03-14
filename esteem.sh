@@ -304,7 +304,7 @@ build_plain() {
           -Devas-loaders-disabler=
         ninja -C build || mng_err
       else
-        meson seutp build -Dbuildtype=plain \
+        meson setup build -Dbuildtype=plain \
           -Dbuild-tests=false \
           -Dlua-interpreter=lua \
           -Devas-loaders-disabler=jxl
