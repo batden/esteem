@@ -395,8 +395,8 @@ rebuild_optim() {
           -Devas-loaders-disabler= \
           -Ddrm=true \
           -Dbuild-tests=false \
-          -Dwl=false \
-          ninja -C build || mng_err
+          -Dwl=false
+        ninja -C build || mng_err
       else
         sudo chown $USER build/.ninja*
         meson --reconfigure build -Dbuildtype=release \
@@ -408,8 +408,8 @@ rebuild_optim() {
           -Devas-loaders-disabler=jxl \
           -Ddrm=true \
           -Dbuild-tests=false \
-          -Dwl=false \
-          ninja -C build || mng_err
+          -Dwl=false
+        ninja -C build || mng_err
       fi
       ;;
     enlightenment)
@@ -523,8 +523,8 @@ rebuild_wld() {
           -Ddrm=true \
           -Dwl=true \
           -Dopengl=es-egl \
-          -Dbuild-tests=false \
-          ninja -C build || mng_err
+          -Dbuild-tests=false
+        ninja -C build || mng_err
       fi
       ;;
     enlightenment)
