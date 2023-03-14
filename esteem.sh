@@ -399,7 +399,7 @@ rebuild_optim() {
         ninja -C build || mng_err
       else
         sudo chown $USER build/.ninja*
-        meson seutp --reconfigure build -Dbuildtype=release \
+        meson setup --reconfigure build -Dbuildtype=release \
           -Dnative-arch-optimization=true \
           -Dharfbuzz=true \
           -Dlua-interpreter=lua \
@@ -477,7 +477,7 @@ rebuild_wld() {
   $REBASEF && git pull
   echo
   sudo chown $USER build/.ninja*
-  meson --reconfigure build -Dbuildtype=release \
+  meson setup --reconfigure build -Dbuildtype=release \
     -Dexample=false
   ninja -C build
   $SNIN
