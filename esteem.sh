@@ -388,8 +388,8 @@ rebuild_optim() {
       if [ $DISTRO == lunar ]; then
         sudo chown $USER build/.ninja*
         meson setup --reconfigure build -Dbuildtype=release \
-          -Dfb=true \
           -Dnative-arch-optimization=true \
+          -Dfb=true \
           -Dharfbuzz=true \
           -Dlua-interpreter=lua \
           -Delua=true \
@@ -402,8 +402,8 @@ rebuild_optim() {
       else
         sudo chown $USER build/.ninja*
         meson setup --reconfigure build -Dbuildtype=release \
-          -Dfb=true \
           -Dnative-arch-optimization=true \
+          -Dfb=true \
           -Dharfbuzz=true \
           -Dlua-interpreter=lua \
           -Delua=true \
@@ -501,8 +501,8 @@ rebuild_wld() {
       if [ $DISTRO == lunar ]; then
         sudo chown $USER build/.ninja*
         meson setup --reconfigure build -Dbuildtype=release \
-          -Dfb=true \
           -Dnative-arch-optimization=true \
+          -Dfb=true \
           -Dharfbuzz=true \
           -Dlua-interpreter=lua \
           -Delua=true \
@@ -516,8 +516,8 @@ rebuild_wld() {
       else
         sudo chown $USER build/.ninja*
         meson setup --reconfigure build -Dbuildtype=release \
-          -Dfb=true \
           -Dnative-arch-optimization=true \
+          -Dfb=true \
           -Dharfbuzz=true \
           -Dlua-interpreter=lua \
           -Delua=true \
