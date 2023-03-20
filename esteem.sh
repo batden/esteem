@@ -306,6 +306,7 @@ build_plain() {
         ninja -C build || mng_err
       else
         meson setup build -Dbuildtype=plain \
+          -Dfb=true \
           -Dbuild-tests=false \
           -Dlua-interpreter=lua \
           -Devas-loaders-disabler=jxl
