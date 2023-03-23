@@ -234,10 +234,6 @@ p_bkp() {
     rm /tmp/apt-avail
     dpkg --get-selections >$DOCDIR/pbackups/installed_pkgs.log
 
-    # Backup list of manually installed DEB packages.
-    echo $(comm -23 <(apt-mark showmanual | sort -u) <(gzip -dc /var/log/installer/initial-status.gz |
-      sed -n 's/^Package: //p' | sort -u)) >$DOCDIR/pbackups/manually_installed_pkgs.txt
-
     # Backup list of available repositories.
     grep -Erh ^deb /etc/apt/sources.list* >$DOCDIR/pbackups/available_repos.txt
 
