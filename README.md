@@ -1,6 +1,6 @@
 # esteem
 
-### Bash script to build/install/update the Enlightenment ecosystem on Ubuntu
+A neat Bash script to build/install/update the Enlightenment ecosystem on Ubuntu.
 
 Please take a look at the comments in the script before running it.
 
