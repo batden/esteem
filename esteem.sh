@@ -4,6 +4,7 @@
 # other EFL-based applications, on your K/X/Ubuntu desktop system.
 
 # Supported Ubuntu distributions: kinetic Kudu, Lunar Lobster, Mantic Minotaur.
+# Running Jammy Jellyfish? See https://github.com/batden/elluminate
 
 # ESTEEM takes care of downloading, configuring and building everything you
 # need to enjoy the very latest version of the Enlightenment environment
