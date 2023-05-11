@@ -3,7 +3,7 @@
 # This Bash script allows you to easily and safely install Enlightenment, along with
 # other EFL-based applications, on your K/X/Ubuntu desktop system.
 
-# Supported Ubuntu distributions: Jammy Jellyfish, kinetic Kudu, Lunar Lobster.
+# Supported Ubuntu distributions: kinetic Kudu, Lunar Lobster, Mantic Minotaur.
 
 # ESTEEM takes care of downloading, configuring and building everything you
 # need to enjoy the very latest version of the Enlightenment environment
@@ -275,7 +275,7 @@ rstrt_e() {
   fi
 }
 
-# UBUNTU JAMMY/KINETIC:
+# UBUNTU KINETIC:
 # JPEG XL currently has to be compiled from source. If you need jxl
 # support in efl, follow the instructions below:
 # https://gist.github.com/batden/0f45f8b8578ec70ee911b920b6eacd39
@@ -294,7 +294,7 @@ build_plain() {
 
     case $I in
     efl)
-      if [ $DISTRO == lunar ]; then
+      if [ $DISTRO == lunar ] || [ $DISTRO == mantic ]; then
         meson setup build -Dbuildtype=plain \
           -Dfb=true \
           -Dbuild-tests=false \
@@ -314,7 +314,7 @@ build_plain() {
       meson setup build -Dbuildtype=plain
       ninja -C build || mng_err
       ;;
-      # UBUNTU LUNAR:
+      # UBUNTU LUNAR/MANTIC:
       # If you want edi to compile, you'll need to install the packages
       # listed in the link below before running the script:
       # https://gist.github.com/batden/99a7ebdd5ba9d9e83b2446ab5f05f3dc
@@ -381,7 +381,7 @@ rebuild_optim() {
     # See also https://www.enlightenment.org/docs/distros/nvidia-start.md
     #
     efl)
-      if [ $DISTRO == lunar ]; then
+      if [ $DISTRO == lunar ] || [ $DISTRO == mantic ]; then
         sudo chown $USER build/.ninja*
         meson setup --reconfigure build -Dbuildtype=release \
           -Dnative-arch-optimization=true \
@@ -492,7 +492,7 @@ rebuild_wld() {
 
     case $I in
     efl)
-      if [ $DISTRO == lunar ]; then
+      if [ $DISTRO == lunar ] || [ $DISTRO == mantic ]; then
         sudo chown $USER build/.ninja*
         meson setup --reconfigure build -Dbuildtype=release \
           -Dnative-arch-optimization=true \
@@ -584,7 +584,7 @@ do_tests() {
     exit 1
   fi
 
-  if [ $DISTRO == jammy ] || [ $DISTRO == kinetic ] || [ $DISTRO == lunar ]; then
+  if [ $DISTRO == kinetic ] || [ $DISTRO == lunar ] || [ $DISTRO == mantic ]; then
     printf "\n$BDG%s $OFF%s\n\n" "Ubuntu ${DISTRO^}... OK"
     sleep 1
   else
@@ -671,7 +671,7 @@ get_preq() {
   ESRC=$(cat $HOME/.cache/ebuilds/storepath)
   printf "\n\n$BLD%s $OFF%s\n\n" "Installing prerequisites..."
 
-  if [ $DISTRO == jammy ] || [ $DISTRO == kinetic ]; then
+  if [ $DISTRO == kinetic ]; then
     cd $DLDIR
     wget https://github.com/rockowitz/ddcutil/archive/refs/tags/v$DDTL.tar.gz
     tar xzvf v$DDTL.tar.gz -C $ESRC
@@ -707,7 +707,7 @@ do_lnk() {
 }
 
 chk_ddcl() {
-  if [ $DISTRO == jammy ] || [ $DISTRO == kinetic ] && [ -d $ESRC/ddcutil-1.3.0 ]; then
+  if [ $DISTRO == kinetic ] && [ -d $ESRC/ddcutil-1.3.0 ]; then
     printf "\n$BLD%s $OFF%s\n" "Updating ddcutil..."
     sleep 1
     cd $ESRC/ddcutil-1.3.0
