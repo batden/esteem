@@ -66,14 +66,14 @@ DISTRO=$(lsb_release -sc)
 DDTL=1.4.1
 
 # Build dependencies, recommended and script-related packages.
-DEPS="acpid arc-theme aspell bear build-essential ccache check cmake cowsay doxygen \
+DEPS="acpid arc-theme aspell build-essential ccache check cmake cowsay doxygen \
 fonts-noto freeglut3-dev graphviz gstreamer1.0-libav gstreamer1.0-plugins-bad \
 gstreamer1.0-plugins-good gstreamer1.0-plugins-ugly imagemagick libaom-dev \
 libasound2-dev libavahi-client-dev libavif-dev libblkid-dev libbluetooth-dev \
 libegl1-mesa-dev libexif-dev libfontconfig-dev libdrm-dev libfreetype-dev \
 libfribidi-dev libgbm-dev libgeoclue-2-dev libgif-dev libgraphviz-dev \
-libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev libharfbuzz-dev libheif-dev \
-libi2c-dev libibus-1.0-dev libinput-dev libinput-tools libjpeg-dev \
+libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev libharfbuzz-dev \
+libheif-dev libi2c-dev libibus-1.0-dev libinput-dev libinput-tools libjpeg-dev \
 libjson-c-dev libkmod-dev liblua5.2-dev liblz4-dev libmenu-cache-dev \
 libmount-dev libopenjp2-7-dev libosmesa6-dev libpam0g-dev libpoppler-cpp-dev \
 libpoppler-dev libpoppler-private-dev libpulse-dev libraw-dev \
@@ -683,7 +683,7 @@ get_preq() {
     sudo ldconfig
     rm -rf $DLDIR/v$DDTL.tar.gz
     echo
-    sudo apt install libclang-11-dev
+    sudo apt install bear libclang-11-dev
     echo
   else
     sudo apt install ddcutil libjxl-dev
