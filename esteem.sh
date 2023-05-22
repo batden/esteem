@@ -158,6 +158,24 @@ sel_menu() {
   fi
 }
 
+p_bkp() {
+  # Backup list of currently installed DEB packages.
+  if [ ! -f $DOCDIR/pbackups/installed_pkgs.log ]; then
+    mkdir -p $DOCDIR/pbackups
+
+    apt-cache dumpavail >/tmp/apt-avail
+    sudo dpkg --merge-avail /tmp/apt-avail &>/dev/null
+    rm /tmp/apt-avail
+    dpkg --get-selections >$DOCDIR/pbackups/installed_pkgs.log
+
+    # Backup list of available repositories.
+    grep -Erh ^deb /etc/apt/sources.list* >$DOCDIR/pbackups/available_repos.txt
+
+    # Backup list of currently installed snap packages.
+    snap list --all >$DOCDIR/pbackups/installed_snaps.txt
+  fi
+}
+
 bin_deps() {
   sudo apt update && sudo apt full-upgrade
 
@@ -221,24 +239,6 @@ e_bkp() {
     cp -aR $HOME/.elementary $DOCDIR/ebackups/E_$TSTAMP &&
     cp -aR $HOME/.e $DOCDIR/ebackups/E_$TSTAMP
   sleep 2
-}
-
-p_bkp() {
-  # Backup list of currently installed DEB packages.
-  if [ ! -f $DOCDIR/pbackups/installed_pkgs.log ]; then
-    mkdir -p $DOCDIR/pbackups
-
-    apt-cache dumpavail >/tmp/apt-avail
-    sudo dpkg --merge-avail /tmp/apt-avail &>/dev/null
-    rm /tmp/apt-avail
-    dpkg --get-selections >$DOCDIR/pbackups/installed_pkgs.log
-
-    # Backup list of available repositories.
-    grep -Erh ^deb /etc/apt/sources.list* >$DOCDIR/pbackups/available_repos.txt
-
-    # Backup list of currently installed snap packages.
-    snap list --all >$DOCDIR/pbackups/installed_snaps.txt
-  fi
 }
 
 e_tokens() {
@@ -726,8 +726,9 @@ chk_ddcl() {
 install_now() {
   clear
   printf "\n$BDG%s $OFF%s\n\n" "* INSTALLING ENLIGHTENMENT DESKTOP: PLAIN BUILD *"
-  beep_attention
   do_bsh_alias
+  beep_attention
+  p_bkp
   bin_deps
   set_p_src
   get_preq
@@ -779,8 +780,6 @@ install_now() {
 
   # Protect this file from accidental deletion.
   sudo chattr +i $HOME/.cache/ebuilds/storepath
-
-  p_bkp
 
   sudo updatedb
   beep_ok
