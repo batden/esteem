@@ -297,14 +297,16 @@ build_plain() {
           -Dfb=true \
           -Dbuild-tests=false \
           -Dlua-interpreter=lua \
-          -Devas-loaders-disabler=
+          -Devas-loaders-disabler= \
+          -Decore-imf-loaders-disabler=scim
         ninja -C build || mng_err
       else
         meson setup build -Dbuildtype=plain \
           -Dfb=true \
           -Dbuild-tests=false \
           -Dlua-interpreter=lua \
-          -Devas-loaders-disabler=jxl
+          -Devas-loaders-disabler=jxl \
+          -Decore-imf-loaders-disabler=scim
         ninja -C build || mng_err
       fi
       ;;
@@ -389,6 +391,7 @@ rebuild_optim() {
           -Delua=true \
           -Dbindings=lua,cxx \
           -Devas-loaders-disabler= \
+          -Decore-imf-loaders-disabler=scim \
           -Ddrm=true \
           -Dbuild-tests=false \
           -Dwl=false
@@ -403,6 +406,7 @@ rebuild_optim() {
           -Delua=true \
           -Dbindings=lua,cxx \
           -Devas-loaders-disabler=jxl \
+          -Decore-imf-loaders-disabler=scim \
           -Ddrm=true \
           -Dbuild-tests=false \
           -Dwl=false
@@ -500,6 +504,7 @@ rebuild_wld() {
           -Delua=true \
           -Dbindings=lua,cxx \
           -Devas-loaders-disabler= \
+          -Decore-imf-loaders-disabler=scim \
           -Ddrm=true \
           -Dwl=true \
           -Dopengl=es-egl \
@@ -515,6 +520,7 @@ rebuild_wld() {
           -Delua=true \
           -Dbindings=lua,cxx \
           -Devas-loaders-disabler=jxl \
+          -Decore-imf-loaders-disabler=scim \
           -Ddrm=true \
           -Dwl=true \
           -Dopengl=es-egl \
