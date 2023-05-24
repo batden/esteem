@@ -299,7 +299,7 @@ build_plain() {
           -Dlua-interpreter=lua \
           -Devas-loaders-disabler= \
           -Dglib=true \
-          -Decore-imf-loaders-disabler=scim
+          -Decore-imf-loaders-disabler=scim,xim
         ninja -C build || mng_err
       else
         meson setup build -Dbuildtype=plain \
@@ -308,7 +308,7 @@ build_plain() {
           -Dlua-interpreter=lua \
           -Devas-loaders-disabler=jxl \
           -Dglib=true \
-          -Decore-imf-loaders-disabler=scim
+          -Decore-imf-loaders-disabler=scim,xim
         ninja -C build || mng_err
       fi
       ;;
@@ -394,7 +394,7 @@ rebuild_optim() {
           -Dbindings=lua,cxx \
           -Devas-loaders-disabler= \
           -Dglib=true \
-          -Decore-imf-loaders-disabler=scim \
+          -Decore-imf-loaders-disabler=scim,xim \
           -Ddrm=true \
           -Dbuild-tests=false \
           -Dwl=false
@@ -410,7 +410,7 @@ rebuild_optim() {
           -Dbindings=lua,cxx \
           -Devas-loaders-disabler=jxl \
           -Dglib=true \
-          -Decore-imf-loaders-disabler=scim \
+          -Decore-imf-loaders-disabler=scim,xim \
           -Ddrm=true \
           -Dbuild-tests=false \
           -Dwl=false
@@ -509,7 +509,7 @@ rebuild_wld() {
           -Dbindings=lua,cxx \
           -Devas-loaders-disabler= \
           -Dglib=true \
-          -Decore-imf-loaders-disabler=scim \
+          -Decore-imf-loaders-disabler=scim,xim \
           -Ddrm=true \
           -Dwl=true \
           -Dopengl=es-egl \
@@ -526,7 +526,7 @@ rebuild_wld() {
           -Dbindings=lua,cxx \
           -Devas-loaders-disabler=jxl \
           -Dglib=true \
-          -Decore-imf-loaders-disabler=scim \
+          -Decore-imf-loaders-disabler=scim,xim \
           -Ddrm=true \
           -Dwl=true \
           -Dopengl=es-egl \
