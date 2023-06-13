@@ -306,8 +306,7 @@ build_plain() {
           -Dbuild-tests=false \
           -Dlua-interpreter=lua \
           -Devas-loaders-disabler=jxl \
-          -Dglib=true \
-          -Decore-imf-loaders-disabler=scim,xim
+          -Dglib=true
         ninja -C build || mng_err
       fi
       ;;
@@ -506,7 +505,6 @@ rebuild_wld() {
           -Dbindings=lua,cxx \
           -Devas-loaders-disabler= \
           -Dglib=true \
-          -Decore-imf-loaders-disabler=scim,xim \
           -Ddrm=true \
           -Dwl=true \
           -Dopengl=es-egl \
@@ -523,7 +521,6 @@ rebuild_wld() {
           -Dbindings=lua,cxx \
           -Devas-loaders-disabler=jxl \
           -Dglib=true \
-          -Decore-imf-loaders-disabler=scim,xim \
           -Ddrm=true \
           -Dwl=true \
           -Dopengl=es-egl \
