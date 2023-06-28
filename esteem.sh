@@ -2,7 +2,7 @@
 
 # This Bash script allows you to easily and safely install Enlightenment, along with
 # other applications based on the Enlightenment Foundation Libraries (EFL),
-# on your K/X/Ubuntu desktop system.
+# in your K/X/Ubuntu desktop system.
 
 # Supported distributions: kinetic Kudu, Lunar Lobster, Mantic Minotaur.
 # Running Jammy Jellyfish? See https://github.com/batden/elluminate
