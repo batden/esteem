@@ -362,6 +362,7 @@ rebuild_optim() {
   meson setup --reconfigure build -Dbuildtype=release \
     -Dexample=false
   ninja -C build
+  beep_attention
   $SNIN
   sudo ldconfig
 
@@ -479,6 +480,7 @@ rebuild_wld() {
   meson setup --reconfigure build -Dbuildtype=release \
     -Dexample=false
   ninja -C build
+  beep_attention
   $SNIN
   sudo ldconfig
 
