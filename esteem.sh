@@ -322,6 +322,10 @@ build_plain() {
         -Dlibclang-libdir=/usr/lib/llvm-11/lib
       ninja -C build
       ;;
+    eflete)
+      meson setup build -Dbuildtype=plain \
+        -Dwerror=false
+      ;;
     *)
       meson setup build -Dbuildtype=plain
       ninja -C build
@@ -419,7 +423,7 @@ rebuild_optim() {
     eflete)
       sudo chown $USER build/.ninja*
       meson setup --reconfigure build -Dbuildtype=release \
-        -Denable-audio=true
+        -Denable-audio=true -Dwerror=false
       ;;
     *)
       sudo chown $USER build/.ninja*
@@ -525,7 +529,7 @@ rebuild_wld() {
     eflete)
       sudo chown $USER build/.ninja*
       meson setup --reconfigure build -Dbuildtype=release \
-        -Denable-audio=true
+        -Denable-audio=true -Dwerror=false
       ;;
     *)
       sudo chown $USER build/.ninja*
