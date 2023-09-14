@@ -711,7 +711,8 @@ chk_eflt() {
     sudo make uninstall &>/dev/null
     git reset --hard &>/dev/null
     $REBASEF && git pull
-    meson setup build -Dbuildtype=plain
+    meson setup build -Dbuildtype=plain \
+      -Dwerror=false
     ninja -C build
     $SNIN
     echo
