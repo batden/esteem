@@ -323,6 +323,9 @@ build_plain() {
         -Dlibclang-libdir=/usr/lib/llvm-11/lib
       ninja -C build
       ;;
+      # UBUNTU MANTIC:
+      # For now, Eflete fails to build (bug reported).
+      #
     eflete)
       meson setup build -Dbuildtype=plain \
         -Dwerror=false
