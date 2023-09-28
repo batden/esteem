@@ -691,8 +691,7 @@ chk_ddcl() {
   if [ $DISTRO == kinetic ] && [ -d $ESRC/ddcutil-1.4.1 ]; then
     printf "\n$BLD%s $OFF%s\n" "Updating ddcutil..."
     sleep 1
-    sudo apt install libjansson-dev
-    echo
+    sudo apt install libjansson-dev &>/dev/null
     cd $ESRC/ddcutil-1.4.1
     sudo make uninstall &>/dev/null
     cd .. && rm -rf $ESRC/ddcutil-1.4.1
