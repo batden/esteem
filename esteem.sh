@@ -69,7 +69,7 @@ libasound2-dev libavahi-client-dev libavif-dev libblkid-dev libbluetooth-dev \
 libegl1-mesa-dev libexif-dev libfontconfig-dev libdrm-dev libfreetype-dev \
 libfribidi-dev libgbm-dev libgeoclue-2-dev libgif-dev libgraphviz-dev \
 libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev libharfbuzz-dev \
-libheif-dev libi2c-dev libibus-1.0-dev libinput-dev libinput-tools libjansson-dev \
+libheif-dev libi2c-dev libibus-1.0-dev libinput-dev libinput-tools \
 libjpeg-dev libjson-c-dev libkmod-dev liblua5.2-dev liblz4-dev libmenu-cache-dev \
 libmount-dev libopenjp2-7-dev libosmesa6-dev libpam0g-dev libpoppler-cpp-dev \
 libpoppler-dev libpoppler-private-dev libpulse-dev libraw-dev \
@@ -653,6 +653,8 @@ get_preq() {
   printf "\n\n$BLD%s $OFF%s\n\n" "Installing prerequisites..."
 
   if [ $DISTRO == kinetic ]; then
+    sudo apt install bear libclang-11-dev libjansson-dev
+    echo
     cd $DLDIR
     wget https://github.com/rockowitz/ddcutil/archive/refs/tags/v$DDTL.tar.gz
     tar xzvf v$DDTL.tar.gz -C $ESRC
@@ -662,8 +664,6 @@ get_preq() {
     $SMIL
     sudo ldconfig
     rm -rf $DLDIR/v$DDTL.tar.gz
-    echo
-    sudo apt install bear libclang-11-dev
     echo
   else
     sudo apt install ddcutil libjxl-dev
@@ -691,6 +691,8 @@ chk_ddcl() {
   if [ $DISTRO == kinetic ] && [ -d $ESRC/ddcutil-1.4.1 ]; then
     printf "\n$BLD%s $OFF%s\n" "Updating ddcutil..."
     sleep 1
+    sudo apt install libjansson-dev
+    echo
     cd $ESRC/ddcutil-1.4.1
     sudo make uninstall &>/dev/null
     cd .. && rm -rf $ESRC/ddcutil-1.4.1
