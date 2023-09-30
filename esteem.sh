@@ -109,7 +109,11 @@ PROG_MN="efl terminology enlightenment ephoto evisum rage express ecrire envento
 # FUNCTIONS
 # ---------
 
-# Audible feedback (error, sudo prompt...) on most systems.
+# Audible feedback (event, sudo prompt...) on most systems.
+beep_dl_complete() {
+  aplay --quiet /usr/share/sounds/sound-icons/glass-water-1.wav 2>/dev/null
+}
+
 beep_attention() {
   aplay --quiet /usr/share/sounds/sound-icons/percussion-50.wav 2>/dev/null
 }
@@ -190,6 +194,7 @@ ls_dir() {
   COUNT=$(ls -d -- */ | wc -l)
   if [ $COUNT == 13 ]; then
     printf "$BDG%s $OFF%s\n\n" "All programs have been downloaded successfully."
+    beep_dl_complete
     sleep 2
   elif [ $COUNT == 0 ]; then
     printf "\n$BDR%s %s\n" "OOPS! SOMETHING WENT WRONG."
@@ -280,7 +285,6 @@ rstrt_e() {
 # “-Devas-loaders-disabler=” before running the script.
 #
 build_plain() {
-  beep_attention
   sudo ln -sf /usr/lib/x86_64-linux-gnu/preloadable_libintl.so /usr/lib/libintl.so
   sudo ldconfig
 
