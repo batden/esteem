@@ -80,7 +80,7 @@ libunibreak-dev libunwind-dev libusb-1.0-0-dev libwebp-dev \
 libxcb-keysyms1-dev libxcursor-dev libxinerama-dev libxkbcommon-x11-dev \
 libxkbfile-dev lxmenu-data libxrandr-dev libxss-dev libxtst-dev libyuv-dev \
 lolcat manpages-dev manpages-posix-dev meson ninja-build papirus-icon-theme \
-plocate texlive-base unity-greeter-badges valgrind wayland-protocols wmctrl \
+texlive-base unity-greeter-badges valgrind wayland-protocols wmctrl \
 xdotool xserver-xephyr xwayland"
 
 # Latest development code.
@@ -777,8 +777,6 @@ install_now() {
   ls_dir
   build_plain
 
-  printf "\n%s\n\n" "Finalizing..."
-
   mkdir -p $HOME/.elementary/themes
 
   sudo mkdir -p /etc/enlightenment
@@ -790,7 +788,6 @@ install_now() {
   # Protect this file from accidental deletion.
   sudo chattr +i $HOME/.cache/ebuilds/storepath
 
-  sudo updatedb
   beep_ok
 
   printf "\n\n$BTC%s %s" "INITIAL SETUP WIZARD TIPS:"
@@ -830,7 +827,6 @@ release_go() {
     sudo rm -rf /usr/local/share/wayland-sessions/enlightenment.desktop
   fi
 
-  sudo updatedb
   beep_ok
   rstrt_e
   echo
@@ -854,7 +850,6 @@ wld_go() {
   sudo ln -sf /usr/local/share/wayland-sessions/enlightenment.desktop \
     /usr/share/wayland-sessions/enlightenment.desktop
 
-  sudo updatedb
   beep_ok
 
   if [ "$XDG_SESSION_TYPE" == "x11" ] || [ "$XDG_SESSION_TYPE" == "wayland" ]; then
