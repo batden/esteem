@@ -28,7 +28,7 @@
 # if you plan to upgrade your system to a newer version of Ubuntu,
 # to ensure a smooth re-installation of the environment.
 
-# ESTEEM is written and maintained by batden@sfr.fr and carlasensa@sfr.fr.
+# ESTEEM is written and actively maintained by batden@sfr.fr and carlasensa@sfr.fr.
 # This work is licensed under a Creative Commons Attribution-ShareAlike 4.0
 # International License, in memory of Aaron Swartz.
 
