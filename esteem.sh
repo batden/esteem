@@ -4,7 +4,7 @@
 # other applications based on the Enlightenment Foundation Libraries (EFL),
 # in your K/X/Ubuntu desktop system.
 
-# Supported distributions: kinetic Kudu, Lunar Lobster, Mantic Minotaur.
+# Supported distributions: Lunar Lobster, Mantic Minotaur.
 # Running Jammy Jellyfish? See https://github.com/batden/elluminate
 
 # ESTEEM takes care of downloading, configuring and building everything you
@@ -56,14 +56,11 @@ DLDIR=$(xdg-user-dir DOWNLOAD)
 DOCDIR=$(xdg-user-dir DOCUMENTS)
 SCRFLR=$HOME/.esteem
 REBASEF="git config pull.rebase false"
-AUTGN="./autogen.sh --prefix=$PREFIX"
 SNIN="sudo ninja -C build install"
-SMIL="sudo make install"
 DISTRO=$(lsb_release -sc)
-DDTL=2.0.0
 
 # Build dependencies, recommended and script-related packages.
-DEPS="acpid arc-theme aspell build-essential ccache check cmake cowsay doxygen \
+DEPS="acpid arc-theme aspell build-essential ccache check cmake cowsay ddcutil doxygen \
 fonts-noto freeglut3-dev graphviz gstreamer1.0-libav gstreamer1.0-plugins-bad \
 gstreamer1.0-plugins-good gstreamer1.0-plugins-ugly imagemagick libaom-dev \
 libasound2-dev libavahi-client-dev libavif-dev libblkid-dev libbluetooth-dev \
@@ -71,9 +68,9 @@ libegl1-mesa-dev libexif-dev libfontconfig-dev libdrm-dev libfreetype-dev \
 libfribidi-dev libgbm-dev libgeoclue-2-dev libgif-dev libgraphviz-dev \
 libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev libharfbuzz-dev \
 libheif-dev libi2c-dev libibus-1.0-dev libinput-dev libinput-tools \
-libjpeg-dev libjson-c-dev libkmod-dev liblua5.2-dev liblz4-dev libmenu-cache-dev \
-libmount-dev libopenjp2-7-dev libosmesa6-dev libpam0g-dev libpoppler-cpp-dev \
-libpoppler-dev libpoppler-private-dev libpulse-dev libraw-dev \
+libjpeg-dev libjson-c-dev libjxl-dev libkmod-dev liblua5.2-dev liblz4-dev \
+libmenu-cache-dev libmount-dev libopenjp2-7-dev libosmesa6-dev libpam0g-dev \
+libpoppler-cpp-dev libpoppler-dev libpoppler-private-dev libpulse-dev libraw-dev \
 librsvg2-dev libsdl1.2-dev libscim-dev libsndfile1-dev libspectre-dev \
 libssl-dev libsystemd-dev libtiff5-dev libtool libudev-dev libudisks2-dev \
 libunibreak-dev libunwind-dev libusb-1.0-0-dev libwebp-dev \
@@ -277,14 +274,6 @@ rstrt_e() {
   fi
 }
 
-# UBUNTU KINETIC:
-# JPEG XL currently has to be compiled from source. If you need jxl
-# support in efl, follow the instructions below:
-# https://gist.github.com/batden/0f45f8b8578ec70ee911b920b6eacd39
-
-# # Then change the option “-Devas-loaders-disabler=jxl” to
-# “-Devas-loaders-disabler=” before running the script.
-#
 build_plain() {
   sudo ln -sf /usr/lib/x86_64-linux-gnu/preloadable_libintl.so /usr/lib/libintl.so
   sudo ldconfig
@@ -301,14 +290,6 @@ build_plain() {
           -Dbuild-tests=false \
           -Dlua-interpreter=lua \
           -Devas-loaders-disabler= \
-          -Dglib=true
-        ninja -C build || mng_err
-      else
-        meson setup build -Dbuildtype=plain \
-          -Dfb=true \
-          -Dbuild-tests=false \
-          -Dlua-interpreter=lua \
-          -Devas-loaders-disabler=jxl \
           -Dglib=true
         ninja -C build || mng_err
       fi
@@ -352,7 +333,6 @@ rebuild_optim() {
   ESRC=$(cat $HOME/.cache/ebuilds/storepath)
   bin_deps
   e_tokens
-  chk_ddcl
   chk_eflt
   elap_start
 
@@ -395,21 +375,6 @@ rebuild_optim() {
           -Delua=true \
           -Dbindings=lua,cxx \
           -Devas-loaders-disabler= \
-          -Dglib=true \
-          -Ddrm=true \
-          -Dbuild-tests=false \
-          -Dwl=false
-        ninja -C build || mng_err
-      else
-        sudo chown $USER build/.ninja*
-        meson setup --reconfigure build -Dbuildtype=release \
-          -Dnative-arch-optimization=true \
-          -Dfb=true \
-          -Dharfbuzz=true \
-          -Dlua-interpreter=lua \
-          -Delua=true \
-          -Dbindings=lua,cxx \
-          -Devas-loaders-disabler=jxl \
           -Dglib=true \
           -Ddrm=true \
           -Dbuild-tests=false \
@@ -461,7 +426,6 @@ rebuild_wld() {
   ESRC=$(cat $HOME/.cache/ebuilds/storepath)
   bin_deps
   e_tokens
-  chk_ddcl
   chk_eflt
   elap_start
 
@@ -500,22 +464,6 @@ rebuild_wld() {
           -Delua=true \
           -Dbindings=lua,cxx \
           -Devas-loaders-disabler= \
-          -Dglib=true \
-          -Ddrm=true \
-          -Dwl=true \
-          -Dopengl=es-egl \
-          -Dbuild-tests=false
-        ninja -C build || mng_err
-      else
-        sudo chown $USER build/.ninja*
-        meson setup --reconfigure build -Dbuildtype=release \
-          -Dnative-arch-optimization=true \
-          -Dfb=true \
-          -Dharfbuzz=true \
-          -Dlua-interpreter=lua \
-          -Delua=true \
-          -Dbindings=lua,cxx \
-          -Devas-loaders-disabler=jxl \
           -Dglib=true \
           -Ddrm=true \
           -Dwl=true \
@@ -574,7 +522,7 @@ do_tests() {
     exit 1
   fi
 
-  if [ $DISTRO == kinetic ] || [ $DISTRO == lunar ] || [ $DISTRO == mantic ]; then
+  if [ $DISTRO == lunar ] || [ $DISTRO == mantic ]; then
     printf "\n$BDG%s $OFF%s\n\n" "Ubuntu ${DISTRO^}... OK"
     sleep 1
   else
@@ -660,24 +608,6 @@ get_preq() {
   ESRC=$(cat $HOME/.cache/ebuilds/storepath)
   printf "\n\n$BLD%s $OFF%s\n\n" "Installing prerequisites..."
 
-  if [ $DISTRO == kinetic ]; then
-    sudo apt install bear libclang-11-dev libjansson-dev
-    echo
-    cd $DLDIR
-    wget https://github.com/rockowitz/ddcutil/archive/refs/tags/v$DDTL.tar.gz
-    tar xzvf v$DDTL.tar.gz -C $ESRC
-    cd $ESRC/ddcutil-$DDTL
-    $AUTGN
-    make
-    $SMIL
-    sudo ldconfig
-    rm -rf $DLDIR/v$DDTL.tar.gz
-    echo
-  else
-    sudo apt install ddcutil libjxl-dev
-    echo
-  fi
-
   cd $ESRC
   git clone https://github.com/Samsung/rlottie.git
   cd $ESRC/rlottie
@@ -693,27 +623,6 @@ do_lnk() {
   sudo ln -sf /usr/local/etc/enlightenment/sysactions.conf /etc/enlightenment/sysactions.conf
   sudo ln -sf /usr/local/etc/enlightenment/system.conf /etc/enlightenment/system.conf
   sudo ln -sf /usr/local/etc/xdg/menus/e-applications.menu /etc/xdg/menus/e-applications.menu
-}
-
-chk_ddcl() {
-  if [ $DISTRO == kinetic ] && [ -d $ESRC/ddcutil-1.4.1 ]; then
-    printf "\n$BLD%s $OFF%s\n" "Updating ddcutil..."
-    sleep 1
-    sudo apt install libjansson-dev &>/dev/null
-    cd $ESRC/ddcutil-1.4.1
-    sudo make uninstall &>/dev/null
-    cd .. && rm -rf $ESRC/ddcutil-1.4.1
-    cd $DLDIR
-    wget https://github.com/rockowitz/ddcutil/archive/refs/tags/v$DDTL.tar.gz
-    tar xzvf v$DDTL.tar.gz -C $ESRC
-    cd $ESRC/ddcutil-$DDTL
-    $AUTGN
-    make
-    $SMIL
-    sudo ldconfig
-    rm -rf $DLDIR/v$DDTL.tar.gz
-    echo
-  fi
 }
 
 chk_eflt() {
