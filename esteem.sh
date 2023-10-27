@@ -32,7 +32,7 @@
 # This work is licensed under a Creative Commons Attribution-ShareAlike 4.0
 # International License, in memory of Aaron Swartz.
 
-# Please consider starring our repositories to show your support.
+# Please consider starring our repositories to show your trust and support.
 # Cheers!
 
 # ---------------
