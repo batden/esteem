@@ -12,6 +12,9 @@
 # (DEB packages tend to lag far behind). Once installed, you can update
 # your Enlightenment desktop whenever you want to.
 
+# Optional: Additional steps may be taken in order to achieve even better results.
+# Please refer to the comments of the build_plain() function.
+
 # Tip: Set your terminal scrollback to unlimited so that you can scroll up
 # to look at earlier output at any time.
 
@@ -273,6 +276,13 @@ rstrt_e() {
   fi
 }
 
+# BEFORE RUNNING THE SCRIPT!
+#
+# EDI dependencies:
+# If you want edi to compile, you'll need to install the packages
+# listed in the link below:
+# https://gist.github.com/batden/99a7ebdd5ba9d9e83b2446ab5f05f3dc
+#
 build_plain() {
   sudo ln -sf /usr/lib/x86_64-linux-gnu/preloadable_libintl.so /usr/lib/libintl.so
   sudo ldconfig
@@ -297,11 +307,6 @@ build_plain() {
       meson setup build -Dbuildtype=plain
       ninja -C build || mng_err
       ;;
-      # UBUNTU LUNAR/MANTIC:
-      # If you want edi to compile, you'll need to install the packages
-      # listed in the link below before running the script:
-      # https://gist.github.com/batden/99a7ebdd5ba9d9e83b2446ab5f05f3dc
-      #
     edi)
       meson setup build -Dbuildtype=plain \
         -Dlibclang-headerdir=/usr/lib/llvm-11/include \
