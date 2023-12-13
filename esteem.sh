@@ -2,7 +2,7 @@
 
 # This script allows you to easily and safely install Enlightenment, along with
 # other applications based on the Enlightenment Foundation Libraries (EFL),
-# in your K/X/Ubuntu desktop system.
+# in your Ubuntu, Kubuntu or Xubuntu desktop system.
 
 # Supported distributions: Lunar Lobster, Mantic Minotaur.
 # Running Jammy Jellyfish? See https://github.com/batden/elluminate
@@ -12,7 +12,7 @@
 # (DEB packages tend to lag far behind). Once installed, you can update
 # your Enlightenment desktop whenever you want to.
 
-# Optional: Additional steps may be taken in order to achieve even better results.
+# Optional: Additional steps may be taken in order to achieve optimal results.
 # Please refer to the comments of the build_plain() function.
 
 # Tip: Set your terminal scrollback to unlimited so that you can scroll up
@@ -23,21 +23,20 @@
 
 # Heads up!
 # Enlightenment programs installed from DEB packages or TAR archives will inevitably
-# clash with programs compiled from git repositories——do not mix source code
-# with prebuilt binaries! Therefore, please remove thoroughly any previous
-# binary installation of EFL/Enlightenment/E-apps before running ESTEEM.
+# clash with the ones compiled from git repositories. Therefore, please remove any
+# previous binary installation of EFL/Enlightenment/E-apps before running ESTEEM.
 
 # We recommend doing a complete uninstallation of your Enlightenment desktop
-# if you plan to upgrade your system to a newer version of Ubuntu,
+# if you plan to upgrade your system to a newer version of the distribution,
 # to ensure a smooth reinstallation of the environment afterwards.
 
-# ESTEEM is written and maintained by batden@sfr.fr and carlasensa@sfr.fr.
-# This work is licensed under a Creative Commons Attribution-ShareAlike 4.0
+# The present script is written and maintained by batden@sfr.fr and carlasensa@sfr.fr.
+# ESTEEM is licensed under a Creative Commons Attribution-ShareAlike 4.0
 # International License, in memory of Aaron Swartz.
 # See https://creativecommons.org/licenses/by-sa/4.0/
 
 # Got a GitHub account? Please consider starring our repositories to show your support.
-# Cheers!
+# Thank you!
 
 # ---------------
 # LOCAL VARIABLES
