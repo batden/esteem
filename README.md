@@ -32,13 +32,13 @@ Navigate to the download folder and make the script executable:
 chmod +x esteem.sh
 ```
 
-Run the following command:
+Then run the following command:
 
 ```bash
 ./esteem.sh
 ```
 
-On subsequent runs, open a terminal and run:
+On subsequent runs, open a terminal and simply type:
 
 ```bash
 esteem.sh
