@@ -30,14 +30,12 @@
 # if you plan to upgrade your system to a newer version of the distribution,
 # to ensure a smooth reinstallation of the environment afterwards.
 
-# The present script is written and maintained by batden@sfr.fr and carlasensa@sfr.fr.
-# Please report any issues you may find on GitHub and consider starring our
-# repositories to show your support.
-# Thank you!
-
 # ESTEEM is licensed under a Creative Commons Attribution-ShareAlike 4.0
 # International License, in memory of Aaron Swartz.
 # See https://creativecommons.org/licenses/by-sa/4.0/
+
+# Got a GitHub account? Please consider starring our repositories to show your support.
+# Thank you!
 
 # ---------------
 # LOCAL VARIABLES
