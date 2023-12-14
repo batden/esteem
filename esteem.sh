@@ -22,9 +22,9 @@
 # See also the repository's wiki for post-installation hints.
 
 # Heads up!
-# Enlightenment programs installed from DEB packages or TAR archives will inevitably
-# clash with the ones compiled from git repositories. Therefore, please remove any
-# previous binary installation of EFL/Enlightenment/E-apps before running ESTEEM.
+# Enlightenment programs compiled from git source code will inevitably come into conflict
+# with the ones installed from DEB packages. Therefore, remove any previous binary
+# installation of EFL/Enlightenment/E-apps before running ESTEEM.
 
 # We recommend doing a complete uninstallation of your Enlightenment desktop
 # if you plan to upgrade your system to a newer version of the distribution,
