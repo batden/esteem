@@ -7,7 +7,7 @@
 # Supported distributions: Lunar Lobster, Mantic Minotaur.
 # Running Jammy Jellyfish? See https://github.com/batden/elluminate
 
-# ESTEEM takes care of downloading, configuring and building everything you
+# ESTEEM.SH takes care of downloading, configuring and building everything you
 # need to enjoy the very latest version of the Enlightenment environment
 # (DEB packages tend to lag far behind). Once installed, you can update
 # your Enlightenment desktop whenever you want to.
@@ -24,13 +24,14 @@
 # Heads up!
 # Enlightenment programs compiled from git source code will inevitably come into conflict
 # with the ones installed from DEB packages. Therefore, remove any previous binary
-# installation of EFL/Enlightenment/E-apps before running ESTEEM.
+# installations of EFL, Enlightenment and related applications before
+# running this script.
 
 # We recommend doing a complete uninstallation of your Enlightenment desktop
 # if you plan to upgrade your system to a newer version of the distribution,
 # to ensure a smooth reinstallation of the environment afterwards.
 
-# ESTEEM is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License,
+# ESTEEM.SH is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License,
 # in memory of Aaron Swartz.
 # See https://creativecommons.org/licenses/by-sa/4.0/
 
