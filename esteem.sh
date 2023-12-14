@@ -275,9 +275,9 @@ rstrt_e() {
   fi
 }
 
-# BEFORE RUNNING THE SCRIPT!
+# BEFORE RUNNING THE SCRIPT...
 #
-# EDI dependencies:
+# Get EDI dependencies?
 # If you want edi to compile, you'll need to install the packages
 # listed in the link below:
 # https://gist.github.com/batden/99a7ebdd5ba9d9e83b2446ab5f05f3dc
