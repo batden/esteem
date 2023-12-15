@@ -783,7 +783,10 @@ wld_go() {
   exit 0
 }
 
-# Lo and behold!
+# Lo and behold (bhd)!
+#
+# Displays the selection menu...
+#
 lo() {
   trap '{ printf "\n$BDR%s $OFF%s\n\n" "KEYBOARD INTERRUPT."; exit 130; }' INT
 
@@ -797,6 +800,7 @@ lo() {
   fi
 }
 
+# and gets the user's choice.
 bhd() {
   if [ $INPUT == 1 ]; then
     do_tests
