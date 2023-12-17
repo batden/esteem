@@ -44,7 +44,8 @@ To run it again later, open a terminal and simply type:
 esteem.sh
 ```
 
-(Use auto-completion: Just type *est* and press Tab.)
+> [!TIP]
+> Use auto-completion: Just type *est* and press Tab.
 
 ## Update local repo
 
