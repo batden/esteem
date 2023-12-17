@@ -54,7 +54,3 @@ To update the local repository, change to ~/.esteem/ and run:
 ```bash
 git pull
 ```
-
-That's it.
-
-Mind the cows! :cow2: :cow2: :cow2:
