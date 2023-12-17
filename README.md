@@ -22,7 +22,7 @@ Next, clone this repository:
 git clone https://github.com/batden/esteem.git .esteem
 ```
 
-This creates a new hidden folder named **.esteem** in your home directory.
+This creates a new hidden folder named .esteem in your home directory.
 
 Copy the esteem.sh file from the new .esteem folder to your download folder.
 
@@ -32,13 +32,13 @@ Navigate to the download folder and make the script executable:
 chmod +x esteem.sh
 ```
 
-Then run the following command:
+Then execute the script with:
 
 ```bash
 ./esteem.sh
 ```
 
-On subsequent runs, open a terminal and simply type:
+To run it again later, open a terminal and simply type:
 
 ```bash
 esteem.sh
@@ -46,10 +46,10 @@ esteem.sh
 
 (Use auto-completion: Just type *est* and press Tab.)
 
-## Update local repository
+## Update local repo
 
 Check for updates at least once a week.
-In order to do this, change to ~/.esteem/ and run:
+To update the local repository, change to ~/.esteem/ and run:
 
 ```bash
 git pull
