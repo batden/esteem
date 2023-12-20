@@ -210,7 +210,7 @@ cnt_dir() {
       printf "$BLDR%s $OFF%s\n\n" "SCRIPT ABORTED."
       beep_exit
       exit 1
-      # You can try downloading the missing files manually (see CLONEFL or CLONENL), then relaunch
+      # You can try downloading the missing files manually (see CLONEFL or CLONE26), then relaunch
       # the script and select option 1 again; or relaunch the script at a later time.
       # In both cases, be sure to enter the same path for the Enlightenment source folders as
       # you previously used.
