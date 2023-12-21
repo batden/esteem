@@ -364,7 +364,6 @@ rebuild_optim() {
   ESRC=$(cat $HOME/.cache/ebuilds/storepath)
   bin_deps
   e_tokens
-  chk_eflt
   elap_start
 
   cd $ESRC/rlottie
@@ -457,7 +456,6 @@ rebuild_wld() {
   ESRC=$(cat $HOME/.cache/ebuilds/storepath)
   bin_deps
   e_tokens
-  chk_eflt
   elap_start
 
   cd $ESRC/rlottie
@@ -656,22 +654,6 @@ do_lnk() {
   sudo ln -sf /usr/local/etc/enlightenment/sysactions.conf /etc/enlightenment/sysactions.conf
   sudo ln -sf /usr/local/etc/enlightenment/system.conf /etc/enlightenment/system.conf
   sudo ln -sf /usr/local/etc/xdg/menus/e-applications.menu /etc/xdg/menus/e-applications.menu
-}
-
-chk_eflt() {
-  if [ ! -f $ESRC/e26/eflete/meson.build ]; then
-    printf "\n$BLD%s $OFF%s\n" "Rebuilding Eflete using meson..."
-    sleep 1
-    cd $ESRC/e26/eflete
-    sudo make uninstall &>/dev/null
-    git reset --hard &>/dev/null
-    $REBASEF && git pull
-    meson setup build -Dbuildtype=plain \
-      -Dwerror=false
-    ninja -C build
-    $SNIN
-    echo
-  fi
 }
 
 install_now() {
