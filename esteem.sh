@@ -636,10 +636,10 @@ set_p_src() {
   sleep 2
 }
 
-# Prerequisites.
-get_preq() {
+# Fetch and install recommended program.
+get_rcmd() {
   ESRC=$(cat $HOME/.cache/ebuilds/storepath)
-  printf "\n\n$BLD%s $OFF%s\n\n" "Installing prerequisites..."
+  printf "\n\n$BLD%s $OFF%s\n\n" "Installing rlottie..."
 
   cd $ESRC
   git clone https://github.com/Samsung/rlottie.git
@@ -682,7 +682,7 @@ install_now() {
   p_bkp
   bin_deps
   set_p_src
-  get_preq
+  get_rcmd
 
   cd $HOME
   mkdir -p $ESRC/e26
