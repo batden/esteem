@@ -390,10 +390,6 @@ rebuild_optim() {
     $REBASEF && git pull
 
     case $I in
-    # If you experience screen stuttering/glitching with Nvidia drivers, try changing
-    # the option “-Ddrm=true” to “-Ddrm=false”.
-    # See also https://www.enlightenment.org/docs/distros/nvidia-start.md
-    #
     efl)
       if [ $DISTRO == lunar ] || [ $DISTRO == mantic ]; then
         sudo chown $USER build/.ninja*
