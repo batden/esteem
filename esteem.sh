@@ -232,8 +232,8 @@ cnt_dir() {
     fi
 
     if [ $COUNT -lt 14 ]; then
-      printf "\n$BLY%s %s\n" "WARNING: ONLY $COUNT OF 14 PROGRAMS HAVE BEEN DOWNLOADED!"
-      printf "\n$BLY%s $OFF%s\n\n" "WAIT 12 SECONDS OR HIT CTRL+C TO EXIT NOW."
+      printf "\n$BDY%s %s\n" "WARNING: ONLY $COUNT OF 14 PROGRAMS HAVE BEEN DOWNLOADED!"
+      printf "\n$BDY%s $OFF%s\n\n" "WAIT 12 SECONDS OR HIT CTRL+C TO EXIT NOW."
       beep_attention
       sleep 12
     fi
