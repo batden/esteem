@@ -209,20 +209,20 @@ cnt_dir() {
   COUNT=$(find . -mindepth 1 -maxdepth 1 -type d | wc -l)
   case $COUNT in
   14)
-    printf "$BLDG%s $OFF%s\n\n" "All programs have been downloaded successfully."
+    printf "$BDG%s $OFF%s\n\n" "All programs have been downloaded successfully."
     beep_dl_complete
     sleep 2
     ;;
   0)
-    printf "\n$BLDR%s %s\n" "OOPS! SOMETHING WENT WRONG."
-    printf "$BLDR%s $OFF%s\n\n" "SCRIPT ABORTED."
+    printf "\n$BDR%s %s\n" "OOPS! SOMETHING WENT WRONG."
+    printf "$BDR%s $OFF%s\n\n" "SCRIPT ABORTED."
     beep_exit
     exit 1
     ;;
   *)
     if [ ! -d efl ] || [ ! -d enlightenment ]; then
-      printf "\n$BLDR%s %s\n" "FAILED TO DOWNLOAD MAIN COMPONENT."
-      printf "$BLDR%s $OFF%s\n\n" "SCRIPT ABORTED."
+      printf "\n$BDR%s %s\n" "FAILED TO DOWNLOAD MAIN COMPONENT."
+      printf "$BDR%s $OFF%s\n\n" "SCRIPT ABORTED."
       beep_exit
       exit 1
       # You can try downloading the missing files manually (see CLONEFL or CLONE26), then relaunch
@@ -232,8 +232,8 @@ cnt_dir() {
     fi
 
     if [ $COUNT -lt 14 ]; then
-      printf "\n$BLDY%s %s\n" "WARNING: ONLY $COUNT OF 14 PROGRAMS HAVE BEEN DOWNLOADED!"
-      printf "\n$BLDY%s $OFF%s\n\n" "WAIT 12 SECONDS OR HIT CTRL+C TO EXIT NOW."
+      printf "\n$BLY%s %s\n" "WARNING: ONLY $COUNT OF 14 PROGRAMS HAVE BEEN DOWNLOADED!"
+      printf "\n$BLY%s $OFF%s\n\n" "WAIT 12 SECONDS OR HIT CTRL+C TO EXIT NOW."
       beep_attention
       sleep 12
     fi
