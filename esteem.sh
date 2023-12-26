@@ -404,7 +404,7 @@ rebuild_optim() {
           -Dbindings=lua,cxx \
           -Devas-loaders-disabler= \
           -Dglib=true \
-          -Ddrm=true \
+          -Ddrm=false \
           -Dbuild-tests=false \
           -Dwl=false
         ninja -C build || mng_err
