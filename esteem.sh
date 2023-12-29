@@ -39,8 +39,9 @@
 # Thank you!
 
 # ---------------
-# LOCAL VARIABLES
+# USER VARIABLES
 # ---------------
+# (These variables are not available to be used outside of this script.)
 
 BLD="\e[1m"    # Bold text.
 ITA="\e[3m"    # Italic text.
@@ -581,9 +582,10 @@ do_bsh_alias() {
     touch $HOME/.bash_aliases
 
     cat >$HOME/.bash_aliases <<EOF
-    # ----------------
-    # GLOBAL VARIABLES
-    # ----------------
+    # ---------------------
+    # ENVIRONMENT VARIABLES
+    # ---------------------
+    # (These variables can be accessed from any shell sessions.)
 
     # Compiler and linker flags added by ESTEEM.
     export CC="ccache gcc"
@@ -600,9 +602,10 @@ EOF
     touch $HOME/.bash_aliases
 
     cat >$HOME/.bash_aliases <<EOF
-    # ----------------
-    # GLOBAL VARIABLES
-    # ----------------
+    # ---------------------
+    # ENVIRONMENT VARIABLES
+    # ---------------------
+    # (These variables can be accessed from any shell sessions.)
 
     # Compiler and linker flags added by ESTEEM.
     export CC="ccache gcc"
