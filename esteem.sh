@@ -314,8 +314,8 @@ rstrt_e() {
 
 # BEFORE EXECUTING THE SCRIPT...
 #
-# Get EDI dependencies?
-# If you want edi to compile, you'll need to install the packages
+# Fetch EDI's additional dependencies?
+# If you want edi to compile, you will also need to install the packages
 # listed in the link below:
 # https://gist.github.com/batden/99a7ebdd5ba9d9e83b2446ab5f05f3dc
 #
