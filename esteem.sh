@@ -735,6 +735,8 @@ install_now() {
   echo
 
   cp -f $DLDIR/esteem.sh $HOME/.local/bin
+
+  exit 0
 }
 
 release_go() {
@@ -763,6 +765,8 @@ release_go() {
   echo
   cowsay -f www "That's All Folks!"
   echo
+
+  exit 0
 }
 
 wld_go() {
@@ -796,6 +800,8 @@ wld_go() {
     # If Enlightenment fails to start, relaunch the script and select option 2.
     # After the build is complete type exit, then go back to the login screen.
   fi
+
+  exit 0
 }
 
 # Lo and behold (“bhd”)!
