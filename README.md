@@ -4,11 +4,14 @@ A neat Bash script to build/install/update the Enlightenment ecosystem on Ubuntu
 
 Please take a look at the comments in the script before running it.
 
-*See also [meetse.sh](https://github.com/batden/meetse) (companion script).*
+> [!NOTE]
+> It can be useful to keep a record of the pre-existing system status, before proceeding with the installation.
+>
+> Check out our [backup script](https://gist.github.com/batden/993b5ee997b3df2c3b075907a1dff116).
 
 ## Get started
 
-Before using esteem, you'll need to install the git and sound-icons packages on your system.
+Before using esteem, you will need to install the git and sound-icons packages on your system.
 
 Open a terminal window and type in the following:
 
@@ -45,11 +48,10 @@ esteem.sh
 ```
 
 > [!TIP]
-> Use auto-completion: Type *est* and press Tab.
+> Use auto-completion: Type *est* and press the Tab key.
 
 ## Update local repo
 
-Check for updates at least once per week.
 To update the local repository, change to ~/.esteem/ and run:
 
 ```bash
