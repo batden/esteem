@@ -57,3 +57,9 @@ To update the local repository, change to ~/.esteem/ and run:
 ```bash
 git pull
 ```
+
+## Uninstalling
+
+You can uninstall Enlightenment and related applications from your computer at any time.
+
+See [meetse.sh](https://github.com/batden/meetse).
