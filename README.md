@@ -48,7 +48,7 @@ esteem.sh
 ```
 
 > [!TIP]
-> Use auto-completion: Type *est* and press the Tab key.
+> Use auto-completion: Type _est_ and press the Tab key.
 
 ## Update local repo
 
