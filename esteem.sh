@@ -65,7 +65,7 @@ DISTRO=$(lsb_release -sc)
 # Build dependencies, recommended and script-related packages.
 DEPS="acpid arc-theme aspell build-essential ccache check cmake cowsay ddcutil doxygen \
 fonts-noto freeglut3-dev graphviz gstreamer1.0-libav gstreamer1.0-plugins-bad \
-gstreamer1.0-plugins-good gstreamer1.0-plugins-ugly imagemagick libaom-dev \
+gstreamer1.0-plugins-good gstreamer1.0-plugins-ugly i2c-tools imagemagick libaom-dev \
 libasound2-dev libavahi-client-dev libavif-dev libblkid-dev libbluetooth-dev \
 libegl1-mesa-dev libexif-dev libfontconfig-dev libdrm-dev libfreetype-dev \
 libfribidi-dev libgbm-dev libgeoclue-2-dev libgif-dev libgraphviz-dev \
