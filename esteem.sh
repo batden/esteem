@@ -29,7 +29,7 @@
 
 # We recommend doing a complete uninstallation of your Enlightenment desktop
 # if you plan to upgrade your system to a newer version of the distribution,
-# to ensure a smooth reinstallation of the environment afterwards.
+# in order to ensure a smooth reinstallation of the environment afterwards.
 
 # ESTEEM.SH is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License,
 # in memory of Aaron Swartz.
