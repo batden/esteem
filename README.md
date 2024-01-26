@@ -50,6 +50,8 @@ esteem.sh
 > [!TIP]
 > Use auto-completion: Type _est_ and press the Tab key.
 
+That's it.
+
 You can uninstall Enlightenment and related applications from your computer at any time.
 
 See [meetse.sh](https://github.com/batden/meetse).
