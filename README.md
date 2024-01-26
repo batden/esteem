@@ -50,6 +50,10 @@ esteem.sh
 > [!TIP]
 > Use auto-completion: Type _est_ and press the Tab key.
 
+You can uninstall Enlightenment and related applications from your computer at any time.
+
+See [meetse.sh](https://github.com/batden/meetse).
+
 ## Update local repo
 
 To update the local repository, change to ~/.esteem/ and run:
@@ -58,8 +62,6 @@ To update the local repository, change to ~/.esteem/ and run:
 git pull
 ```
 
-## Uninstalling
+## In the picture
 
-You can uninstall Enlightenment and related applications from your computer at any time.
-
-See [meetse.sh](https://github.com/batden/meetse).
+![GitHub Image](/images/enlightened_desktop_wl.jpg)
