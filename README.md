@@ -56,14 +56,6 @@ You can uninstall Enlightenment and related applications from your computer at a
 
 See [meetse.sh](https://github.com/batden/meetse).
 
-## Update local repo
-
-To update the local repository, change to ~/.esteem/ and run:
-
-```bash
-git pull
-```
-
 ## In the picture
 
 ![GitHub Image](/images/enlightened_desktop_wl.jpg)
