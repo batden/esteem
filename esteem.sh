@@ -727,7 +727,8 @@ wld_go() {
   clear
   printf "\n$BDY%s $OFF%s\n\n" "* UPDATING ENLIGHTENMENT DESKTOP ENVIRONMENT: RELEASE BUILD ON WAYLAND *"
 
-  cp -f $SCRFLR/esteem.sh $HOME/.local/bin
+  cd $SCRFLR && git pull &>/dev/null
+  cp -f esteem.sh $HOME/.local/bin
   chmod +x $HOME/.local/bin/esteem.sh
   sleep 1
 
