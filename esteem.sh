@@ -695,7 +695,9 @@ release_go() {
   clear
   printf "\n$BDP%s $OFF%s\n\n" "* UPDATING ENLIGHTENMENT DESKTOP ENVIRONMENT: RELEASE BUILD ON XORG SERVER *"
 
-  cp -f $SCRFLR/esteem.sh $HOME/.local/bin
+  # Check for available updates of the script folder first.
+  cd $SCRFLR && git pull &>/dev/null
+  cp -f esteem.sh $HOME/.local/bin
   chmod +x $HOME/.local/bin/esteem.sh
   sleep 1
 
