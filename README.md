@@ -1,6 +1,6 @@
 # esteem
 
-A neat Bash script to build/install/update the Enlightenment ecosystem on Ubuntu 23.04 or 23.10.
+A neat Bash script to build/install/update the Enlightenment ecosystem on Ubuntu 23.10.
 
 Please take a look at the comments in the script before running it.
 
