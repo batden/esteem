@@ -4,8 +4,7 @@
 # other applications based on the Enlightenment Foundation Libraries (EFL),
 # in your Ubuntu, Kubuntu or Xubuntu desktop system.
 
-# Supported distributions: Lunar Lobster, Mantic Minotaur.
-# Running Jammy Jellyfish? See https://github.com/batden/elluminate
+# Supported distribution: Mantic Minotaur.
 
 # ESTEEM.SH takes care of downloading, configuring and building everything you
 # need to enjoy the very latest version of the Enlightenment environment
@@ -309,15 +308,13 @@ build_plain() {
 
     case $I in
     efl)
-      if [ $DISTRO == lunar ] || [ $DISTRO == mantic ]; then
-        meson setup build -Dbuildtype=plain \
-          -Dfb=true \
-          -Dbuild-tests=false \
-          -Dlua-interpreter=lua \
-          -Devas-loaders-disabler= \
-          -Dglib=true
-        ninja -C build || mng_err
-      fi
+      meson setup build -Dbuildtype=plain \
+        -Dfb=true \
+        -Dbuild-tests=false \
+        -Dlua-interpreter=lua \
+        -Devas-loaders-disabler= \
+        -Dglib=true
+      ninja -C build || mng_err
       ;;
     enlightenment)
       meson setup build -Dbuildtype=plain
@@ -377,23 +374,21 @@ rebuild_optim() {
 
     case $I in
     efl)
-      if [ $DISTRO == lunar ] || [ $DISTRO == mantic ]; then
-        sudo chown $USER build/.ninja*
-        meson setup --reconfigure build -Dbuildtype=release \
-          -Dnative-arch-optimization=true \
-          -Dfb=true \
-          -Dharfbuzz=true \
-          -Dlua-interpreter=lua \
-          -Delua=true \
-          -Dbindings=lua,cxx \
-          -Devas-loaders-disabler= \
-          -Dglib=true \
-          -Dopengl=full \
-          -Ddrm=false \
-          -Dwl=false \
-          -Dbuild-tests=false
-        ninja -C build || mng_err
-      fi
+      sudo chown $USER build/.ninja*
+      meson setup --reconfigure build -Dbuildtype=release \
+        -Dnative-arch-optimization=true \
+        -Dfb=true \
+        -Dharfbuzz=true \
+        -Dlua-interpreter=lua \
+        -Delua=true \
+        -Dbindings=lua,cxx \
+        -Devas-loaders-disabler= \
+        -Dglib=true \
+        -Dopengl=full \
+        -Ddrm=false \
+        -Dwl=false \
+        -Dbuild-tests=false
+      ninja -C build || mng_err
       ;;
     enlightenment)
       sudo chown $USER build/.ninja*
@@ -466,23 +461,21 @@ rebuild_wld() {
 
     case $I in
     efl)
-      if [ $DISTRO == lunar ] || [ $DISTRO == mantic ]; then
-        sudo chown $USER build/.ninja*
-        meson setup --reconfigure build -Dbuildtype=release \
-          -Dnative-arch-optimization=true \
-          -Dfb=true \
-          -Dharfbuzz=true \
-          -Dlua-interpreter=lua \
-          -Delua=true \
-          -Dbindings=lua,cxx \
-          -Devas-loaders-disabler= \
-          -Dglib=true \
-          -Dopengl=es-egl \
-          -Ddrm=true \
-          -Dwl=true \
-          -Dbuild-tests=false
-        ninja -C build || mng_err
-      fi
+      sudo chown $USER build/.ninja*
+      meson setup --reconfigure build -Dbuildtype=release \
+        -Dnative-arch-optimization=true \
+        -Dfb=true \
+        -Dharfbuzz=true \
+        -Dlua-interpreter=lua \
+        -Delua=true \
+        -Dbindings=lua,cxx \
+        -Devas-loaders-disabler= \
+        -Dglib=true \
+        -Dopengl=es-egl \
+        -Ddrm=true \
+        -Dwl=true \
+        -Dbuild-tests=false
+      ninja -C build || mng_err
       ;;
     enlightenment)
       sudo chown $USER build/.ninja*
@@ -534,7 +527,7 @@ do_tests() {
     exit 1
   fi
 
-  if [ $DISTRO == lunar ] || [ $DISTRO == mantic ]; then
+  if [ $DISTRO == mantic ]; then
     printf "\n$BDG%s $OFF%s\n\n" "Ubuntu ${DISTRO^}... OK"
     sleep 1
   else
