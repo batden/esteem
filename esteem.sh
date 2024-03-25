@@ -624,6 +624,7 @@ do_link() {
 
 chk_epl() {
   if [ ! $ESRC/e26/enlightenment-module-places ]; then
+    printf "\n\n$BLD%s $OFF%s\n\n" "Installing Places module..."
     cd $ESRC/e26/
     $CLONEPL
     cd $ESRC/e26/enlightenment-module-places
