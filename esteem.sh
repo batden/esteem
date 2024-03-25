@@ -625,6 +625,7 @@ do_link() {
 chk_epl() {
   if [ ! -d $ESRC/e26/enlightenment-module-places ]; then
     printf "\n\n$BLD%s $OFF%s\n\n" "Installing Places module..."
+    sleep 1
     cd $ESRC/e26/
     $CLONEPL
     cd $ESRC/e26/enlightenment-module-places
