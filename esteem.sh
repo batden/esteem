@@ -270,7 +270,7 @@ e_tokens() {
     echo
     # Questions: Enter either y or n, or press Enter to accept the default value (capital letter).
     beep_question
-    read -t 12 -p "Do you want to back up your Enlightenment settings now? [y/N] " answer
+    read -t 12 -p "Do you want to back up your Enlightenment and Terminology settings now? [y/N] " answer
     case $answer in
     y | Y)
       e_bkp
