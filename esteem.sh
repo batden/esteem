@@ -271,9 +271,9 @@ e_bkp() {
 }
 
 e_tokens() {
-  TOKEN=$(wc -l <$HOME/.cache/ebuilds/etokens)
-
   echo $(date +%s) >>$HOME/.cache/ebuilds/etokens
+
+  TOKEN=$(wc -l <$HOME/.cache/ebuilds/etokens)
 
   if [ "$TOKEN" -gt 3 ]; then
     echo
@@ -564,7 +564,7 @@ do_tests() {
   fi
 
   if ! test -d "$HOME/.cache/ebuilds"; then
-    mkdir -p "$HOME/.cache/ebuilds/etokens"
+    mkdir -p "$HOME/.cache/ebuilds"
   fi
 }
 
