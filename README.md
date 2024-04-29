@@ -58,7 +58,9 @@ See [meetse.sh](https://github.com/batden/meetse).
 
 ## Update local repo
 
-To update the local repository manually, change to ~/.esteem/ and run:
+It is good practice to check for updates to the local repository before using the script.
+
+To do so, change to ~/.elluminate/ and run:
 
 ```bash
 git pull
