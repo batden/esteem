@@ -682,6 +682,13 @@ install_now() {
   cnt_dir
   build_plain
 
+  # Doxygen outputs HTML-based (as well as LaTeX-formatted) documentation. Click on e26/efl/build/html/index.html
+  # to open the HTML documentation in your browser.
+  #
+  printf "\n\n$BOLD%s $OFF%s\n\n" "Generating the documentation for EFL..."
+  cd $ESRCDIR/e26/efl/build/doc
+  doxygen
+
   sudo mkdir -p /etc/enlightenment
   do_link
 
