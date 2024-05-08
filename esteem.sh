@@ -325,7 +325,8 @@ build_plain() {
         -Dbuild-tests=false \
         -Dlua-interpreter=lua \
         -Devas-loaders-disabler= \
-        -Dglib=true
+        -Dglib=true \
+        -Ddocs=true
       ninja -C build || mng_err
       ;;
     enlightenment)
